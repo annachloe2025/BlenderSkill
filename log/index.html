@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-2-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -565,6 +576,8 @@
       
         
           
+        
+      
         
       
         
@@ -681,6 +694,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/materials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マテリアル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -699,6 +740,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1055,6 +1100,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/boolean_hole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ブーリアンで穴あけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/material_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    マテリアル基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1113,6 +1214,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04-phase-2-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1178,6 +1290,30 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-04-phase-2-phase-3">2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）<a class="headerlink" href="#2026-05-04-phase-2-phase-3" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: Phase 2 の最後「ブーリアン」を消化し、その勢いで Phase 3 マテリアル編に入って椅子に色を付ける</p>
+<p><strong>実行した手順</strong>:
+1. <strong>ブーリアン</strong>: Cube + Cylinder（X軸貫通）→ Boolean DIFFERENCE で穴あけブロック生成。<code>solver='EXACT'</code>、適用後のカッター削除、仕上げベベルまでのフルパターン確認。
+2. <strong>Principled BSDF</strong>: <code>make_material()</code> / <code>assign_material()</code> の2ヘルパー関数で、木・金属・床の3マテリアルを定義。
+3. <strong>着色済み椅子</strong>: 座面と背もたれに木マテリアル、4本の脚に金属マテリアル、床にクリーム色を割り当て。
+4. <strong>Cycles レンダリング</strong>: <code>samples=64</code> + denoising で <code>chair_v2_material.png</code> 出力。木の温かさと金属の反射、影のリアルさを確認。</p>
+<p><strong>結果</strong>: Phase 2 完全制覇、Phase 3 入口クリア。<strong>「単色だった椅子に質感が宿った」</strong> 瞬間が一番達成感が大きかった。</p>
+<p><strong>学んだこと</strong>:
+- Boolean は <strong>カッターをベースより大きく</strong> が鉄則（同サイズで破綻するパターンを回避）
+- <code>solver='EXACT'</code> のほうが綺麗、<code>FAST</code> は速さ優先のとき
+- <code>mat.use_nodes = True</code> を忘れると BSDF が触れない（よくあるハマりポイント）
+- <code>bsdf.inputs["Base Color"].default_value</code> は <strong>RGBA の4要素</strong>、アルファ忘れに注意
+- Cycles は <code>scene.cycles.samples</code> と <code>use_denoising</code> で品質と速度をコントロール
+- 「Metallic=0/1, Roughness=0.2〜0.8」の組み合わせだけで木・金属・プラスチック・ゴムが作り分けられる</p>
+<p><strong>つまずいた点</strong>:
+- 特になし。Phase 1〜2 で基礎が固まったので、マテリアル追加はスムーズに進んだ。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/boolean_hole.py</code> — ブーリアンの完全パターン
+- <code>snippets/material_basics.py</code> — マテリアル作成・割り当てヘルパー
+- <code>docs/memory/modeling.md</code> に「ブーリアン」セクション追記
+- <code>docs/memory/materials.md</code> 新設（Phase 3 ノウハウファイル）
+- <code>docs/images/chair_v2_material.png</code> — 着色済み椅子の Cycles レンダー</p>
 <hr />
 <h2 id="2026-05-04-phase-2">2026-05-04: Phase 2 — 押し出し / ループカット+ベベル / 椅子モデリング<a class="headerlink" href="#2026-05-04-phase-2" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: Phase 2 の「Extrude」「ループカット+ベベル」を消化し、はじめての家具モデル（椅子）を完成させる</p>
