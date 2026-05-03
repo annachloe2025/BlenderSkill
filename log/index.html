@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -598,6 +609,8 @@
       
         
           
+        
+      
         
       
         
@@ -774,6 +787,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アニメーション・応用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -792,6 +833,16 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1388,6 +1439,146 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/keyframe_animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    キーフレームアニメ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/snow_scatter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    雪片散布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/geometry_nodes_scatter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ジオメトリノード散布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/ai_model_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI生成・外部アセット
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/final_snowy_chair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🎉 集大成: 雪景色の椅子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1446,6 +1637,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04-phase-5-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1544,6 +1746,39 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-04-phase-5-ai">2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品<a class="headerlink" href="#2026-05-04-phase-5-ai" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: 応用編5項目を全部消化し、<strong>Phase 1〜5 の集大成シーン</strong> を1本のスクリプトで再現できる状態にする。</p>
+<p><strong>実行した手順</strong>:
+1. <strong>キーフレームアニメ</strong>: Suzanne を Z軸回転＋上下動でループアニメ化（24fps、60フレーム）。3つの代表フレーム（1/30/60）をレンダー。
+2. <strong>パーティクル → 散布へ切替</strong>: 本物のパーティクルシステムは設定したものの雪片が見えなかったので、<strong>Linked Duplicate で球600個を散布</strong> する確実方式に変更。雪が積もる絵が一発で出た。
+3. <strong>ジオメトリノード</strong>: <code>GeometryNodeDistributePointsOnFaces</code> + <code>InstanceOnPoints</code> + <code>ObjectInfo</code> + <code>RealizeInstances</code> + <code>JoinGeometry</code> の標準パターンで Plane に立方体を散布。<strong>Blender 4.0+ の interface API</strong>（<code>ng.interface.new_socket</code>）対応。最初は散布元が原点になく空中に飛んでた → 修正で岩場の絵に。
+4. <strong>AI生成（Hyper3D / Hunyuan3D / Sketchfab）</strong>: 全部 OFF だったので有効化手順とワークフローを完全文書化。次回 ON 後にすぐ使える状態に。
+5. <strong>集大成シーン</strong>: 雪景色の椅子（プロシージャル木目 + 鏡面金属脚 + Sky Texture曇り空 + DoF + 800個の雪片散布 + Cycles）を1本のスクリプトで構築。Phase 1〜5 の技を全部使った作品が完成。</p>
+<p><strong>結果</strong>: Phase 5 完全制覇 + 全フェーズ統合作品まで完了。<strong>5段階のロードマップが全部 ✅</strong> に。</p>
+<p><strong>学んだこと</strong>:
+- <code>obj.keyframe_insert(data_path="location", frame=N)</code> で記録、属性を <strong>変更してから</strong> insert するのが鉄則
+- パーティクルシステムは設定が複雑で学習中は散布スクリプトのほうが確実
+- Linked Duplicate は <code>new = template.copy()</code> だけで <code>new.data = ...</code> を <strong>やらない</strong> のがポイント
+- ジオメトリノードの散布元は <strong>原点に置いて hide_render</strong>（ワールド位置がオフセットになるため）
+- Blender 4.0+ の <code>ng.interface.new_socket(name=..., in_out='INPUT', socket_type='NodeSocketGeometry')</code> API
+- <code>JoinGeometry</code> の入力は <strong>複数接続可能</strong>（元メッシュ + 散布結果の両方を繋いで合成）
+- AI生成系（Hyper3D/Hunyuan3D/Sketchfab/Polyhaven）はチェックボックス ON で全部使える、ワークフローはどれも <code>生成 → poll → import</code> の3ステップ</p>
+<p><strong>つまずいた点</strong>:
+- パーティクルが見えない問題: 物理シミュレーションのステップ評価とレンダリングフレームのタイミングの絡みで複雑。学習用なら散布スクリプトに切り替えるのが楽。
+- ジオメトリノードの散布元オブジェクトが (20,20,0) にあって全部空中に出た。原点に置いて非表示が定石。
+- 集大成作品で雪片が床と同色のため見えにくい。次回は薄青や淡い色で差別化。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/keyframe_animation.py</code> — キーフレーム最小例
+- <code>snippets/snow_scatter.py</code> — Linked Duplicate 散布パターン
+- <code>snippets/geometry_nodes_scatter.py</code> — <code>add_scatter_modifier()</code> ヘルパー（Blender 4.0+ 対応）
+- <code>snippets/ai_model_workflow.py</code> — AI生成・外部アセット連携の完全ワークフロー
+- <code>docs/memory/animation.md</code> 新設（Phase 5 ノウハウ）
+- 画像5枚: <code>anim_frame{1,30,60}.png</code> <code>particles_snow.png</code> <code>geonodes_scatter.png</code> <code>final_snowy_chair.png</code></p>
+<p><strong>Phase 1〜5 を通した総括</strong>:
+- 全5フェーズ消化、画像作品15枚以上、スニペット20本以上、ノウハウ5カテゴリ
+- 「ネット検索 → Blender実行 → 振り返り → ノウハウ蓄積」のサイクルが完全に回る状態に
+- 次は <strong>作品ターゲット（部屋・食べ物・小道具・キャラ）</strong> に挑戦できる土台が整った</p>
 <hr />
 <h2 id="2026-05-04-phase-4">2026-05-04: Phase 4 — ライティング・レンダリング全部入り<a class="headerlink" href="#2026-05-04-phase-4" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: ライト4種比較、Sky Texture 環境光、Cycles vs Eevee、被写界深度の4課題を一気に消化</p>

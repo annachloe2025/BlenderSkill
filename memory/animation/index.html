@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/memory/lighting/">
+        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/memory/animation/">
       
       
-        <link rel="prev" href="../materials/">
+        <link rel="prev" href="../lighting/">
       
       
-        <link rel="next" href="../animation/">
+        <link rel="next" href="../../snippets/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>ライティング - BlenderSkill</title>
+        <title>アニメーション・応用 - BlenderSkill</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lighting" class="md-skip">
+        <a href="#animation" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ライティング
+              アニメーション・応用
             
           </span>
         </div>
@@ -627,6 +627,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../lighting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ライティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -646,7 +674,7 @@
   <span class="md-ellipsis">
     
   
-    ライティング
+    アニメーション・応用
   
 
     
@@ -664,7 +692,7 @@
   <span class="md-ellipsis">
     
   
-    ライティング
+    アニメーション・応用
   
 
     
@@ -690,32 +718,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ライト4種の使い分け
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#world" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        環境光（World シェーダー）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        レンダリングエンジン
+        キーフレームアニメーション
       
     </span>
   </a>
@@ -726,7 +732,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        カメラ設定
+        フレームレートと範囲
       
     </span>
   </a>
@@ -737,7 +743,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        構図のコツ
+        動画として書き出し
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パーティクル vs 散布スクリプト
       
     </span>
   </a>
@@ -746,6 +763,28 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ジオメトリノード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aihyper3d-hunyuan3d-sketchfab-polyhaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI生成モデル（Hyper3D / Hunyuan3D / Sketchfab / Polyhaven）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         落とし穴
@@ -759,34 +798,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../animation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    アニメーション・応用
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1590,32 +1601,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ライト4種の使い分け
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#world" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        環境光（World シェーダー）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        レンダリングエンジン
+        キーフレームアニメーション
       
     </span>
   </a>
@@ -1626,7 +1615,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        カメラ設定
+        フレームレートと範囲
       
     </span>
   </a>
@@ -1637,7 +1626,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        構図のコツ
+        動画として書き出し
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パーティクル vs 散布スクリプト
       
     </span>
   </a>
@@ -1646,6 +1646,28 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ジオメトリノード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aihyper3d-hunyuan3d-sketchfab-polyhaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI生成モデル（Hyper3D / Hunyuan3D / Sketchfab / Polyhaven）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         落とし穴
@@ -1675,147 +1697,156 @@
   
 
 
-<h1 id="lighting">ライティング・レンダリング — lighting<a class="headerlink" href="#lighting" title="Permanent link">&para;</a></h1>
-<p>Phase 4 で蓄積していく、光と画作りのノウハウ。</p>
-<h2 id="4">ライト4種の使い分け<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h1 id="animation">アニメーション・応用 — animation<a class="headerlink" href="#animation" title="Permanent link">&para;</a></h1>
+<p>Phase 5 のノウハウ。キーフレーム・パーティクル・ジオメトリノード・AI生成。</p>
+<h2 id="_1">キーフレームアニメーション<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>最も基本的なアニメ手法。属性を時間軸に沿って変化させる:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">obj</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">obj</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</span></code></pre></div>
+<p><code>data_path</code> は文字列で、<code>"location"</code>, <code>"rotation_euler"</code>, <code>"scale"</code>, <code>"hide_render"</code> など。</p>
+<h2 id="_2">フレームレートと範囲<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">scene</span><span class="o">.</span><span class="n">frame_start</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span> <span class="o">=</span> <span class="mi">60</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">fps</span> <span class="o">=</span> <span class="mi">24</span>            <span class="c1"># 24=映画、30=テレビ、60=ゲーム</span>
+</span></code></pre></div>
+<h2 id="_3">動画として書き出し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">image_settings</span><span class="o">.</span><span class="n">file_format</span> <span class="o">=</span> <span class="s1">&#39;FFMPEG&#39;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">ffmpeg</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;MPEG4&#39;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">ffmpeg</span><span class="o">.</span><span class="n">codec</span> <span class="o">=</span> <span class="s1">&#39;H264&#39;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">animation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="vs">パーティクル vs 散布スクリプト<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>種類</th>
-<th>性質</th>
-<th>主な用途</th>
+<th>観点</th>
+<th>パーティクル</th>
+<th>散布スクリプト</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Point</strong></td>
-<td>全方向放射、距離減衰</td>
-<td>電球・ろうそく</td>
+<td>物理</td>
+<td>あり</td>
+<td>なし（静止のみ）</td>
 </tr>
 <tr>
-<td><strong>Sun</strong></td>
-<td>平行光線、距離無関係</td>
-<td>屋外の太陽</td>
+<td>動画</td>
+<td>フレームごと更新</td>
+<td>全フレーム固定</td>
 </tr>
 <tr>
-<td><strong>Spot</strong></td>
-<td>円錐状の光、<code>spot_size</code>/<code>spot_blend</code> で形を制御</td>
-<td>演出スポット</td>
+<td>確実性</td>
+<td>設定次第で見えないことも</td>
+<td>必ず見える</td>
 </tr>
 <tr>
-<td><strong>Area</strong></td>
-<td>面光源、柔らかい影</td>
-<td>スタジオ撮影風</td>
+<td>学習向き</td>
+<td>やや複雑</td>
+<td>シンプルで確実</td>
 </tr>
 </tbody>
 </table>
-<p>ライトの追加:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">light_add</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SUN&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">light</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">light</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">light</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># Sun の場合：太陽の見かけ角度</span>
+<p><strong>学習中は散布スクリプト</strong>、本格的な降雪・降雨アニメには本物のパーティクル。</p>
+<p>散布の最小例:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">template</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;snow_template&quot;</span><span class="p">]</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">600</span><span class="p">):</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">new</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>                <span class="c1"># data はリンク共有</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">new</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </span></code></pre></div>
-<h2 id="world">環境光（World シェーダー）<a class="headerlink" href="#world" title="Permanent link">&para;</a></h2>
-<p>World は<strong>シーン全体の背景＝広い面光源</strong>。<code>Sky Texture</code> か <code>Background</code> 単色か HDRI 画像を入力にする。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">world</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">world</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">world</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">nt</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">node_tree</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">sky</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexSky&#39;</span><span class="p">)</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">sky</span><span class="o">.</span><span class="n">sky_type</span> <span class="o">=</span> <span class="s1">&#39;HOSEK_WILKIE&#39;</span>   <span class="c1"># or &#39;NISHITA&#39; (2.90+)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">sky</span><span class="o">.</span><span class="n">turbidity</span> <span class="o">=</span> <span class="mf">2.5</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">sky</span><span class="o">.</span><span class="n">sun_direction</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<h2 id="_4">ジオメトリノード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>ノードベースのプロシージャルモデリング。<strong>モディファイアとして</strong> メッシュに付ける。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mod</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">modifiers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Scatter&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;NODES&#39;</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">ng</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">node_groups</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ScatterGroup&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;GeometryNodeTree&#39;</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">mod</span><span class="o">.</span><span class="n">node_group</span> <span class="o">=</span> <span class="n">ng</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Blender 4.0+ の interface API</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">ng</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">new_socket</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Geometry&quot;</span><span class="p">,</span> <span class="n">in_out</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span><span class="p">,</span>  <span class="n">socket_type</span><span class="o">=</span><span class="s1">&#39;NodeSocketGeometry&#39;</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">ng</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">new_socket</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Geometry&quot;</span><span class="p">,</span> <span class="n">in_out</span><span class="o">=</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span> <span class="n">socket_type</span><span class="o">=</span><span class="s1">&#39;NodeSocketGeometry&#39;</span><span class="p">)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># ノードを追加・接続して散布や変形を構築</span>
 </span></code></pre></div>
-<p><code>sky_type</code>:</p>
-<ul>
-<li><code>NISHITA</code>: 物理ベース、最も綺麗（Blender 2.90+）</li>
-<li><code>HOSEK_WILKIE</code>: 高品質定番</li>
-<li><code>PREETHAM</code>: 古典的</li>
-</ul>
-<p><code>turbidity</code>: 1=澄んだ青空、10=曇り。
-<code>sun_direction</code>: 太陽方向ベクトル。Sun ライトの向きと揃えると自然。</p>
-<h2 id="_1">レンダリングエンジン<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>代表的なノード:</p>
 <table>
 <thead>
 <tr>
-<th>エンジン</th>
-<th>計算方式</th>
-<th>速度</th>
+<th>ノード</th>
 <th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Cycles</strong></td>
-<td>パストレース</td>
-<td>遅・綺麗</td>
-<td>最終レンダー、作品</td>
+<td><code>GeometryNodeDistributePointsOnFaces</code></td>
+<td>メッシュ表面にランダム点</td>
 </tr>
 <tr>
-<td><strong>Eevee Next</strong></td>
-<td>ラスタライズ（4.2+）</td>
-<td>速</td>
-<td>プレビュー、アニメ</td>
+<td><code>GeometryNodeInstanceOnPoints</code></td>
+<td>各点にオブジェクトをインスタンス化</td>
 </tr>
 <tr>
-<td><strong>Eevee（旧）</strong></td>
-<td>ラスタライズ</td>
-<td>速</td>
-<td>プレビュー（旧Blender）</td>
+<td><code>GeometryNodeObjectInfo</code></td>
+<td>別オブジェクトのジオメトリを取り出す</td>
+</tr>
+<tr>
+<td><code>GeometryNodeRealizeInstances</code></td>
+<td>インスタンスを実メッシュ化</td>
+</tr>
+<tr>
+<td><code>GeometryNodeJoinGeometry</code></td>
+<td>複数のジオメトリを結合</td>
+</tr>
+<tr>
+<td><code>FunctionNodeRandomValue</code></td>
+<td>ランダム値（位置・回転・スケール）</td>
 </tr>
 </tbody>
 </table>
-<p>切替:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s1">&#39;CYCLES&#39;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">scene</span><span class="o">.</span><span class="n">cycles</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="mi">96</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">scene</span><span class="o">.</span><span class="n">cycles</span><span class="o">.</span><span class="n">use_denoising</span> <span class="o">=</span> <span class="kc">True</span>
-</span></code></pre></div>
-<p>利用可能エンジンは実行時に判定可能:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">available</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">identifier</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">RenderSettings</span><span class="o">.</span><span class="n">bl_rna</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">enum_items</span><span class="p">]</span>
-</span></code></pre></div>
-<h2 id="_2">カメラ設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="aihyper3d-hunyuan3d-sketchfab-polyhaven">AI生成モデル（Hyper3D / Hunyuan3D / Sketchfab / Polyhaven）<a class="headerlink" href="#aihyper3d-hunyuan3d-sketchfab-polyhaven" title="Permanent link">&para;</a></h2>
+<p>BlenderMCP のオプション機能で、<strong>チェックボックスを ON にすれば使える</strong>。</p>
 <table>
 <thead>
 <tr>
-<th>属性</th>
-<th>意味</th>
+<th>サービス</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>cam.data.lens</code></td>
-<td>焦点距離（mm）。50=標準、85=ポートレート向き</td>
+<td>Polyhaven</td>
+<td>無料 HDRI / PBR テクスチャ / モデル</td>
 </tr>
 <tr>
-<td><code>cam.data.dof.use_dof</code></td>
-<td>被写界深度を有効化</td>
+<td>Hyper3D Rodin</td>
+<td>テキスト → 3Dモデル生成（AI）</td>
 </tr>
 <tr>
-<td><code>cam.data.dof.aperture_fstop</code></td>
-<td>絞り（小さい=ボケ強）</td>
+<td>Hunyuan3D</td>
+<td>テンセント製の AI 3D 生成</td>
 </tr>
 <tr>
-<td><code>cam.data.dof.focus_distance</code></td>
-<td>フォーカス距離（m）</td>
-</tr>
-<tr>
-<td><code>cam.data.dof.focus_object</code></td>
-<td>フォーカス対象オブジェクト（追従）</td>
+<td>Sketchfab</td>
+<td>ユーザー投稿の3Dモデル検索・取り込み</td>
 </tr>
 </tbody>
 </table>
-<p>ポートレート風DoFのレシピ: <code>lens=85</code>, <code>aperture_fstop=1.4〜2.0</code>, <code>focus_object=被写体</code>。</p>
-<h2 id="_3">構図のコツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>ワークフロー（Hyper3D 例）:</p>
+<ol>
+<li><code>generate_hyper3d_model_via_text(text_prompt="...")</code> で生成リクエスト</li>
+<li><code>poll_rodin_job_status(...)</code> で完了待ち（数十秒〜数分）</li>
+<li><code>import_generated_asset(name="...")</code> でシーン取り込み</li>
+</ol>
+<h2 id="_5">落とし穴<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>三分割構図</strong>: 被写体を縦横1/3の線・交点に</li>
-<li><strong>奥行きを作る</strong>: 手前・中央・奥にオブジェクトを並べる（DoFが活きる）</li>
-<li><strong>アングル</strong>: カメラを少し低くすると主役が大きく映える</li>
-</ul>
-<h2 id="_4">落とし穴<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>cam.data.dof.aperture_fstop</code> の値を <strong>小さく</strong> するとボケが <strong>強く</strong> なる（f値の常識通り）</li>
-<li><code>Sky Texture</code> で <code>NISHITA</code> が無い古い Blender では <code>HOSEK_WILKIE</code> を使う</li>
-<li>Cycles のサンプル数が低すぎる（&lt; 32）とノイズだらけ。<code>use_denoising = True</code> を必ず ON</li>
-<li>Eevee は SSR（Screen Space Reflection）の制限で <strong>画面外のものは反射しない</strong></li>
+<li>キーフレームは <strong>属性を変更してから</strong> <code>keyframe_insert</code> する（現在値が記録される）</li>
+<li>ジオメトリノードの散布元は <strong>原点に置いて hide_render</strong> が基本（位置オフセットを避ける）</li>
+<li>Blender 4.0 で interface API が変わった（<code>interface.new_socket</code>）</li>
+<li>AI生成は時間がかかる。ポーリングしながら他の作業を進めるのが効率的</li>
+<li>散布スクリプトは <strong>Linked Duplicate</strong>（<code>new.data</code> をコピーしない）でメモリ節約</li>
 </ul>
 
 
