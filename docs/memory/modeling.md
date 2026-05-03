@@ -112,3 +112,28 @@ bpy.ops.object.shade_smooth()
 2. **繰り返しパターンは関数化**（角丸ボックスを2個作るなら `add_rounded_box()` ヘルパーに）。
 3. **対称配置は符号反転 for ループ**: `for sx, sy in [(1,1), (1,-1), (-1,1), (-1,-1)]` で4隅。
 4. **床 + ライト + カメラ** までスクリプトに含めると、再実行で完成画像まで一発再現できる。
+
+## ブーリアン（Boolean）
+
+「形 A から形 B を引く / 足す / 重なりだけ残す」をモディファイアで実現する。穴あけ・複雑な形の生成に必須。
+
+```python
+m = base.modifiers.new(name="Hole", type='BOOLEAN')
+m.operation = 'DIFFERENCE'   # 'UNION' / 'INTERSECT'
+m.object = cutter
+m.solver = 'EXACT'           # 綺麗、'FAST' は速いが壊れやすい
+bpy.ops.object.modifier_apply(modifier="Hole")
+bpy.data.objects.remove(cutter, do_unlink=True)
+```
+
+3モードの使い分け:
+
+- **DIFFERENCE**（引き算）: 穴あけ、削り出し
+- **UNION**（合体）: 不規則な塊、複数パーツの一体化
+- **INTERSECT**（交差）: 球と立方体の重なりで角丸の塊、など創造的な形
+
+落とし穴:
+
+- **カッターはベースより少し大きく**（同サイズだと境界面で破綻）
+- 適用後のメッシュは N-Gon が増える。スムーズシェードが崩れたら仕上げに軽くベベル
+- カッターは適用後に不要になるので `bpy.data.objects.remove()` で消す

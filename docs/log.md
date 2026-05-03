@@ -32,6 +32,38 @@
 
 ---
 
+## 2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）
+
+**目標**: Phase 2 の最後「ブーリアン」を消化し、その勢いで Phase 3 マテリアル編に入って椅子に色を付ける
+
+**実行した手順**:
+1. **ブーリアン**: Cube + Cylinder（X軸貫通）→ Boolean DIFFERENCE で穴あけブロック生成。`solver='EXACT'`、適用後のカッター削除、仕上げベベルまでのフルパターン確認。
+2. **Principled BSDF**: `make_material()` / `assign_material()` の2ヘルパー関数で、木・金属・床の3マテリアルを定義。
+3. **着色済み椅子**: 座面と背もたれに木マテリアル、4本の脚に金属マテリアル、床にクリーム色を割り当て。
+4. **Cycles レンダリング**: `samples=64` + denoising で `chair_v2_material.png` 出力。木の温かさと金属の反射、影のリアルさを確認。
+
+**結果**: Phase 2 完全制覇、Phase 3 入口クリア。**「単色だった椅子に質感が宿った」** 瞬間が一番達成感が大きかった。
+
+**学んだこと**:
+- Boolean は **カッターをベースより大きく** が鉄則（同サイズで破綻するパターンを回避）
+- `solver='EXACT'` のほうが綺麗、`FAST` は速さ優先のとき
+- `mat.use_nodes = True` を忘れると BSDF が触れない（よくあるハマりポイント）
+- `bsdf.inputs["Base Color"].default_value` は **RGBA の4要素**、アルファ忘れに注意
+- Cycles は `scene.cycles.samples` と `use_denoising` で品質と速度をコントロール
+- 「Metallic=0/1, Roughness=0.2〜0.8」の組み合わせだけで木・金属・プラスチック・ゴムが作り分けられる
+
+**つまずいた点**:
+- 特になし。Phase 1〜2 で基礎が固まったので、マテリアル追加はスムーズに進んだ。
+
+**再利用可能な成果物**:
+- `snippets/boolean_hole.py` — ブーリアンの完全パターン
+- `snippets/material_basics.py` — マテリアル作成・割り当てヘルパー
+- `docs/memory/modeling.md` に「ブーリアン」セクション追記
+- `docs/memory/materials.md` 新設（Phase 3 ノウハウファイル）
+- `docs/images/chair_v2_material.png` — 着色済み椅子の Cycles レンダー
+
+---
+
 ## 2026-05-04: Phase 2 — 押し出し / ループカット+ベベル / 椅子モデリング
 
 **目標**: Phase 2 の「Extrude」「ループカット+ベベル」を消化し、はじめての家具モデル（椅子）を完成させる

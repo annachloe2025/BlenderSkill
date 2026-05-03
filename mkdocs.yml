@@ -85,6 +85,7 @@ nav:
       - 概要: memory/index.md
       - 基本操作: memory/basics.md
       - モデリング: memory/modeling.md
+      - マテリアル: memory/materials.md
   - スニペット集:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
@@ -97,6 +98,8 @@ nav:
       - 押し出しで階段: snippets/extrude_stairs.md
       - ループカット+ベベル: snippets/loopcut_bevel_box.md
       - シンプルな椅子: snippets/simple_chair.md
+      - ブーリアンで穴あけ: snippets/boolean_hole.md
+      - マテリアル基本: snippets/material_basics.md
 
 copyright: "&copy; 2026 annachloe2025"
 

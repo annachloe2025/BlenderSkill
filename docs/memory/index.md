@@ -5,8 +5,8 @@ Blenderの知識をテーマごとに整理して蓄積する場所。
 ## カテゴリ
 
 - [基本操作](basics.md) — プリミティブ・トランスフォーム・シーン管理
-- [モデリング](modeling.md) — bmesh・押し出し・ベベル（Phase 2）
-- マテリアル — Principled BSDF・PBR・ノードグラフ *(準備中)*
+- [モデリング](modeling.md) — bmesh・押し出し・ベベル・ブーリアン（Phase 2）
+- [マテリアル](materials.md) — Principled BSDF・質感レシピ・Cycles/Eevee（Phase 3）
 - ライティング — Light種別・HDRI・レンダリング設定 *(準備中)*
 - アニメーション — キーフレーム・コンストレイント *(準備中)*
 - 落とし穴集 — よくあるエラーと対処 *(準備中)*
