@@ -671,6 +671,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#extrude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extrude（押し出し）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループカット + ベベル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パーツ組み立てモデリングのコツ
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -698,6 +731,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -964,6 +1003,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/extrude_stairs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    押し出しで階段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/loopcut_bevel_box/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ループカット+ベベル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/simple_chair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シンプルな椅子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1035,6 +1158,39 @@
     <span class="md-ellipsis">
       
         落とし穴メモ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extrude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extrude（押し出し）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループカット + ベベル
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パーツ組み立てモデリングのコツ
       
     </span>
   </a>
@@ -1135,6 +1291,61 @@
 <li>編集モードのまま処理を終えると、次の <code>select_all</code> などが効かなくなる。<strong>最後は必ず <code>mode_set(mode='OBJECT')</code> に戻す</strong> のが安全。</li>
 <li><code>subdivide</code> や <code>extrude_region_move</code> は <strong>「現在の選択状態」</strong> に対して動く。動かす前に <code>bpy.ops.mesh.select_all(action='SELECT')</code> などで意図した選択状態にしておくこと。</li>
 </ul>
+<h2 id="extrude">Extrude（押し出し）<a class="headerlink" href="#extrude" title="Permanent link">&para;</a></h2>
+<p><code>bpy.ops.mesh.extrude_region_move</code> は <strong>編集モードで現在の選択領域を押し出して移動</strong> するオペレータ。引数は2層になっていて、移動量はネストされたキーに渡す:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">)}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>「上に押し出す → 奥に押し出す」を for ループで繰り返すだけで階段ができる</strong>。<code>STEP_RISE</code> / <code>STEP_RUN</code> のように寸法を定数化しておくと改造しやすい。</p>
+<p>応用:
+- 螺旋階段: 各ループで Z 回転を入れる
+- 段々畑: 「広い面 → 狭い面」を交互に押し出し</p>
+<h2 id="_4">ループカット + ベベル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>ループカットUI (<code>bpy.ops.mesh.loopcut</code>) は対話的で扱いにくいので、<strong>Pythonからは <code>bpy.ops.mesh.subdivide(number_cuts=N)</code></strong> が実用的。全エッジに均等にループが入る。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">subdivide</span><span class="p">(</span><span class="n">number_cuts</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">bevel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">segments</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">affect</span><span class="o">=</span><span class="s1">&#39;EDGES&#39;</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">shade_smooth</span><span class="p">()</span>
+</span></code></pre></div>
+<p><strong>先に細分化してから bevel</strong> をかけると、エッジが多くなった分だけベベルが広く効いて柔らかい形になる。素の Cube に直接ベベルだとカクカク感が残りやすい。</p>
+<p><code>bevel</code> の主要パラメータ:</p>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offset</code></td>
+<td>幅</td>
+</tr>
+<tr>
+<td><code>segments</code></td>
+<td>分割数（多いほど滑らか）</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td>0.5=円弧、1.0=鋭角、0.0=凹</td>
+</tr>
+<tr>
+<td><code>affect</code></td>
+<td><code>'EDGES'</code> or <code>'VERTICES'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">パーツ組み立てモデリングのコツ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>家具のような複合モデルを作るときの実践パターン:</p>
+<ol>
+<li><strong>寸法をすべて定数化</strong>（<code>SEAT_W = 1.0</code> など）。後から微調整しやすい。</li>
+<li><strong>繰り返しパターンは関数化</strong>（角丸ボックスを2個作るなら <code>add_rounded_box()</code> ヘルパーに）。</li>
+<li><strong>対称配置は符号反転 for ループ</strong>: <code>for sx, sy in [(1,1), (1,-1), (-1,1), (-1,-1)]</code> で4隅。</li>
+<li><strong>床 + ライト + カメラ</strong> までスクリプトに含めると、再実行で完成画像まで一発再現できる。</li>
+</ol>
 
 
 

@@ -525,43 +525,21 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 2 — 押し出し / ループカット+ベベル / 椅子モデリング
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-1-phase-2-bmesh-gitignore" class="md-nav__link">
     <span class="md-ellipsis">
       
         2026-05-04: Phase 1 仕上げ + Phase 2 着手（bmesh）+ .gitignore強化
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04-phase-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04-phase-1-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: Phase 1 開始 — 接続テスト &amp; 5プリミティブ配置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: プロジェクト初期化
       
     </span>
   </a>
@@ -721,6 +699,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -987,6 +971,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/extrude_stairs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    押し出しで階段
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/loopcut_bevel_box/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ループカット+ベベル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/simple_chair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シンプルな椅子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1049,43 +1117,21 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 2 — 押し出し / ループカット+ベベル / 椅子モデリング
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-1-phase-2-bmesh-gitignore" class="md-nav__link">
     <span class="md-ellipsis">
       
         2026-05-04: Phase 1 仕上げ + Phase 2 着手（bmesh）+ .gitignore強化
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04-phase-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04-phase-1-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: Phase 1 開始 — 接続テスト &amp; 5プリミティブ配置
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2026-05-04" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2026-05-04: プロジェクト初期化
       
     </span>
   </a>
@@ -1133,6 +1179,30 @@
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
 <hr />
+<h2 id="2026-05-04-phase-2">2026-05-04: Phase 2 — 押し出し / ループカット+ベベル / 椅子モデリング<a class="headerlink" href="#2026-05-04-phase-2" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: Phase 2 の「Extrude」「ループカット+ベベル」を消化し、はじめての家具モデル（椅子）を完成させる</p>
+<p><strong>実行した手順</strong>:
+1. <strong>Extrude</strong>: Plane から「上に押し出し → 奥に押し出し」を5回ループして5段の階段を生成（44頂点/42面）
+2. <strong>ループカット + ベベル</strong>: Cube → <code>subdivide(number_cuts=1)</code> で全エッジに1ループ追加 → <code>bevel(offset=0.15, segments=4)</code> で全エッジ丸め（602頂点/600面の滑らかな箱）
+3. <strong>椅子モデリング</strong>: 座面（角丸ボックス）+ 脚×4（円柱、符号反転for配置）+ 背もたれ（角丸ボックス）+ 床 + Sun + カメラまでスクリプト1本で構築。<code>add_rounded_box()</code> ヘルパー関数で繰り返しを排除。
+4. <strong>レンダリング</strong>: Eevee で <code>docs/images/chair_v1.png</code> に出力（800x500、影付き）</p>
+<p><strong>結果</strong>: 全部成功。Phase 2 の「立体物を作る基本技」が揃った。椅子はスクリプト1本で再現可能。</p>
+<p><strong>学んだこと</strong>:
+- <code>extrude_region_move</code> の引数は <code>TRANSFORM_OT_translate={"value": (dx,dy,dz)}</code> の2層構造
+- ループカットはコードからは <code>bpy.ops.mesh.subdivide(number_cuts=N)</code> のほうが安全（loopcut は対話的）
+- <code>bevel</code> は <strong>先にエッジを増やしてから</strong> 効かせると柔らかい形になる
+- 複合モデルは「寸法を定数化 → 繰り返しを関数化 → 対称配置は符号反転for」の3点セットで再利用性が上がる
+- <code>space.region_3d.view_perspective = 'CAMERA'</code> でビューポートをカメラ視点に切り替えられる</p>
+<p><strong>つまずいた点</strong>:
+- ビューポートが俯瞰のままだと椅子が小さく見えて評価しにくかった。カメラ視点切替コードが必要だった。
+- 角丸ボックスは bevel offset 0.04 だと遠目では分かりにくい。寄せた構図で確認するのが大事。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/extrude_stairs.py</code> — 押し出しループで階段生成
+- <code>snippets/loopcut_bevel_box.py</code> — 角丸ボックスの最小例
+- <code>snippets/simple_chair.py</code> — パラメトリック椅子（ヘルパー関数つき）
+- <code>docs/memory/modeling.md</code> に「Extrude」「ループカット+ベベル」「パーツ組み立てのコツ」セクション追記
+- <code>docs/images/chair_v1.png</code> — 椅子のレンダリング画像（サイトに掲載）</p>
+<hr />
 <h2 id="2026-05-04-phase-1-phase-2-bmesh-gitignore">2026-05-04: Phase 1 仕上げ + Phase 2 着手（bmesh）+ .gitignore強化<a class="headerlink" href="#2026-05-04-phase-1-phase-2-bmesh-gitignore" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: Phase 1 の最後「シーンクリーンアップのパターン化」を片付けて Phase 2 の入口（bmesh）まで進む</p>
 <p><strong>実行した手順</strong>:
@@ -1147,60 +1217,7 @@
 - <code>v.co</code> は <code>Vector</code> なので <code>.x</code> <code>.y</code> <code>.z</code> 直接代入できる。条件分岐で「上面だけ」みたいな選択的編集が簡単
 - <code>mode_set(mode='OBJECT')</code> で必ずオブジェクトモードに戻すクセが大事</p>
 <p><strong>つまずいた点</strong>:
-- <code>mkdocs.yml</code> を Edit/Write したとき、ファイル末尾が UTF-8 文字の途中で切れて YAML パースエラー（同位置で2回再現）。bash の <code>cat &gt; ...</code> ヒアドキュメントで書き直したら正常。長い日本語末尾の YAML/MD は bash 直接書き出しが安全という教訓。</p>
-<p><strong>再利用可能な成果物</strong>:
-- <code>snippets/scene_utils.py</code> — シーン管理4関数
-- <code>snippets/bmesh_basics.py</code> — bmesh 頂点操作の2例
-- <code>docs/memory/modeling.md</code> — Phase 2 用ノウハウファイル新設
-- <code>.gitignore</code> 強化版（大容量バイナリ全種カバー）</p>
-<hr />
-<h2 id="2026-05-04-phase-1">2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア<a class="headerlink" href="#2026-05-04-phase-1" title="Permanent link">&para;</a></h2>
-<p><strong>目標</strong>: Phase 1 の「トランスフォーム」「グリッド配置」「モディファイア入門」を一気に消化</p>
-<p><strong>実行した手順</strong>:
-1. <strong>トランスフォーム</strong>: 4つの Cube を「基準・回転のみ・スケールのみ・全部」のパターンで配置。<code>math.radians()</code> で度数→ラジアン変換、<code>Vector</code> / <code>Euler</code> の使い分けも実例化。
-2. <strong>グリッド配置</strong>: 5×5=25個の UV Sphere を、中心からの距離で sin 波を高さに反映させて配置。<code>bpy.ops.object.shade_smooth()</code> も適用。
-3. <strong>モディファイア</strong>: Subdivision Surface / Bevel / Mirror をそれぞれ別 Cube に適用。<code>obj.modifiers.new(name=..., type=...)</code> の基本パターンを確認。</p>
-<p><strong>結果</strong>: 3つとも成功。スクリーンショットでも結果を確認済み。</p>
-<p><strong>学んだこと</strong>:
-- <code>obj.location.z += 5</code> のような <strong>属性アクセス＋複合代入</strong> が便利（Vector のおかげ）
-- 中心揃えグリッドの定番計算: <code>(i - (N - 1) / 2) * spacing</code>
-- モディファイアは <code>obj.modifiers.new(...)</code> で生やし、戻り値を変数に受けてプロパティ設定するのが定石
-- Mirror は <strong>オブジェクトの原点が対称軸</strong>。ローカル座標で動く</p>
-<p><strong>つまずいた点</strong>:
-- Bevel は <code>width=0.15</code> だと遠目では効きが分かりにくかった。検証時は近めの構図にするか、初期値を大きめにすると確認しやすい。</p>
-<p><strong>再利用可能な成果物</strong>:
-- <code>snippets/transform_basics.py</code> — トランスフォーム3パターン
-- <code>snippets/grid_arrangement.py</code> — NxN グリッド配置（波形高さ）
-- <code>snippets/modifiers_intro.py</code> — Subsurf / Bevel / Mirror
-- <code>docs/memory/basics.md</code> に「トランスフォーム応用」「グリッド配置」「モディファイア基本」セクション追記</p>
-<hr />
-<h2 id="2026-05-04-phase-1-5">2026-05-04: Phase 1 開始 — 接続テスト &amp; 5プリミティブ配置<a class="headerlink" href="#2026-05-04-phase-1-5" title="Permanent link">&para;</a></h2>
-<p><strong>目標</strong>: Blender MCP接続確認 → プリミティブを5種類並べて配置</p>
-<p><strong>実行した手順</strong>:
-1. <code>get_scene_info</code> で接続確認（デフォルトシーン: Cube/Light/Camera）
-2. <code>get_viewport_screenshot</code> でビューポート目視
-3. シーンクリア → cube/sphere/cylinder/cone/torus を X 軸に1.8間隔で配置
-4. Sunライト・カメラを追加してアクティブカメラに設定
-5. スクリーンショットで結果確認</p>
-<p><strong>結果</strong>: 成功。5プリミティブが綺麗に並び、ライト・カメラも正常に配置された。</p>
-<p><strong>学んだこと</strong>:
-- <code>bpy.ops.object.select_all(action='SELECT')</code> + <code>delete()</code> でシーン全消しが最短
-- プリミティブ追加直後の <code>bpy.context.active_object</code> ですぐ参照できる
-- <code>bpy.context.scene.camera = obj</code> でアクティブカメラを切り替えられる</p>
-<p><strong>つまずいた点</strong>: 特になし</p>
-<p><strong>再利用可能な成果物</strong>:
-- <code>snippets/clear_scene.py</code> — シーン全消し
-- <code>snippets/add_primitives_row.py</code> — 5プリミティブ配置
-- <code>memory/basics.md</code> — 基本操作のリファレンス追加</p>
-<hr />
-<h2 id="2026-05-04">2026-05-04: プロジェクト初期化<a class="headerlink" href="#2026-05-04" title="Permanent link">&para;</a></h2>
-<p><strong>目標</strong>: BlenderSkill プロジェクトのフォルダ構成を作成</p>
-<p><strong>実行した手順</strong>:
-1. <code>C:\Users\hoeho\Documents\Claude\BlenderSkill</code> フォルダを作業ディレクトリとして接続
-2. <code>CLAUDE.md</code>、<code>LOG.md</code>、<code>TASKS.md</code> を作成
-3. <code>memory/</code>、<code>snippets/</code>、<code>outputs/</code> ディレクトリを作成</p>
-<p><strong>結果</strong>: 成功</p>
-<p><strong>次のアクション</strong>: <code>TASKS.md</code> から最初のタスクを選んで開始する</p>
+- <code>mkdocs.yml</code> を Edit/Write したとき、ファイル末尾が UTF-8 文字の途中で切れて YAML パースエラー（同位置で2回再</p>
 
 
 

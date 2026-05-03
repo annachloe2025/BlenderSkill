@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/bmesh_basics/">
+        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/simple_chair/">
       
       
-        <link rel="prev" href="../scene_utils/">
+        <link rel="prev" href="../loopcut_bevel_box/">
       
-      
-        <link rel="next" href="../extrude_stairs/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>bmesh の基本 - BlenderSkill</title>
+        <title>シンプルな椅子 - BlenderSkill</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bmesh_basicspy" class="md-skip">
+        <a href="#simple_chairpy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              bmesh の基本
+              シンプルな椅子
             
           </span>
         </div>
@@ -855,37 +853,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    bmesh の基本
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../bmesh_basics/" class="md-nav__link">
         
   
   
@@ -901,81 +872,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コード
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bmesh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bmesh の基本フロー
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主要なAPI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        編集モード内のオペレータ
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        落とし穴
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1041,10 +937,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../simple_chair/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    シンプルな椅子
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1060,6 +983,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        構成パーツ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        設計のポイント
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="設計のポイント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パラメータ駆動
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4本の脚を for ループで
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_rounded_box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_rounded_box ヘルパー関数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改造アイデア
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1110,32 +1136,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bmesh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bmesh の基本フロー
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        主要なAPI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        編集モード内のオペレータ
+        構成パーツ
       
     </span>
   </a>
@@ -1146,7 +1150,57 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        落とし穴
+        設計のポイント
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="設計のポイント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パラメータ駆動
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4本の脚を for ループで
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_rounded_box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_rounded_box ヘルパー関数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        改造アイデア
       
     </span>
   </a>
@@ -1173,118 +1227,121 @@
   
 
 
-<h1 id="bmesh_basicspy">bmesh_basics.py<a class="headerlink" href="#bmesh_basicspy" title="Permanent link">&para;</a></h1>
-<p><code>bmesh</code> モジュールで <strong>メッシュの頂点を直接操作</strong> する基本パターン。Phase 2（モデリング編）の入口。</p>
+<h1 id="simple_chairpy">simple_chair.py — はじめての家具モデリング<a class="headerlink" href="#simple_chairpy" title="Permanent link">&para;</a></h1>
+<p>Phase 1〜2 で習った技を組み合わせて、シンプルな椅子を一発生成するスクリプト。<strong>パラメータを定数化</strong> してあるので、寸法や脚の太さをいじって遊べる。</p>
+<p><img alt="完成した椅子" src="../../images/chair_v1.png" /></p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: bmesh で頂点を直接操作する基本パターン</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: パラメトリックなシンプル椅子モデル（座面・脚4本・背もたれ・床）</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 動作確認: 2026-05-04 / Blender MCP</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 依存: scene_utils.py（clear_all 等）</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 依存: scene_utils.py で reset_scene() を呼んでから使うのが楽</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bmesh</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># --- ① Cube の上面を縮めて台形化 ---</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_cube_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">bm</span> <span class="o">=</span> <span class="n">bmesh</span><span class="o">.</span><span class="n">from_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>               <span class="c1"># 上面の頂点だけ</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">x</span> <span class="o">*=</span> <span class="mf">0.5</span>             <span class="c1"># 中心に寄せる</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">y</span> <span class="o">*=</span> <span class="mf">0.5</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">bmesh</span><span class="o">.</span><span class="n">update_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># --- ② Plane を細分化して sin 波で凹凸を付ける ---</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># パラメータ（後から調整しやすく定数化）</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">SEAT_W</span><span class="p">,</span> <span class="n">SEAT_D</span><span class="p">,</span> <span class="n">SEAT_T</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.08</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">SEAT_H</span> <span class="o">=</span> <span class="mf">0.9</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">LEG_R</span> <span class="o">=</span> <span class="mf">0.06</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">BACK_W</span><span class="p">,</span> <span class="n">BACK_D</span><span class="p">,</span> <span class="n">BACK_H</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.9</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">add_rounded_box</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">bevel_offset</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">bevel_segments</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;指定サイズの角丸ボックスを生成して返す&quot;&quot;&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_cube_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="n">obj</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">bevel</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="n">bevel_offset</span><span class="p">,</span> <span class="n">segments</span><span class="o">=</span><span class="n">bevel_segments</span><span class="p">,</span> <span class="n">affect</span><span class="o">=</span><span class="s1">&#39;EDGES&#39;</span><span class="p">)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">shade_smooth</span><span class="p">()</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="k">return</span> <span class="n">obj</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
 </span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1"># 座面</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">seat</span> <span class="o">=</span> <span class="n">add_rounded_box</span><span class="p">(</span><span class="s2">&quot;seat&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SEAT_H</span><span class="p">),</span> <span class="p">(</span><span class="n">SEAT_W</span><span class="p">,</span> <span class="n">SEAT_D</span><span class="p">,</span> <span class="n">SEAT_T</span><span class="p">))</span>
 </span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># 編集モード内で全選択 → サブディビ</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">subdivide</span><span class="p">(</span><span class="n">number_cuts</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="n">bm</span> <span class="o">=</span> <span class="n">bmesh</span><span class="o">.</span><span class="n">from_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dist</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="n">bmesh</span><span class="o">.</span><span class="n">update_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">shade_smooth</span><span class="p">()</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># 4本の脚</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="n">leg_offset_x</span> <span class="o">=</span> <span class="n">SEAT_W</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">LEG_R</span> <span class="o">*</span> <span class="mf">1.5</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">leg_offset_y</span> <span class="o">=</span> <span class="n">SEAT_D</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">LEG_R</span> <span class="o">*</span> <span class="mf">1.5</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]):</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_cylinder_add</span><span class="p">(</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="n">radius</span><span class="o">=</span><span class="n">LEG_R</span><span class="p">,</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="n">depth</span><span class="o">=</span><span class="n">SEAT_H</span><span class="p">,</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">sx</span> <span class="o">*</span> <span class="n">leg_offset_x</span><span class="p">,</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">leg_offset_y</span><span class="p">,</span> <span class="n">SEAT_H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="p">)</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;leg_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">shade_smooth</span><span class="p">()</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="c1"># 背もたれ</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">back</span> <span class="o">=</span> <span class="n">add_rounded_box</span><span class="p">(</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="s2">&quot;backrest&quot;</span><span class="p">,</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">SEAT_D</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">BACK_D</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">SEAT_H</span> <span class="o">+</span> <span class="n">BACK_H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="p">(</span><span class="n">BACK_W</span><span class="p">,</span> <span class="n">BACK_D</span><span class="p">,</span> <span class="n">BACK_H</span><span class="p">),</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="p">)</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="c1"># 床（影を出すため）</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;floor&quot;</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="c1"># ライト &amp; カメラ</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">light_add</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SUN&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span><span class="o">.</span><span class="n">rotation_euler</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">camera_add</span><span class="p">(</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">),</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">rotation</span><span class="o">=</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">38</span><span class="p">)),</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="p">)</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
 </span></code></pre></div>
-<h2 id="bmesh">bmesh の基本フロー<a class="headerlink" href="#bmesh" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bmesh</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 1. 編集モードに入る</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 2. 編集中メッシュから bmesh を取得</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">bm</span> <span class="o">=</span> <span class="n">bmesh</span><span class="o">.</span><span class="n">from_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># 3. 頂点・辺・面を操作</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="mi">1</span>   <span class="c1"># 全頂点を Z 方向に持ち上げる</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># 4. 反映</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">bmesh</span><span class="o">.</span><span class="n">update_edit_mesh</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1"># 5. オブジェクトモードに戻す</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="api">主要なAPI<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h2 id="_2">構成パーツ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>アクセス</th>
-<th>内容</th>
+<th>パーツ</th>
+<th>形</th>
+<th>技法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>bm.verts</code></td>
-<td>頂点コレクション。<code>v.co</code> が <code>Vector(x, y, z)</code></td>
+<td>座面</td>
+<td>角丸ボックス</td>
+<td>Cube + Bevel</td>
 </tr>
 <tr>
-<td><code>bm.edges</code></td>
-<td>辺コレクション。<code>e.verts</code> で2頂点を取得</td>
+<td>脚 ×4</td>
+<td>円柱</td>
+<td>Cylinder + ループ配置</td>
 </tr>
 <tr>
-<td><code>bm.faces</code></td>
-<td>面コレクション。<code>f.verts</code> / <code>f.normal</code> などにアクセス</td>
+<td>背もたれ</td>
+<td>角丸ボックス</td>
+<td>Cube + Bevel</td>
 </tr>
 <tr>
-<td><code>v.select</code></td>
-<td>選択状態の取得・設定（True/False）</td>
-</tr>
-<tr>
-<td><code>v.co.x</code> / <code>.y</code> / <code>.z</code></td>
-<td>頂点座標。直接代入で動かせる</td>
+<td>床</td>
+<td>Plane</td>
+<td>プリミティブそのまま</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_2">編集モード内のオペレータ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><code>bpy.ops.mesh.*</code> は編集モード内でのみ動作する:</p>
+<h2 id="_3">設計のポイント<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">パラメータ駆動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>寸法をすべて定数（<code>SEAT_W</code>, <code>LEG_R</code>, <code>BACK_H</code>...）に切り出してある。後で「もっと脚を太くしたい」「背もたれを高くしたい」と思ったときに、その値だけ書き換えればいい。</p>
+<h3 id="4-for">4本の脚を for ループで<a class="headerlink" href="#4-for" title="Permanent link">&para;</a></h3>
+<p><code>for sx, sy in [(1,1), (1,-1), (-1,1), (-1,-1)]:</code> の符号反転で4隅を表現。<strong>Mirror モディファイアと同じ発想だが、独立したオブジェクトで4本作りたいときはループのほうが扱いやすい</strong>。</p>
+<h3 id="add_rounded_box">add_rounded_box ヘルパー関数<a class="headerlink" href="#add_rounded_box" title="Permanent link">&para;</a></h3>
+<p>座面と背もたれは「位置とスケールが違うだけの角丸ボックス」なので、関数化して2回呼んでいる。<strong>繰り返しパターンを見つけたら関数化する</strong> のは Phase 2 以降のキーポイント。</p>
+<h2 id="_5">改造アイデア<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>bpy.ops.mesh.select_all(action='SELECT' / 'DESELECT')</code></li>
-<li><code>bpy.ops.mesh.subdivide(number_cuts=N)</code> — 細分化</li>
-<li><code>bpy.ops.mesh.extrude_region_move(...)</code> — 押し出し</li>
-<li><code>bpy.ops.mesh.bevel(...)</code> — 面取り</li>
-</ul>
-<h2 id="_3">落とし穴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><code>bmesh.from_edit_mesh()</code> はオブジェクトモードでは使えない</strong>。必ず先に <code>mode_set(mode='EDIT')</code>。</li>
-<li>編集後の <strong><code>bmesh.update_edit_mesh(obj.data)</code> を忘れると変更が反映されない</strong>。</li>
-<li>大量の頂点をループで動かすときは、ビューポート更新を一時的に止めると速くなる（Phase 5 で扱う）。</li>
+<li>脚を <strong>テーパー（先細り）</strong> にしたい → Cylinder の代わりに Cone を使う</li>
+<li>背もたれに <strong>横棒（スポーク）</strong> を入れる → Array モディファイアで Cube を等間隔複製</li>
+<li><strong>ダイニングセット</strong> にする → 椅子を for ループでテーブルの周りに配置（Phase 1 のグリッド配置応用）</li>
+<li><strong>マテリアル</strong> を付けたい → Phase 3（マテリアル編）の課題に</li>
 </ul>
 
 
