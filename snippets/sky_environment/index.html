@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/extrude_stairs/">
+        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/sky_environment/">
       
       
-        <link rel="prev" href="../bmesh_basics/">
+        <link rel="prev" href="../light_comparison/">
       
       
-        <link rel="next" href="../loopcut_bevel_box/">
+        <link rel="next" href="../cycles_vs_eevee/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>押し出しで階段 - BlenderSkill</title>
+        <title>環境光（Sky Texture） - BlenderSkill</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extrude_stairspy" class="md-skip">
+        <a href="#sky_environmentpy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              押し出しで階段
+              環境光（Sky Texture）
             
           </span>
         </div>
@@ -959,37 +959,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    押し出しで階段
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../extrude_stairs/" class="md-nav__link">
         
   
   
@@ -1005,81 +978,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コード
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        押し出しオペレータの基本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ループで階段を作る発想
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        応用パターン
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        落とし穴
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1285,10 +1183,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sky_environment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境光（Sky Texture）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1304,6 +1229,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sky-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sky Type の選択
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主要パラメータ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直射光と環境光の組み合わせ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polyhaven-hdri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polyhaven HDRI を使う場合
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1410,10 +1410,21 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sky-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sky Type の選択
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        押し出しオペレータの基本
+        主要パラメータ
       
     </span>
   </a>
@@ -1424,7 +1435,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ループで階段を作る発想
+        直射光と環境光の組み合わせ
       
     </span>
   </a>
@@ -1432,21 +1443,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#polyhaven-hdri" class="md-nav__link">
     <span class="md-ellipsis">
       
-        応用パターン
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        落とし穴
+        Polyhaven HDRI を使う場合
       
     </span>
   </a>
@@ -1473,57 +1473,113 @@
   
 
 
-<h1 id="extrude_stairspy">extrude_stairs.py<a class="headerlink" href="#extrude_stairspy" title="Permanent link">&para;</a></h1>
-<p><code>bpy.ops.mesh.extrude_region_move</code> を使って、Plane から階段状の形を作る。</p>
+<h1 id="sky_environmentpy">sky_environment.py — 空からの環境光<a class="headerlink" href="#sky_environmentpy" title="Permanent link">&para;</a></h1>
+<p>World シェーダーに Sky Texture を組み込んで、<strong>空全体を光源にする</strong>。屋外シーンに必須。</p>
+<p><img alt="Sky Texture（Hosek/Wilkie）" src="../../images/env_skytex.png" /></p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: Plane を起点に「上 → 奥」を繰り返し押し出して階段状の形を作る</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 動作確認: 2026-05-04 / Blender MCP</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 依存: scene_utils.py（または事前にシーンクリア）</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: World に Sky Texture（Hosek/Wilkie）を設定して空からの光で照らす</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 動作確認: 2026-05-04 / Blender MCP（HOSEK_WILKIE 利用）</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Blender 2.90+ なら &#39;NISHITA&#39; のほうが綺麗（より物理ベース）</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;stairs&quot;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">STEP_RISE</span> <span class="o">=</span> <span class="mf">0.4</span>   <span class="c1"># 1段の高さ</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">STEP_RUN</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># 1段の奥行き</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="c1"># ① 上方向に押し出し（蹴上）</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">STEP_RISE</span><span class="p">)}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="p">)</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="c1"># ② 奥方向に押し出し（踏み面）</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">STEP_RUN</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="p">)</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">setup_sky_world</span><span class="p">(</span><span class="n">turbidity</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">ground_albedo</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                    <span class="n">sun_dir</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="n">strength</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;World ノードを Hosek/Wilkie 空モデルで再構築&quot;&quot;&quot;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">world</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">world</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="k">if</span> <span class="n">world</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">world</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">worlds</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">world</span> <span class="o">=</span> <span class="n">world</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">world</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">nt</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">node_tree</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">output</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeOutputWorld&#39;</span><span class="p">);</span>  <span class="n">output</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">bg</span>     <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeBackground&#39;</span><span class="p">);</span>   <span class="n">bg</span><span class="o">.</span><span class="n">location</span>     <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">sky</span>    <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexSky&#39;</span><span class="p">);</span>       <span class="n">sky</span><span class="o">.</span><span class="n">location</span>    <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">sky</span><span class="o">.</span><span class="n">sky_type</span>      <span class="o">=</span> <span class="s1">&#39;HOSEK_WILKIE&#39;</span>   <span class="c1"># &#39;NISHITA&#39; があるならそちら推奨</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">sky</span><span class="o">.</span><span class="n">turbidity</span>     <span class="o">=</span> <span class="n">turbidity</span>        <span class="c1"># 1=澄んだ空, 10=曇りに近い</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">sky</span><span class="o">.</span><span class="n">ground_albedo</span> <span class="o">=</span> <span class="n">ground_albedo</span>    <span class="c1"># 地面反射色</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="n">sky</span><span class="o">.</span><span class="n">sun_direction</span> <span class="o">=</span> <span class="n">sun_dir</span>          <span class="c1"># 太陽方向のベクトル</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">bg</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="n">strength</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sky</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">],</span>     <span class="n">bg</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">])</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Background&#39;</span><span class="p">],</span> <span class="n">output</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Surface&#39;</span><span class="p">])</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="k">return</span> <span class="n">world</span>
 </span></code></pre></div>
-<h2 id="_2">押し出しオペレータの基本<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><code>bpy.ops.mesh.extrude_region_move()</code> は <strong>編集モードで現在選択されている領域を押し出して、続けて移動</strong> するオペレータ。引数は2層構造になっていて、移動量はネストされた <code>TRANSFORM_OT_translate</code> に渡す:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">)}</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="_3">ループで階段を作る発想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>「上に押し出す → 奥に押し出す」を1セットにして繰り返すだけで階段ができる。一段ずつのパラメータを <code>STEP_RISE</code>, <code>STEP_RUN</code> として定数化しておくと、後から段数や寸法をいじりやすい。</p>
-<h2 id="_4">応用パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="sky-type">Sky Type の選択<a class="headerlink" href="#sky-type" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><code>sky_type</code></th>
+<th>モデル</th>
+<th>特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'NISHITA'</code></td>
+<td>Nishita 散乱モデル</td>
+<td>物理ベースで一番綺麗。Blender 2.90+</td>
+</tr>
+<tr>
+<td><code>'HOSEK_WILKIE'</code></td>
+<td>Hosek-Wilkie</td>
+<td>高品質、よく使われる定番</td>
+</tr>
+<tr>
+<td><code>'PREETHAM'</code></td>
+<td>Preetham</td>
+<td>古典的、軽い</td>
+</tr>
+<tr>
+<td><code>'SINGLE_SCATTERING'</code></td>
+<td>単散乱</td>
+<td>デバッグ向け</td>
+</tr>
+</tbody>
+</table>
+<p><code>NISHITA</code> が利用可能ならそちら推奨。今回の Blender では使えなかったので <code>HOSEK_WILKIE</code> を使った。</p>
+<h2 id="_2">主要パラメータ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>引数</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>turbidity</code></td>
+<td>大気の濁り具合（1=澄んだ青空、10=曇り）</td>
+</tr>
+<tr>
+<td><code>ground_albedo</code></td>
+<td>地面の反射色（0=黒、1=白）</td>
+</tr>
+<tr>
+<td><code>sun_direction</code></td>
+<td>太陽方向のベクトル <code>(x, y, z)</code></td>
+</tr>
+<tr>
+<td><code>Background.Strength</code></td>
+<td>環境光の強さ（1.0が標準）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">直射光と環境光の組み合わせ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Sky Texture <strong>だけ</strong> だと拡散光が中心で、はっきりした影が出ない。<strong>Sun ライト</strong> と組み合わせると:</p>
 <ul>
-<li><strong>螺旋階段</strong>: 各ループで Z 回転を入れれば螺旋構造に（後の Phase 2 課題で扱える）</li>
-<li><strong>手すり</strong>: 押し出し → 細い柱を <code>Array</code> モディファイアで複製</li>
-<li><strong>段差のある地形</strong>: 同じ要領で「広い面 → 狭い面 → 広い面」を作れば段々畑風</li>
+<li>Sky Texture: 空からの拡散光（環境光・空の色）</li>
+<li>Sun ライト: 太陽の直射光（はっきりした影）</li>
 </ul>
-<h2 id="_5">落とし穴<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>extrude_region_move</code> は <strong>「選択中の領域」</strong> に対して効く。最初に <code>bpy.ops.mesh.select_all(action='SELECT')</code> で全選択しておくのが安全。</li>
-<li>押し出した直後はその新しい面が選択状態になる。連続押し出しは選択を解除しないこと。</li>
-</ul>
+<p>両方の方向を揃える（<code>sun_direction</code> と Sun の <code>rotation_euler</code>）と自然に見える。</p>
+<h2 id="polyhaven-hdri">Polyhaven HDRI を使う場合<a class="headerlink" href="#polyhaven-hdri" title="Permanent link">&para;</a></h2>
+<p>BlenderMCP の「Use assets from Poly Haven」が ON のときは、<code>mcp__blender__download_polyhaven_asset(asset_id="...", asset_type="hdris", resolution="2k")</code> で本物のHDRIを取得できる。OFF のときは Sky Texture で代替。</p>
 
 
 

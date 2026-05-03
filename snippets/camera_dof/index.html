@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/extrude_stairs/">
+        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/camera_dof/">
       
       
-        <link rel="prev" href="../bmesh_basics/">
+        <link rel="prev" href="../cycles_vs_eevee/">
       
-      
-        <link rel="next" href="../loopcut_bevel_box/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>押し出しで階段 - BlenderSkill</title>
+        <title>カメラ被写界深度 - BlenderSkill</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extrude_stairspy" class="md-skip">
+        <a href="#camera_dofpy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              押し出しで階段
+              カメラ被写界深度
             
           </span>
         </div>
@@ -959,37 +957,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    押し出しで階段
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../extrude_stairs/" class="md-nav__link">
         
   
   
@@ -1005,81 +976,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コード
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        押し出しオペレータの基本
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ループで階段を作る発想
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        応用パターン
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        落とし穴
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1341,10 +1237,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../camera_dof/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カメラ被写界深度
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1360,6 +1283,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点距離（lens）の使い分け
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        絞り（f-stop）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォーカスの当て方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        構図のコツ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1410,10 +1419,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        焦点距離（lens）の使い分け
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        絞り（f-stop）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        押し出しオペレータの基本
+        フォーカスの当て方
       
     </span>
   </a>
@@ -1424,7 +1455,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ループで階段を作る発想
+        構図のコツ
       
     </span>
   </a>
@@ -1435,18 +1466,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        応用パターン
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        落とし穴
+        注意
       
     </span>
   </a>
@@ -1473,56 +1493,117 @@
   
 
 
-<h1 id="extrude_stairspy">extrude_stairs.py<a class="headerlink" href="#extrude_stairspy" title="Permanent link">&para;</a></h1>
-<p><code>bpy.ops.mesh.extrude_region_move</code> を使って、Plane から階段状の形を作る。</p>
+<h1 id="camera_dofpy">camera_dof.py — 被写界深度で作品っぽく仕上げる<a class="headerlink" href="#camera_dofpy" title="Permanent link">&para;</a></h1>
+<p>カメラの <strong>Depth of Field（被写界深度）</strong> を効かせると、ピントの当たった部分が際立って作品感が一気に出る。</p>
+<p><img alt="5色球のDoF（85mm f/1.4）" src="../../images/dof_spheres.png" /></p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: Plane を起点に「上 → 奥」を繰り返し押し出して階段状の形を作る</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: カメラに被写界深度（DoF）を設定して作品風レンダリング</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 動作確認: 2026-05-04 / Blender MCP</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 依存: scene_utils.py（または事前にシーンクリア）</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;stairs&quot;</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">STEP_RISE</span> <span class="o">=</span> <span class="mf">0.4</span>   <span class="c1"># 1段の高さ</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">STEP_RUN</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># 1段の奥行き</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="c1"># ① 上方向に押し出し（蹴上）</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">STEP_RISE</span><span class="p">)}</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="p">)</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="c1"># ② 奥方向に押し出し（踏み面）</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">STEP_RUN</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="p">)</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">cam</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">camera</span>   <span class="c1"># 既存のアクティブカメラを取得</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">lens</span> <span class="o">=</span> <span class="mf">50.0</span>             <span class="c1"># 焦点距離（mm）。35=広角、50=標準、85=ポートレート</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dof</span><span class="o">.</span><span class="n">use_dof</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dof</span><span class="o">.</span><span class="n">aperture_fstop</span> <span class="o">=</span> <span class="mf">2.0</span>    <span class="c1"># 小さいほどぼけが強い（f/1.4で大ボケ、f/8でほぼ全焦点）</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># フォーカスの当て方は2通り:</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># (A) 距離指定: cam.data.dof.focus_distance = 3.0</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># (B) オブジェクト指定（移動に追従して常にピント）:</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">target_obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sphere_0&quot;</span><span class="p">)</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">if</span> <span class="n">target_obj</span><span class="p">:</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dof</span><span class="o">.</span><span class="n">focus_object</span> <span class="o">=</span> <span class="n">target_obj</span>
 </span></code></pre></div>
-<h2 id="_2">押し出しオペレータの基本<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><code>bpy.ops.mesh.extrude_region_move()</code> は <strong>編集モードで現在選択されている領域を押し出して、続けて移動</strong> するオペレータ。引数は2層構造になっていて、移動量はネストされた <code>TRANSFORM_OT_translate</code> に渡す:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude_region_move</span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">TRANSFORM_OT_translate</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span><span class="p">)}</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span>
+<h2 id="lens">焦点距離（lens）の使い分け<a class="headerlink" href="#lens" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>mm</th>
+<th>種類</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16-24</td>
+<td>超広角</td>
+<td>部屋全体・パノラマ</td>
+</tr>
+<tr>
+<td>35</td>
+<td>広角</td>
+<td>風景・寄り気味の風景</td>
+</tr>
+<tr>
+<td>50</td>
+<td>標準</td>
+<td>一般撮影、汎用</td>
+</tr>
+<tr>
+<td>85</td>
+<td>中望遠</td>
+<td>ポートレート、ぼけ強め</td>
+</tr>
+<tr>
+<td>135-200</td>
+<td>望遠</td>
+<td>圧縮効果、被写体強調</td>
+</tr>
+</tbody>
+</table>
+<p>mm が大きいほど <strong>画角が狭く、ぼけが強くなる</strong>。</p>
+<h2 id="f-stop">絞り（f-stop）<a class="headerlink" href="#f-stop" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>f値</th>
+<th>ぼけの強さ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f/1.4</td>
+<td>大ボケ（ポートレート向き）</td>
+</tr>
+<tr>
+<td>f/2.0</td>
+<td>強めのボケ</td>
+</tr>
+<tr>
+<td>f/4.0</td>
+<td>適度なボケ</td>
+</tr>
+<tr>
+<td>f/8.0</td>
+<td>ほぼ全焦点</td>
+</tr>
+<tr>
+<td>f/16</td>
+<td>パンフォーカス</td>
+</tr>
+</tbody>
+</table>
+<p><strong>小さい f値 = ボケる、大きい f値 = 全部くっきり</strong>。</p>
+<h2 id="_2">フォーカスの当て方<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># (A) 距離で指定</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dof</span><span class="o">.</span><span class="n">focus_distance</span> <span class="o">=</span> <span class="mf">3.0</span>   <span class="c1"># メートル</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># (B) オブジェクトで指定（移動に追従、便利）</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">cam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dof</span><span class="o">.</span><span class="n">focus_object</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
 </span></code></pre></div>
-<h2 id="_3">ループで階段を作る発想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>「上に押し出す → 奥に押し出す」を1セットにして繰り返すだけで階段ができる。一段ずつのパラメータを <code>STEP_RISE</code>, <code>STEP_RUN</code> として定数化しておくと、後から段数や寸法をいじりやすい。</p>
-<h2 id="_4">応用パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>オブジェクト指定が便利。被写体が動いても自動でピントが合う。</p>
+<h2 id="_3">構図のコツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>螺旋階段</strong>: 各ループで Z 回転を入れれば螺旋構造に（後の Phase 2 課題で扱える）</li>
-<li><strong>手すり</strong>: 押し出し → 細い柱を <code>Array</code> モディファイアで複製</li>
-<li><strong>段差のある地形</strong>: 同じ要領で「広い面 → 狭い面 → 広い面」を作れば段々畑風</li>
+<li><strong>三分割構図</strong>: 画面を縦横3等分した線・交点に被写体を置く</li>
+<li><strong>奥行きを作る</strong>: 手前・中央・奥 に何かを配置すると DoF が活きる</li>
+<li><strong>望遠で寄る</strong> &gt; <strong>広角で離れる</strong>: 同じ大きさに写しても望遠のほうが背景が圧縮されて整う</li>
 </ul>
-<h2 id="_5">落とし穴<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">注意<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>extrude_region_move</code> は <strong>「選択中の領域」</strong> に対して効く。最初に <code>bpy.ops.mesh.select_all(action='SELECT')</code> で全選択しておくのが安全。</li>
-<li>押し出した直後はその新しい面が選択状態になる。連続押し出しは選択を解除しないこと。</li>
+<li>DoF は Cycles でも Eevee でも有効</li>
+<li><code>aperture_fstop</code> を 1.4 まで下げるとレンダリング時間が増える（ボケ計算が重い）</li>
+<li>カメラを動かすときは <code>focus_object</code> を使うとピントずれを防げる</li>
 </ul>
 
 

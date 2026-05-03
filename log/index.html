@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 4 — ライティング・レンダリング全部入り
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-3-uv" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -587,6 +598,8 @@
       
         
           
+        
+      
         
       
         
@@ -733,6 +746,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/lighting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ライティング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -751,6 +792,14 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1227,6 +1276,118 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/light_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ライト4種比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/sky_environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    環境光（Sky Texture）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/cycles_vs_eevee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cycles vs Eevee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/camera_dof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    カメラ被写界深度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1285,6 +1446,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04-phase-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 4 — ライティング・レンダリング全部入り
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1372,6 +1544,33 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-04-phase-4">2026-05-04: Phase 4 — ライティング・レンダリング全部入り<a class="headerlink" href="#2026-05-04-phase-4" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: ライト4種比較、Sky Texture 環境光、Cycles vs Eevee、被写界深度の4課題を一気に消化</p>
+<p><strong>実行した手順</strong>:
+1. <strong>ライト4種比較</strong>: Suzanne+球+床のシンプルシーンを <code>replace_light()</code> ヘルパーで Point→Sun→Spot→Area と切り替えて4枚レンダー。
+2. <strong>Sky Texture 環境光</strong>: <code>setup_sky_world()</code> で World ノードに <code>ShaderNodeTexSky</code> を組み込み。<code>NISHITA</code> が無い Blender なので <code>HOSEK_WILKIE</code> で代替。空のグラデーションが背景に出るまで確認。
+3. <strong>Cycles vs Eevee</strong>: 椅子v3 を両エンジンで同じカメラ設定でレンダー。Cycles=samples=96、Eevee=瞬時。差は金属脚の反射と影の繊細さで顕著。
+4. <strong>被写界深度</strong>: 5色球を Y方向に並べて <code>lens=50, aperture_fstop=2.0, focus_object=spheres[0]</code> で手前にピント。手前=シャープ、奥=ボケのDoF効果。最初は椅子複製でやろうとしたが構図が崩れたので、シンプルな球並びに変更。</p>
+<p><strong>結果</strong>: 全部成功。Phase 4 完全制覇、画作りの主要要素が揃った。</p>
+<p><strong>学んだこと</strong>:
+- Light タイプ別パラメータ: Point=<code>shadow_soft_size</code>、Sun=<code>angle</code>（太陽の見かけ角）、Spot=<code>spot_size</code>/<code>spot_blend</code>、Area=<code>size</code>/<code>shape</code>/<code>size_y</code>
+- World ノードも <code>world.use_nodes = True</code> を立てる必要あり（マテリアルと同じ）
+- <code>ShaderNodeTexSky.sky_type</code> の選択肢は Blender バージョンで変わる。<code>NISHITA</code> が無いときは利用可能なものに自動フォールバックするのが安全
+- Cycles の <code>samples</code> 96 + <code>use_denoising=True</code> が学習用の良いバランス
+- Eevee の利用可能 ID は バージョン依存（<code>BLENDER_EEVEE_NEXT</code> か <code>BLENDER_EEVEE</code>）。実行時に enum_items から判定するのが正解
+- DoF の <code>focus_object</code> 指定はオブジェクトに追従するので、被写体が動くシーンで便利
+- f値（aperture_fstop）は小さいほどボケる。1.4=大ボケ、8=ほぼ全焦点</p>
+<p><strong>つまずいた点</strong>:
+- <code>sky_type='NISHITA'</code> を指定したらエラー。利用可能な値を表示してくれるエラーメッセージから <code>HOSEK_WILKIE</code> に切替。バージョン依存の機能は実行時判定すべき。
+- 椅子3つ並べる構図は複製ロジックが複雑になり画も整わなかった。<strong>DoFのデモは複雑な被写体より単純な並びのほうが効果が伝わる</strong>、という構図設計の教訓。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/light_comparison.py</code> — <code>replace_light()</code> ヘルパー＋4種レシピ
+- <code>snippets/sky_environment.py</code> — Hosek/Wilkie 空モデル
+- <code>snippets/cycles_vs_eevee.py</code> — エンジン切替＋実行時判定
+- <code>snippets/camera_dof.py</code> — DoF 設定の最小例
+- <code>docs/memory/lighting.md</code> 新設（Phase 4 ノウハウ）
+- 画像: <code>light_point.png</code> <code>light_sun.png</code> <code>light_spot.png</code> <code>light_area.png</code> <code>env_skytex.png</code> <code>engine_cycles.png</code> <code>engine_eevee.png</code> <code>dof_spheres.png</code> の8枚</p>
 <hr />
 <h2 id="2026-05-04-phase-3-uv">2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV<a class="headerlink" href="#2026-05-04-phase-3-uv" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: PBRテクスチャ・コードでノードグラフを組む・UVアンラップの3課題を一気に消化。Polyhaven が無効なら <strong>プロシージャル質感で代替</strong>（むしろ学習効果は高い）。</p>
