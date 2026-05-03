@@ -32,6 +32,41 @@
 
 ---
 
+## 2026-05-04: Phase 4 — ライティング・レンダリング全部入り
+
+**目標**: ライト4種比較、Sky Texture 環境光、Cycles vs Eevee、被写界深度の4課題を一気に消化
+
+**実行した手順**:
+1. **ライト4種比較**: Suzanne+球+床のシンプルシーンを `replace_light()` ヘルパーで Point→Sun→Spot→Area と切り替えて4枚レンダー。
+2. **Sky Texture 環境光**: `setup_sky_world()` で World ノードに `ShaderNodeTexSky` を組み込み。`NISHITA` が無い Blender なので `HOSEK_WILKIE` で代替。空のグラデーションが背景に出るまで確認。
+3. **Cycles vs Eevee**: 椅子v3 を両エンジンで同じカメラ設定でレンダー。Cycles=samples=96、Eevee=瞬時。差は金属脚の反射と影の繊細さで顕著。
+4. **被写界深度**: 5色球を Y方向に並べて `lens=50, aperture_fstop=2.0, focus_object=spheres[0]` で手前にピント。手前=シャープ、奥=ボケのDoF効果。最初は椅子複製でやろうとしたが構図が崩れたので、シンプルな球並びに変更。
+
+**結果**: 全部成功。Phase 4 完全制覇、画作りの主要要素が揃った。
+
+**学んだこと**:
+- Light タイプ別パラメータ: Point=`shadow_soft_size`、Sun=`angle`（太陽の見かけ角）、Spot=`spot_size`/`spot_blend`、Area=`size`/`shape`/`size_y`
+- World ノードも `world.use_nodes = True` を立てる必要あり（マテリアルと同じ）
+- `ShaderNodeTexSky.sky_type` の選択肢は Blender バージョンで変わる。`NISHITA` が無いときは利用可能なものに自動フォールバックするのが安全
+- Cycles の `samples` 96 + `use_denoising=True` が学習用の良いバランス
+- Eevee の利用可能 ID は バージョン依存（`BLENDER_EEVEE_NEXT` か `BLENDER_EEVEE`）。実行時に enum_items から判定するのが正解
+- DoF の `focus_object` 指定はオブジェクトに追従するので、被写体が動くシーンで便利
+- f値（aperture_fstop）は小さいほどボケる。1.4=大ボケ、8=ほぼ全焦点
+
+**つまずいた点**:
+- `sky_type='NISHITA'` を指定したらエラー。利用可能な値を表示してくれるエラーメッセージから `HOSEK_WILKIE` に切替。バージョン依存の機能は実行時判定すべき。
+- 椅子3つ並べる構図は複製ロジックが複雑になり画も整わなかった。**DoFのデモは複雑な被写体より単純な並びのほうが効果が伝わる**、という構図設計の教訓。
+
+**再利用可能な成果物**:
+- `snippets/light_comparison.py` — `replace_light()` ヘルパー＋4種レシピ
+- `snippets/sky_environment.py` — Hosek/Wilkie 空モデル
+- `snippets/cycles_vs_eevee.py` — エンジン切替＋実行時判定
+- `snippets/camera_dof.py` — DoF 設定の最小例
+- `docs/memory/lighting.md` 新設（Phase 4 ノウハウ）
+- 画像: `light_point.png` `light_sun.png` `light_spot.png` `light_area.png` `env_skytex.png` `engine_cycles.png` `engine_eevee.png` `dof_spheres.png` の8枚
+
+---
+
 ## 2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV
 
 **目標**: PBRテクスチャ・コードでノードグラフを組む・UVアンラップの3課題を一気に消化。Polyhaven が無効なら **プロシージャル質感で代替**（むしろ学習効果は高い）。

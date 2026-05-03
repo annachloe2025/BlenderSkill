@@ -86,6 +86,7 @@ nav:
       - 基本操作: memory/basics.md
       - モデリング: memory/modeling.md
       - マテリアル: memory/materials.md
+      - ライティング: memory/lighting.md
   - スニペット集:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
@@ -102,6 +103,10 @@ nav:
       - マテリアル基本: snippets/material_basics.md
       - プロシージャル木目: snippets/procedural_wood_node_graph.md
       - UV展開（Smart Project）: snippets/uv_unwrap_smart.md
+      - ライト4種比較: snippets/light_comparison.md
+      - 環境光（Sky Texture）: snippets/sky_environment.md
+      - Cycles vs Eevee: snippets/cycles_vs_eevee.md
+      - カメラ被写界深度: snippets/camera_dof.md
 
 copyright: "&copy; 2026 annachloe2025"
 
