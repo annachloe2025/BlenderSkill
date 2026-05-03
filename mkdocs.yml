@@ -94,6 +94,9 @@ nav:
       - モディファイア入門: snippets/modifiers_intro.md
       - シーン管理ユーティリティ: snippets/scene_utils.md
       - bmesh の基本: snippets/bmesh_basics.md
+      - 押し出しで階段: snippets/extrude_stairs.md
+      - ループカット+ベベル: snippets/loopcut_bevel_box.md
+      - シンプルな椅子: snippets/simple_chair.md
 
 copyright: "&copy; 2026 annachloe2025"
 
