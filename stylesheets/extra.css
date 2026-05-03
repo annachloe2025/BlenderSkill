@@ -1,0 +1,31 @@
+/* ============================================================
+   BlenderSkill - theme tweaks
+   - Blenderブランドのオレンジに寄せる
+   - ライトは深めのオレンジ、ダークは温かみのあるブラウン寄り
+   ============================================================ */
+
+:root {
+  --md-primary-fg-color:        #E87A1B;
+  --md-primary-fg-color--light: #F08C2E;
+  --md-primary-fg-color--dark:  #B85A0E;
+  --md-accent-fg-color:         #FF9800;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 28;
+
+  --md-default-bg-color:           hsla(28, 12%, 16%, 1);
+  --md-default-bg-color--light:    hsla(28, 12%, 20%, 0.54);
+  --md-default-bg-color--lighter:  hsla(28, 12%, 24%, 0.26);
+  --md-default-bg-color--lightest: hsla(28, 12%, 28%, 0.07);
+
+  --md-primary-fg-color:        #B85A0E;
+  --md-primary-fg-color--light: #E87A1B;
+  --md-primary-fg-color--dark:  #7A3A09;
+  --md-accent-fg-color:         #FFB74D;
+}
+
+/* テーブルを少し読みやすく */
+.md-typeset table:not([class]) {
+  font-size: 0.78rem;
+}
