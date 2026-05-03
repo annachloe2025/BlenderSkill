@@ -1,0 +1,97 @@
+site_name: BlenderSkill
+site_description: AIにBlenderスキルを段階的に蓄積させる学習プロジェクト
+site_url: https://annachloe2025.github.io/BlenderSkill/
+repo_url: https://github.com/annachloe2025/BlenderSkill
+repo_name: annachloe2025/BlenderSkill
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: ja
+  custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切替
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切替
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Noto Sans JP
+    code: JetBrains Mono
+
+plugins:
+  - search:
+      lang: ja
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - abbr
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path:
+        - .
+        - docs
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+nav:
+  - ホーム: index.md
+  - いまのタスク: tasks.md
+  - 学習ログ: log.md
+  - ノウハウ:
+      - 概要: memory/index.md
+      - 基本操作: memory/basics.md
+  - スニペット集:
+      - 一覧: snippets/index.md
+      - シーン全消し: snippets/clear_scene.md
+      - 5プリミティブ配置: snippets/add_primitives_row.md
+
+copyright: "&copy; 2026 annachloe2025"
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/annachloe2025/BlenderSkill

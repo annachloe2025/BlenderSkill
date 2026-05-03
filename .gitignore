@@ -1,0 +1,30 @@
+# MkDocs ビルド成果物（gh-deploy が直接 push するので site/ は不要）
+site/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+
+# Blender 一時ファイル
+*.blend1
+*.blend2
+*.blend@
+
+# 大きすぎる出力（必要なら個別に追加）
+outputs/*.blend
+outputs/*.png
+outputs/*.jpg
+outputs/*.exr
+!outputs/.gitkeep
