@@ -32,6 +32,37 @@
 
 ---
 
+## 2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV
+
+**目標**: PBRテクスチャ・コードでノードグラフを組む・UVアンラップの3課題を一気に消化。Polyhaven が無効なら **プロシージャル質感で代替**（むしろ学習効果は高い）。
+
+**実行した手順**:
+1. **Polyhaven 状態確認**: `get_polyhaven_status` → 無効。BlenderMCP パネルのチェックを ON にすれば有効化できる。今回は手続き的に進める。
+2. **プロシージャル木目マテリアル**: `make_procedural_wood()` で「TexCoord → Noise → Wave → ColorRamp → BSDF.BaseColor」+「Wave → Bump → BSDF.Normal」の7ノード/7リンクのグラフを Python で構築。
+3. **UV アンラップ**: `add_rounded_box()` ヘルパーに `bpy.ops.uv.smart_project(angle_limit=66, island_margin=0.02)` を組み込んで、椅子の各パーツが自動 UV 展開されるように。
+4. **椅子 v3 レンダー**: 座面・背もたれにプロシージャル木目、脚は鏡面金属、床はクリーム。Cycles `samples=96` + denoising で `chair_v3_procedural_wood.png` 出力。
+
+**結果**: 大成功。**「マテリアルをコードで組み立てる」というPhase 3 の核心が掴めた**。木目は粒状で味のある質感に。
+
+**学んだこと**:
+- ノードグラフは `nt.nodes.new('ShaderNodeXXX')` で生成、`nt.links.new(out, in)` で接続。UI で組むのと完全に同じ構造を Python で書ける。
+- ノードタイプ名は **`ShaderNodeBsdfPrincipled` / `ShaderNodeTexNoise` / `ShaderNodeValToRGB` (=ColorRamp)** など先頭大文字
+- ソケット名は **UI ラベルそのまま、大小区別あり**: `'Base Color'`, `'Fac'`, `'Vector'`
+- `Bump` ノードは Height 入力 → Normal 出力で凹凸感を出す。`Strength` で強度調整。
+- `bpy.ops.uv.smart_project` は **編集モード + 全選択** が前提。`angle_limit` 66 が家具の汎用解。
+- プロシージャル質感は UV 不要でも動くが、画像テクスチャに移行できるよう UV は貼っておくのが推奨。
+
+**つまずいた点**:
+- Polyhaven が無効化されていた（Blender 側のチェックが OFF）。**有効化すれば本物の PBR テクスチャで椅子をリアル木材化できる**。今後ユーザーに ON を依頼する。
+
+**再利用可能な成果物**:
+- `snippets/procedural_wood_node_graph.py` — 完全プロシージャル木目（樹種パラメータ調整可）
+- `snippets/uv_unwrap_smart.py` — Smart UV Project の最小例
+- `docs/memory/materials.md` に「ノードグラフ構築」「樹種レシピ」「UVアンラップ」「Polyhaven連携メモ」追記
+- `docs/images/chair_v3_procedural_wood.png` — 進化形3作目
+
+---
+
 ## 2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）
 
 **目標**: Phase 2 の最後「ブーリアン」を消化し、その勢いで Phase 3 マテリアル編に入って椅子に色を付ける

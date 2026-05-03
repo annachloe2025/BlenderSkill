@@ -100,6 +100,8 @@ nav:
       - シンプルな椅子: snippets/simple_chair.md
       - ブーリアンで穴あけ: snippets/boolean_hole.md
       - マテリアル基本: snippets/material_basics.md
+      - プロシージャル木目: snippets/procedural_wood_node_graph.md
+      - UV展開（Smart Project）: snippets/uv_unwrap_smart.md
 
 copyright: "&copy; 2026 annachloe2025"
 
