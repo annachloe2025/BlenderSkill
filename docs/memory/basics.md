@@ -55,8 +55,52 @@ bpy.context.scene.camera = bpy.context.active_object
 
 ライトの種類: `'POINT'`, `'SUN'`, `'SPOT'`, `'AREA'`
 
+## トランスフォーム（応用）
+
+`obj.location`, `obj.rotation_euler`, `obj.scale` はそれぞれ Vector / Euler / Vector で、**インデックス・属性アクセスが両方使える**:
+
+```python
+obj.location.z += 5             # Z だけ上に持ち上げる
+obj.location[2] = 0             # Z を 0 にリセット
+obj.rotation_euler.z = math.radians(90)
+```
+
+度数で書くなら **必ず `math.radians(...)` でラップ**。Euler 角は `'XYZ'`, `'ZYX'` など回転順を指定できるが、デフォルト `'XYZ'` でほぼ問題ない。
+
+## ループでの一括生成（グリッド配置）
+
+中心を原点に揃える定番の計算式: `(i - (N - 1) / 2) * spacing`
+N=5, spacing=1.5 → `-3.0, -1.5, 0, 1.5, 3.0`。
+
+`math.sin(dist * 周波数) * 振幅` を高さに使うと **円形の波模様** が一発で作れる。グリッド配置 + 装飾の組み合わせは応用範囲が非常に広い。
+
+## モディファイアの基本
+
+```python
+m = obj.modifiers.new(name="任意", type='SUBSURF')  # or 'BEVEL', 'MIRROR', 'ARRAY' ...
+m.levels = 2
+```
+
+代表3種:
+
+| 種類 | type | 用途 |
+|---|---|---|
+| Subdivision Surface | `'SUBSURF'` | メッシュを滑らかな曲面化（`shade_smooth()` と併用）|
+| Bevel | `'BEVEL'` | エッジを面取り（`width`, `segments`）|
+| Mirror | `'MIRROR'` | 指定軸で対称コピー（オブジェクトの **原点が対称軸**）|
+
+「適用して実メッシュ化」したいときは:
+
+```python
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.modifier_apply(modifier="モディファイア名")
+```
+
+モディファイアは **積み重ね順が結果に影響** する。Bevel + Subsurf を併用するなら **Bevel → Subsurf** の順が一般的。
+
 ## 落とし穴メモ
 
 - `bpy.ops.object.select_all(action='SELECT')` は **編集モードでは効かない**。Object Mode で実行する前提。
 - プリミティブを追加すると、それまでの選択は解除されてその新オブジェクトのみが選択される。
 - `bpy.context.active_object` は最後に追加/選択したオブジェクトを返す。複数まとめて操作するときは事前にリストに保存しておく。
+- Mirror は **オブジェクトの原点位置で動きが変わる**。原点をずらすとミラー結果も変わるので注意。

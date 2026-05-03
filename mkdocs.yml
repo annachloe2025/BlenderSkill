@@ -88,6 +88,9 @@ nav:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
       - 5プリミティブ配置: snippets/add_primitives_row.md
+      - トランスフォーム基本: snippets/transform_basics.md
+      - グリッド配置: snippets/grid_arrangement.md
+      - モディファイア入門: snippets/modifiers_intro.md
 
 copyright: "&copy; 2026 annachloe2025"
 
