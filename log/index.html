@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-1-5" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -675,6 +686,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -785,6 +802,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/transform_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トランスフォーム基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/grid_arrangement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グリッド配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/modifiers_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モディファイア入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -843,6 +944,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア
+      
+    </span>
+  </a>
   
 </li>
       
@@ -908,6 +1020,26 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-04-phase-1">2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア<a class="headerlink" href="#2026-05-04-phase-1" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: Phase 1 の「トランスフォーム」「グリッド配置」「モディファイア入門」を一気に消化</p>
+<p><strong>実行した手順</strong>:
+1. <strong>トランスフォーム</strong>: 4つの Cube を「基準・回転のみ・スケールのみ・全部」のパターンで配置。<code>math.radians()</code> で度数→ラジアン変換、<code>Vector</code> / <code>Euler</code> の使い分けも実例化。
+2. <strong>グリッド配置</strong>: 5×5=25個の UV Sphere を、中心からの距離で sin 波を高さに反映させて配置。<code>bpy.ops.object.shade_smooth()</code> も適用。
+3. <strong>モディファイア</strong>: Subdivision Surface / Bevel / Mirror をそれぞれ別 Cube に適用。<code>obj.modifiers.new(name=..., type=...)</code> の基本パターンを確認。</p>
+<p><strong>結果</strong>: 3つとも成功。スクリーンショットでも結果を確認済み。</p>
+<p><strong>学んだこと</strong>:
+- <code>obj.location.z += 5</code> のような <strong>属性アクセス＋複合代入</strong> が便利（Vector のおかげ）
+- 中心揃えグリッドの定番計算: <code>(i - (N - 1) / 2) * spacing</code>
+- モディファイアは <code>obj.modifiers.new(...)</code> で生やし、戻り値を変数に受けてプロパティ設定するのが定石
+- Mirror は <strong>オブジェクトの原点が対称軸</strong>。ローカル座標で動く</p>
+<p><strong>つまずいた点</strong>:
+- Bevel は <code>width=0.15</code> だと遠目では効きが分かりにくかった。検証時は近めの構図にするか、初期値を大きめにすると確認しやすい。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/transform_basics.py</code> — トランスフォーム3パターン
+- <code>snippets/grid_arrangement.py</code> — NxN グリッド配置（波形高さ）
+- <code>snippets/modifiers_intro.py</code> — Subsurf / Bevel / Mirror
+- <code>docs/memory/basics.md</code> に「トランスフォーム応用」「グリッド配置」「モディファイア基本」セクション追記</p>
 <hr />
 <h2 id="2026-05-04-phase-1-5">2026-05-04: Phase 1 開始 — 接続テスト &amp; 5プリミティブ配置<a class="headerlink" href="#2026-05-04-phase-1-5" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: Blender MCP接続確認 → プリミティブを5種類並べて配置</p>

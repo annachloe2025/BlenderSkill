@@ -645,6 +645,39 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
+        トランスフォーム（応用）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループでの一括生成（グリッド配置）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モディファイアの基本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         落とし穴メモ
       
     </span>
@@ -679,6 +712,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -795,6 +834,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/transform_basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    トランスフォーム基本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/grid_arrangement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    グリッド配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/modifiers_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モディファイア入門
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -874,6 +997,39 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トランスフォーム（応用）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ループでの一括生成（グリッド配置）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モディファイアの基本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         落とし穴メモ
@@ -972,11 +1128,59 @@
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
 </span></code></pre></div>
 <p>ライトの種類: <code>'POINT'</code>, <code>'SUN'</code>, <code>'SPOT'</code>, <code>'AREA'</code></p>
-<h2 id="_4">落とし穴メモ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">トランスフォーム（応用）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><code>obj.location</code>, <code>obj.rotation_euler</code>, <code>obj.scale</code> はそれぞれ Vector / Euler / Vector で、<strong>インデックス・属性アクセスが両方使える</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="mi">5</span>             <span class="c1"># Z だけ上に持ち上げる</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>             <span class="c1"># Z を 0 にリセット</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">obj</span><span class="o">.</span><span class="n">rotation_euler</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</span></code></pre></div>
+<p>度数で書くなら <strong>必ず <code>math.radians(...)</code> でラップ</strong>。Euler 角は <code>'XYZ'</code>, <code>'ZYX'</code> など回転順を指定できるが、デフォルト <code>'XYZ'</code> でほぼ問題ない。</p>
+<h2 id="_5">ループでの一括生成（グリッド配置）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>中心を原点に揃える定番の計算式: <code>(i - (N - 1) / 2) * spacing</code>
+N=5, spacing=1.5 → <code>-3.0, -1.5, 0, 1.5, 3.0</code>。</p>
+<p><code>math.sin(dist * 周波数) * 振幅</code> を高さに使うと <strong>円形の波模様</strong> が一発で作れる。グリッド配置 + 装飾の組み合わせは応用範囲が非常に広い。</p>
+<h2 id="_6">モディファイアの基本<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">modifiers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;任意&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;SUBSURF&#39;</span><span class="p">)</span>  <span class="c1"># or &#39;BEVEL&#39;, &#39;MIRROR&#39;, &#39;ARRAY&#39; ...</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">m</span><span class="o">.</span><span class="n">levels</span> <span class="o">=</span> <span class="mi">2</span>
+</span></code></pre></div>
+<p>代表3種:</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>type</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subdivision Surface</td>
+<td><code>'SUBSURF'</code></td>
+<td>メッシュを滑らかな曲面化（<code>shade_smooth()</code> と併用）</td>
+</tr>
+<tr>
+<td>Bevel</td>
+<td><code>'BEVEL'</code></td>
+<td>エッジを面取り（<code>width</code>, <code>segments</code>）</td>
+</tr>
+<tr>
+<td>Mirror</td>
+<td><code>'MIRROR'</code></td>
+<td>指定軸で対称コピー（オブジェクトの <strong>原点が対称軸</strong>）</td>
+</tr>
+</tbody>
+</table>
+<p>「適用して実メッシュ化」したいときは:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="n">obj</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">modifier_apply</span><span class="p">(</span><span class="n">modifier</span><span class="o">=</span><span class="s2">&quot;モディファイア名&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>モディファイアは <strong>積み重ね順が結果に影響</strong> する。Bevel + Subsurf を併用するなら <strong>Bevel → Subsurf</strong> の順が一般的。</p>
+<h2 id="_7">落とし穴メモ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>bpy.ops.object.select_all(action='SELECT')</code> は <strong>編集モードでは効かない</strong>。Object Mode で実行する前提。</li>
 <li>プリミティブを追加すると、それまでの選択は解除されてその新オブジェクトのみが選択される。</li>
 <li><code>bpy.context.active_object</code> は最後に追加/選択したオブジェクトを返す。複数まとめて操作するときは事前にリストに保存しておく。</li>
+<li>Mirror は <strong>オブジェクトの原点位置で動きが変わる</strong>。原点をずらすとミラー結果も変わるので注意。</li>
 </ul>
 
 
