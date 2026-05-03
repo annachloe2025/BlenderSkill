@@ -32,6 +32,35 @@
 
 ---
 
+## 2026-05-04: Phase 1 仕上げ + Phase 2 着手（bmesh）+ .gitignore強化
+
+**目標**: Phase 1 の最後「シーンクリーンアップのパターン化」を片付けて Phase 2 の入口（bmesh）まで進む
+
+**実行した手順**:
+1. `.gitignore` を強化: `*.blend`, `*.fbx`, `*.glb`, `*.exr`, `*.mp4` などの大容量バイナリをどこに置いても除外。`docs/images/` の Web 用 PNG/JPG は引き続き追跡。`git check-ignore` で全ケース確認済み。
+2. `snippets/scene_utils.py` 作成: `clear_all` / `clear_meshes_only` / `setup_basic_scene` / `reset_scene` の4関数で使い分け。
+3. `reset_scene()` の動作確認（空シーン → Sun + Camera + テストCube → スクショ目視 OK）
+4. **Phase 2 着手**: bmesh で Cube の上面を縮めて台形化（条件付き頂点操作）+ Plane を細分化して sin 波で凹凸（484頂点）。両方とも視覚的に確認できた。
+
+**結果**: 成功。Phase 1 完全消化、Phase 2 の bmesh フローを掴んだ。
+
+**学んだこと**:
+- `bmesh.from_edit_mesh()` → 操作 → `update_edit_mesh()` の3ステップは絶対に忘れない
+- 編集モード内の `bpy.ops.mesh.subdivide(number_cuts=N)` は **「現在の選択頂点」** に対して効く
+- `v.co` は `Vector` なので `.x` `.y` `.z` 直接代入できる。条件分岐で「上面だけ」みたいな選択的編集が簡単
+- `mode_set(mode='OBJECT')` で必ずオブジェクトモードに戻すクセが大事
+
+**つまずいた点**:
+- `mkdocs.yml` を Edit/Write したとき、ファイル末尾が UTF-8 文字の途中で切れて YAML パースエラー（同位置で2回再現）。bash の `cat > ...` ヒアドキュメントで書き直したら正常。長い日本語末尾の YAML/MD は bash 直接書き出しが安全という教訓。
+
+**再利用可能な成果物**:
+- `snippets/scene_utils.py` — シーン管理4関数
+- `snippets/bmesh_basics.py` — bmesh 頂点操作の2例
+- `docs/memory/modeling.md` — Phase 2 用ノウハウファイル新設
+- `.gitignore` 強化版（大容量バイナリ全種カバー）
+
+---
+
 ## 2026-05-04: Phase 1 — トランスフォーム / グリッド配置 / モディファイア
 
 **目標**: Phase 1 の「トランスフォーム」「グリッド配置」「モディファイア入門」を一気に消化

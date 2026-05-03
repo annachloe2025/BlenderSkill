@@ -84,6 +84,7 @@ nav:
   - ノウハウ:
       - 概要: memory/index.md
       - 基本操作: memory/basics.md
+      - モデリング: memory/modeling.md
   - スニペット集:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
@@ -91,6 +92,8 @@ nav:
       - トランスフォーム基本: snippets/transform_basics.md
       - グリッド配置: snippets/grid_arrangement.md
       - モディファイア入門: snippets/modifiers_intro.md
+      - シーン管理ユーティリティ: snippets/scene_utils.md
+      - bmesh の基本: snippets/bmesh_basics.md
 
 copyright: "&copy; 2026 annachloe2025"
 
