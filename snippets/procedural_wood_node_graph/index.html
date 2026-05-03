@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/transform_basics/">
+        <link rel="canonical" href="https://annachloe2025.github.io/BlenderSkill/snippets/procedural_wood_node_graph/">
       
       
-        <link rel="prev" href="../add_primitives_row/">
+        <link rel="prev" href="../material_basics/">
       
       
-        <link rel="next" href="../grid_arrangement/">
+        <link rel="next" href="../uv_unwrap_smart/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>トランスフォーム基本 - BlenderSkill</title>
+        <title>プロシージャル木目 - BlenderSkill</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#transform_basicspy" class="md-skip">
+        <a href="#procedural_wood_node_graphpy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              トランスフォーム基本
+              プロシージャル木目
             
           </span>
         </div>
@@ -781,37 +781,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    トランスフォーム基本
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../transform_basics/" class="md-nav__link">
         
   
   
@@ -827,59 +800,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        コード
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ポイント
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        よくあるパターン
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1141,10 +1061,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../procedural_wood_node_graph/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロシージャル木目
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1160,6 +1107,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ノードグラフの構造
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ノードを生成する API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ノードを繋ぐ API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        カスタマイズしどころ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        落とし穴
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1241,7 +1274,29 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ポイント
+        ノードグラフの構造
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ノードを生成する API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ノードを繋ぐ API
       
     </span>
   </a>
@@ -1252,7 +1307,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        よくあるパターン
+        カスタマイズしどころ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        落とし穴
       
     </span>
   </a>
@@ -1279,69 +1345,186 @@
   
 
 
-<h1 id="transform_basicspy">transform_basics.py<a class="headerlink" href="#transform_basicspy" title="Permanent link">&para;</a></h1>
-<p>オブジェクトの位置・回転・スケールをコードで設定する基本パターン。</p>
+<h1 id="procedural_wood_node_graphpy">procedural_wood_node_graph.py — コードでノードグラフを組む<a class="headerlink" href="#procedural_wood_node_graphpy" title="Permanent link">&para;</a></h1>
+<p>Phase 3 の核心。<strong>Image Texture を使わずに、Noise + Wave + ColorRamp + Bump で木目を完全プロシージャル生成</strong> する。</p>
+<p><img alt="プロシージャル木目の椅子" src="../../images/chair_v3_procedural_wood.png" /></p>
 <h2 id="_1">コード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: トランスフォーム（位置・回転・スケール）の基本パターン</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 用途: プロシージャル木目マテリアルをコードでノードグラフ構築</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 動作確認: 2026-05-04 / Blender MCP</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 依存: clear_scene.py</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">mathutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vector</span><span class="p">,</span> <span class="n">Euler</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 構成: TexCoord → Noise → Wave → ColorRamp → BSDF (BaseColor)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">#                     └→ Bump → BSDF (Normal)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># ① 直接タプル代入</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_cube_add</span><span class="p">()</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">obj</span><span class="o">.</span><span class="n">rotation_euler</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">obj</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># ② Vector / Euler を使った書き方（読みやすい）</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_cube_add</span><span class="p">()</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">active_object</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">obj</span><span class="o">.</span><span class="n">location</span>       <span class="o">=</span> <span class="n">Vector</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">obj</span><span class="o">.</span><span class="n">rotation_euler</span> <span class="o">=</span> <span class="n">Euler</span><span class="p">((</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)),</span> <span class="s1">&#39;XYZ&#39;</span><span class="p">)</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">obj</span><span class="o">.</span><span class="n">scale</span>          <span class="o">=</span> <span class="n">Vector</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">))</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># 度数⇔ラジアン</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">deg</span> <span class="o">=</span> <span class="mi">45</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>        <span class="c1"># 0.785...</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">back</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>       <span class="c1"># 45.0</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_procedural_wood</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ProcWood&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                         <span class="n">base_color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">),</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                         <span class="n">dark_color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                         <span class="n">grain_scale</span><span class="o">=</span><span class="mf">12.0</span><span class="p">):</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;ノードグラフをゼロから構築する木目マテリアル&quot;&quot;&quot;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">mat</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">mat</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">nt</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="c1"># デフォルトノードを全消し</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="c1"># ノードを生成（座標は UI 上で見やすくするため）</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">output</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeOutputMaterial&#39;</span><span class="p">);</span>     <span class="n">output</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">bsdf</span>   <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeBsdfPrincipled&#39;</span><span class="p">);</span>     <span class="n">bsdf</span><span class="o">.</span><span class="n">location</span>   <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">ramp</span>   <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeValToRGB&#39;</span><span class="p">);</span>           <span class="n">ramp</span><span class="o">.</span><span class="n">location</span>   <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">wave</span>   <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexWave&#39;</span><span class="p">);</span>            <span class="n">wave</span><span class="o">.</span><span class="n">location</span>   <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">noise</span>  <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexNoise&#39;</span><span class="p">);</span>           <span class="n">noise</span><span class="o">.</span><span class="n">location</span>  <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="n">coord</span>  <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexCoord&#39;</span><span class="p">);</span>           <span class="n">coord</span><span class="o">.</span><span class="n">location</span>  <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">bump</span>   <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeBump&#39;</span><span class="p">);</span>               <span class="n">bump</span><span class="o">.</span><span class="n">location</span>   <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">)</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="c1"># パラメータ</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="n">noise</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Scale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="n">grain_scale</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="n">noise</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Detail&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">noise</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Roughness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.6</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">wave</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Scale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="n">grain_scale</span> <span class="o">*</span> <span class="mf">0.4</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">wave</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Distortion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">6.0</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">wave</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Detail&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">2.0</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="c1"># カラーランプ: 明るい木地 → 濃い木目</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="n">ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mf">0.40</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="n">ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">color</span>    <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">base_color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="n">ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mf">0.60</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="n">ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color</span>    <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">dark_color</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="c1"># BSDF</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">bsdf</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Metallic&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span>  <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">bsdf</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Roughness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.55</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="c1"># バンプ強度</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">bump</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Strength&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.15</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>    <span class="c1"># リンク（接続）</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="n">L</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">L</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Object&#39;</span><span class="p">],</span> <span class="n">noise</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Vector&#39;</span><span class="p">])</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="n">L</span><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">],</span>    <span class="n">wave</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Vector&#39;</span><span class="p">])</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    <span class="n">L</span><span class="p">(</span><span class="n">wave</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">],</span>     <span class="n">ramp</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">])</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="n">L</span><span class="p">(</span><span class="n">ramp</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Color&#39;</span><span class="p">],</span>   <span class="n">bsdf</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Base Color&#39;</span><span class="p">])</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">L</span><span class="p">(</span><span class="n">wave</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">],</span>     <span class="n">bump</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">])</span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">L</span><span class="p">(</span><span class="n">bump</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">],</span>  <span class="n">bsdf</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">])</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>    <span class="n">L</span><span class="p">(</span><span class="n">bsdf</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;BSDF&#39;</span><span class="p">],</span>    <span class="n">output</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Surface&#39;</span><span class="p">])</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="k">return</span> <span class="n">mat</span>
 </span></code></pre></div>
-<h2 id="_2">ポイント<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>obj.rotation_euler</code> の単位は <strong>ラジアン</strong>。度数で書くなら <code>math.radians(45)</code> で変換する。</li>
-<li>直接タプル代入でも動くが、<strong><code>Vector</code> / <code>Euler</code> を使うと意図が読み取りやすい</strong>（特に他の場所で同じ値を使い回す時）。</li>
-<li>後で度数に戻したいときは <code>math.degrees(rad)</code>。</li>
-</ul>
-<h2 id="_3">よくあるパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">ノードグラフの構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>TexCoord ─→ Noise ─→ Wave ─┬─→ ColorRamp ─→ BSDF (Base Color)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                            └─→ Bump ──────→ BSDF (Normal)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                                              ↓
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                                            Output (Surface)
+</span></code></pre></div>
 <table>
 <thead>
 <tr>
-<th>やりたいこと</th>
-<th>書き方</th>
+<th>ノード</th>
+<th>役割</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Z軸まわりに 90° 回転</td>
-<td><code>obj.rotation_euler = (0, 0, math.radians(90))</code></td>
+<td><code>TexCoord</code></td>
+<td>UV/Object 座標を流す（質感の基準）</td>
 </tr>
 <tr>
-<td>等倍で2倍に拡大</td>
-<td><code>obj.scale = (2, 2, 2)</code></td>
+<td><code>Noise</code></td>
+<td>ランダムなノイズパターン（木目の不規則さ）</td>
 </tr>
 <tr>
-<td>真上に 5 持ち上げる</td>
-<td><code>obj.location.z += 5</code></td>
+<td><code>Wave</code></td>
+<td>縞模様（年輪っぽい流れ）</td>
 </tr>
 <tr>
-<td>現在値からの相対</td>
-<td><code>obj.location += Vector((1, 0, 0))</code></td>
+<td><code>ColorRamp</code></td>
+<td>値 → 色 のマッピング（明るい木地↔濃い木目）</td>
+</tr>
+<tr>
+<td><code>Bump</code></td>
+<td>Height からノーマルを生成（凹凸感）</td>
+</tr>
+<tr>
+<td><code>Principled BSDF</code></td>
+<td>最終的な質感計算</td>
 </tr>
 </tbody>
 </table>
+<h2 id="api">ノードを生成する API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">node</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeXXX&#39;</span><span class="p">)</span>   <span class="c1"># タイプ名で生成</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">node</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>                  <span class="c1"># UI座標（ノードエディタで見やすく）</span>
+</span></code></pre></div>
+<p>主なタイプ名:</p>
+<table>
+<thead>
+<tr>
+<th>タイプ名</th>
+<th>種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShaderNodeOutputMaterial</code></td>
+<td>出力</td>
+</tr>
+<tr>
+<td><code>ShaderNodeBsdfPrincipled</code></td>
+<td>Principled BSDF</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexNoise</code></td>
+<td>Noise Texture</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexWave</code></td>
+<td>Wave Texture</td>
+</tr>
+<tr>
+<td><code>ShaderNodeValToRGB</code></td>
+<td>Color Ramp</td>
+</tr>
+<tr>
+<td><code>ShaderNodeBump</code></td>
+<td>Bump</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexCoord</code></td>
+<td>Texture Coordinate</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexImage</code></td>
+<td>Image Texture（PBR画像用）</td>
+</tr>
+<tr>
+<td><code>ShaderNodeMixRGB</code></td>
+<td>カラーミックス</td>
+</tr>
+<tr>
+<td><code>ShaderNodeMath</code> / <code>ShaderNodeVectorMath</code></td>
+<td>数値・ベクトル演算</td>
+</tr>
+</tbody>
+</table>
+<h2 id="api_1">ノードを繋ぐ API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">出力ソケット</span><span class="p">,</span> <span class="n">入力ソケット</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># 例:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">],</span> <span class="n">ramp</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">])</span>
+</span></code></pre></div>
+<p>ソケット名は <strong>ノードの UI に表示されているラベルそのまま</strong>。<code>outputs['Fac']</code>, <code>inputs['Base Color']</code> など。</p>
+<h2 id="_3">カスタマイズしどころ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>grain_scale</code>: 木目の細かさ（小さい=粗い木目、大きい=細かい）</li>
+<li><code>base_color</code> / <code>dark_color</code>: 樹種を変える（濃い茶色=ウォールナット、赤茶=チェリー、白っぽい=パイン）</li>
+<li><code>bump.inputs['Strength']</code>: 凹凸感の強さ（0.0〜1.0）</li>
+</ul>
+<h2 id="_4">落とし穴<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>既存ノードを全削除してから生成</strong> するのが安全。<code>mat.use_nodes = True</code> の直後はデフォルトノードがあるので、ループで <code>nt.nodes.remove(n)</code>。</li>
+<li>ソケット名は <strong>大文字小文字を区別</strong>（<code>'Base Color'</code> であって <code>'base color'</code> ではない）</li>
+<li><code>Vector</code> 系の接続は <code>Object</code> か <code>UV</code> の選択で見た目が変わる</li>
+</ul>
 
 
 

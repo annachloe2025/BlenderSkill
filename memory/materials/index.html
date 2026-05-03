@@ -723,6 +723,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コードでノードグラフを組む
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロシージャル木目のレシピ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UV アンラップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polyhaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polyhaven 連携メモ
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -750,6 +794,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1166,6 +1214,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/procedural_wood_node_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロシージャル木目
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../snippets/uv_unwrap_smart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UV展開（Smart Project）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1259,6 +1363,50 @@
     <span class="md-ellipsis">
       
         落とし穴
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コードでノードグラフを組む
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プロシージャル木目のレシピ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UV アンラップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polyhaven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polyhaven 連携メモ
       
     </span>
   </a>
@@ -1442,6 +1590,110 @@
 <li>同じマテリアルを複数オブジェクトに割り当ててもOK（リンク扱いになる）</li>
 <li><code>obj.data.materials[0] = mat</code> は <strong>データ（メッシュ）に紐づく</strong> ので、Linked Duplicate に注意</li>
 </ul>
+<h2 id="_6">コードでノードグラフを組む<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><code>mat.node_tree</code> を使えば、UI 上で組むのと同じことを Python でできる:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">nt</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. ノード生成</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">noise</span> <span class="o">=</span> <span class="n">nt</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ShaderNodeTexNoise&#39;</span><span class="p">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">noise</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">noise</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Scale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">12.0</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># 2. ソケット接続</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">nt</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">],</span> <span class="n">ramp</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;Fac&#39;</span><span class="p">])</span>
+</span></code></pre></div>
+<p>ノードタイプ名は <code>ShaderNodeXXX</code>（先頭大文字）。代表的なもの:</p>
+<table>
+<thead>
+<tr>
+<th>タイプ名</th>
+<th>種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShaderNodeBsdfPrincipled</code></td>
+<td>Principled BSDF</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexImage</code></td>
+<td>Image Texture（PBR画像用）</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexNoise</code></td>
+<td>Noise Texture</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexWave</code></td>
+<td>Wave Texture</td>
+</tr>
+<tr>
+<td><code>ShaderNodeValToRGB</code></td>
+<td>Color Ramp</td>
+</tr>
+<tr>
+<td><code>ShaderNodeBump</code></td>
+<td>Bump（高さ→ノーマル）</td>
+</tr>
+<tr>
+<td><code>ShaderNodeTexCoord</code></td>
+<td>Texture Coordinate</td>
+</tr>
+<tr>
+<td><code>ShaderNodeMixRGB</code></td>
+<td>カラーミックス</td>
+</tr>
+</tbody>
+</table>
+<p>ソケット名は <strong>UI ラベルそのまま、大小区別あり</strong>: <code>'Base Color'</code>, <code>'Fac'</code>, <code>'Vector'</code>, <code>'Surface'</code> など。</p>
+<h2 id="_7">プロシージャル木目のレシピ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>TexCoord(Object) → Noise(Scale=12) → Wave(Scale=4.8, Distortion=6) → ColorRamp(明茶↔濃茶) → BSDF.BaseColor
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                                                                  └→ Bump(Strength=0.15) → BSDF.Normal
+</span></code></pre></div>
+<p>樹種を変えたいときは <code>base_color</code> / <code>dark_color</code> を調整:</p>
+<table>
+<thead>
+<tr>
+<th>樹種</th>
+<th>base_color</th>
+<th>dark_color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パイン（明）</td>
+<td>(0.75, 0.55, 0.35)</td>
+<td>(0.40, 0.25, 0.10)</td>
+</tr>
+<tr>
+<td>オーク</td>
+<td>(0.55, 0.32, 0.15)</td>
+<td>(0.20, 0.10, 0.04)</td>
+</tr>
+<tr>
+<td>ウォールナット（濃）</td>
+<td>(0.30, 0.18, 0.10)</td>
+<td>(0.10, 0.05, 0.02)</td>
+</tr>
+<tr>
+<td>チェリー（赤）</td>
+<td>(0.60, 0.25, 0.18)</td>
+<td>(0.30, 0.08, 0.05)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="uv">UV アンラップ<a class="headerlink" href="#uv" title="Permanent link">&para;</a></h2>
+<p>テクスチャ画像を貼るときは UV 座標が必要。Smart UV Project で自動展開:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;EDIT&#39;</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;SELECT&#39;</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">smart_project</span><span class="p">(</span><span class="n">angle_limit</span><span class="o">=</span><span class="mi">66</span><span class="p">,</span> <span class="n">island_margin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">mode_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><code>angle_limit</code> の目安: 30=細かく分割（曲面）、66=汎用（家具）、89=ほぼ分割しない（板）。</p>
+<p>プロシージャル質感は UV 不要でも動くが、後で画像テクスチャに切り替えやすくするため <strong>モデリング段階で UV を貼っておく</strong> のが推奨。</p>
+<h2 id="polyhaven">Polyhaven 連携メモ<a class="headerlink" href="#polyhaven" title="Permanent link">&para;</a></h2>
+<p>Polyhaven の MCP 連携は Blender MCP パネルの「Use assets from Poly Haven」チェックを ON にすると有効化される。一度 ON にすれば、<code>mcp__blender__search_polyhaven_assets</code> で検索 → <code>download_polyhaven_asset</code> でダウンロード → <code>set_texture</code> で適用、の流れで PBR テクスチャを使える。</p>
+<p>OFF のときは <strong>プロシージャル質感で代用</strong> が現実的（むしろ学習効果は高い）。</p>
 
 
 

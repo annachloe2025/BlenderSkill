@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-04-phase-3-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-2-phase-3" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -740,6 +751,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1156,6 +1171,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/procedural_wood_node_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    プロシージャル木目
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/uv_unwrap_smart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UV展開（Smart Project）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1214,6 +1285,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04-phase-3-uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1290,6 +1372,29 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-04-phase-3-uv">2026-05-04: Phase 3 — プロシージャル木目 + ノードグラフ + UV<a class="headerlink" href="#2026-05-04-phase-3-uv" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: PBRテクスチャ・コードでノードグラフを組む・UVアンラップの3課題を一気に消化。Polyhaven が無効なら <strong>プロシージャル質感で代替</strong>（むしろ学習効果は高い）。</p>
+<p><strong>実行した手順</strong>:
+1. <strong>Polyhaven 状態確認</strong>: <code>get_polyhaven_status</code> → 無効。BlenderMCP パネルのチェックを ON にすれば有効化できる。今回は手続き的に進める。
+2. <strong>プロシージャル木目マテリアル</strong>: <code>make_procedural_wood()</code> で「TexCoord → Noise → Wave → ColorRamp → BSDF.BaseColor」+「Wave → Bump → BSDF.Normal」の7ノード/7リンクのグラフを Python で構築。
+3. <strong>UV アンラップ</strong>: <code>add_rounded_box()</code> ヘルパーに <code>bpy.ops.uv.smart_project(angle_limit=66, island_margin=0.02)</code> を組み込んで、椅子の各パーツが自動 UV 展開されるように。
+4. <strong>椅子 v3 レンダー</strong>: 座面・背もたれにプロシージャル木目、脚は鏡面金属、床はクリーム。Cycles <code>samples=96</code> + denoising で <code>chair_v3_procedural_wood.png</code> 出力。</p>
+<p><strong>結果</strong>: 大成功。<strong>「マテリアルをコードで組み立てる」というPhase 3 の核心が掴めた</strong>。木目は粒状で味のある質感に。</p>
+<p><strong>学んだこと</strong>:
+- ノードグラフは <code>nt.nodes.new('ShaderNodeXXX')</code> で生成、<code>nt.links.new(out, in)</code> で接続。UI で組むのと完全に同じ構造を Python で書ける。
+- ノードタイプ名は <strong><code>ShaderNodeBsdfPrincipled</code> / <code>ShaderNodeTexNoise</code> / <code>ShaderNodeValToRGB</code> (=ColorRamp)</strong> など先頭大文字
+- ソケット名は <strong>UI ラベルそのまま、大小区別あり</strong>: <code>'Base Color'</code>, <code>'Fac'</code>, <code>'Vector'</code>
+- <code>Bump</code> ノードは Height 入力 → Normal 出力で凹凸感を出す。<code>Strength</code> で強度調整。
+- <code>bpy.ops.uv.smart_project</code> は <strong>編集モード + 全選択</strong> が前提。<code>angle_limit</code> 66 が家具の汎用解。
+- プロシージャル質感は UV 不要でも動くが、画像テクスチャに移行できるよう UV は貼っておくのが推奨。</p>
+<p><strong>つまずいた点</strong>:
+- Polyhaven が無効化されていた（Blender 側のチェックが OFF）。<strong>有効化すれば本物の PBR テクスチャで椅子をリアル木材化できる</strong>。今後ユーザーに ON を依頼する。</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/procedural_wood_node_graph.py</code> — 完全プロシージャル木目（樹種パラメータ調整可）
+- <code>snippets/uv_unwrap_smart.py</code> — Smart UV Project の最小例
+- <code>docs/memory/materials.md</code> に「ノードグラフ構築」「樹種レシピ」「UVアンラップ」「Polyhaven連携メモ」追記
+- <code>docs/images/chair_v3_procedural_wood.png</code> — 進化形3作目</p>
 <hr />
 <h2 id="2026-05-04-phase-2-phase-3">2026-05-04: Phase 2 完了（ブーリアン）+ Phase 3 着手（着色済み椅子）<a class="headerlink" href="#2026-05-04-phase-2-phase-3" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: Phase 2 の最後「ブーリアン」を消化し、その勢いで Phase 3 マテリアル編に入って椅子に色を付ける</p>
