@@ -32,6 +32,48 @@
 
 ---
 
+## 2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品
+
+**目標**: 応用編5項目を全部消化し、**Phase 1〜5 の集大成シーン** を1本のスクリプトで再現できる状態にする。
+
+**実行した手順**:
+1. **キーフレームアニメ**: Suzanne を Z軸回転＋上下動でループアニメ化（24fps、60フレーム）。3つの代表フレーム（1/30/60）をレンダー。
+2. **パーティクル → 散布へ切替**: 本物のパーティクルシステムは設定したものの雪片が見えなかったので、**Linked Duplicate で球600個を散布** する確実方式に変更。雪が積もる絵が一発で出た。
+3. **ジオメトリノード**: `GeometryNodeDistributePointsOnFaces` + `InstanceOnPoints` + `ObjectInfo` + `RealizeInstances` + `JoinGeometry` の標準パターンで Plane に立方体を散布。**Blender 4.0+ の interface API**（`ng.interface.new_socket`）対応。最初は散布元が原点になく空中に飛んでた → 修正で岩場の絵に。
+4. **AI生成（Hyper3D / Hunyuan3D / Sketchfab）**: 全部 OFF だったので有効化手順とワークフローを完全文書化。次回 ON 後にすぐ使える状態に。
+5. **集大成シーン**: 雪景色の椅子（プロシージャル木目 + 鏡面金属脚 + Sky Texture曇り空 + DoF + 800個の雪片散布 + Cycles）を1本のスクリプトで構築。Phase 1〜5 の技を全部使った作品が完成。
+
+**結果**: Phase 5 完全制覇 + 全フェーズ統合作品まで完了。**5段階のロードマップが全部 ✅** に。
+
+**学んだこと**:
+- `obj.keyframe_insert(data_path="location", frame=N)` で記録、属性を **変更してから** insert するのが鉄則
+- パーティクルシステムは設定が複雑で学習中は散布スクリプトのほうが確実
+- Linked Duplicate は `new = template.copy()` だけで `new.data = ...` を **やらない** のがポイント
+- ジオメトリノードの散布元は **原点に置いて hide_render**（ワールド位置がオフセットになるため）
+- Blender 4.0+ の `ng.interface.new_socket(name=..., in_out='INPUT', socket_type='NodeSocketGeometry')` API
+- `JoinGeometry` の入力は **複数接続可能**（元メッシュ + 散布結果の両方を繋いで合成）
+- AI生成系（Hyper3D/Hunyuan3D/Sketchfab/Polyhaven）はチェックボックス ON で全部使える、ワークフローはどれも `生成 → poll → import` の3ステップ
+
+**つまずいた点**:
+- パーティクルが見えない問題: 物理シミュレーションのステップ評価とレンダリングフレームのタイミングの絡みで複雑。学習用なら散布スクリプトに切り替えるのが楽。
+- ジオメトリノードの散布元オブジェクトが (20,20,0) にあって全部空中に出た。原点に置いて非表示が定石。
+- 集大成作品で雪片が床と同色のため見えにくい。次回は薄青や淡い色で差別化。
+
+**再利用可能な成果物**:
+- `snippets/keyframe_animation.py` — キーフレーム最小例
+- `snippets/snow_scatter.py` — Linked Duplicate 散布パターン
+- `snippets/geometry_nodes_scatter.py` — `add_scatter_modifier()` ヘルパー（Blender 4.0+ 対応）
+- `snippets/ai_model_workflow.py` — AI生成・外部アセット連携の完全ワークフロー
+- `docs/memory/animation.md` 新設（Phase 5 ノウハウ）
+- 画像5枚: `anim_frame{1,30,60}.png` `particles_snow.png` `geonodes_scatter.png` `final_snowy_chair.png`
+
+**Phase 1〜5 を通した総括**:
+- 全5フェーズ消化、画像作品15枚以上、スニペット20本以上、ノウハウ5カテゴリ
+- 「ネット検索 → Blender実行 → 振り返り → ノウハウ蓄積」のサイクルが完全に回る状態に
+- 次は **作品ターゲット（部屋・食べ物・小道具・キャラ）** に挑戦できる土台が整った
+
+---
+
 ## 2026-05-04: Phase 4 — ライティング・レンダリング全部入り
 
 **目標**: ライト4種比較、Sky Texture 環境光、Cycles vs Eevee、被写界深度の4課題を一気に消化

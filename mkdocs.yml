@@ -87,6 +87,7 @@ nav:
       - モデリング: memory/modeling.md
       - マテリアル: memory/materials.md
       - ライティング: memory/lighting.md
+      - アニメーション・応用: memory/animation.md
   - スニペット集:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
@@ -107,6 +108,11 @@ nav:
       - 環境光（Sky Texture）: snippets/sky_environment.md
       - Cycles vs Eevee: snippets/cycles_vs_eevee.md
       - カメラ被写界深度: snippets/camera_dof.md
+      - キーフレームアニメ: snippets/keyframe_animation.md
+      - 雪片散布: snippets/snow_scatter.md
+      - ジオメトリノード散布: snippets/geometry_nodes_scatter.md
+      - AI生成・外部アセット: snippets/ai_model_workflow.md
+      - "🎉 集大成: 雪景色の椅子": snippets/final_snowy_chair.md
 
 copyright: "&copy; 2026 annachloe2025"
 

@@ -8,7 +8,7 @@ Blenderの知識をテーマごとに整理して蓄積する場所。
 - [モデリング](modeling.md) — bmesh・押し出し・ベベル・ブーリアン（Phase 2）
 - [マテリアル](materials.md) — Principled BSDF・質感レシピ・Cycles/Eevee（Phase 3）
 - [ライティング](lighting.md) — Light4種・Sky Texture・エンジン比較・DoF（Phase 4）
-- アニメーション — キーフレーム・コンストレイント *(準備中)*
+- [アニメーション・応用](animation.md) — キーフレーム・散布・ジオメトリノード・AI生成（Phase 5）
 - 落とし穴集 — よくあるエラーと対処 *(準備中)*
 
 ## 書き方の指針
