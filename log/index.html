@@ -525,6 +525,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-15-phase-7-4254-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-15: Phase 7 — 42ポーズ×5アングル×4パス量産 + HTMLギャラリー構築
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-14-phase-6-2-vroid-base_motoko-7" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -896,6 +907,8 @@
       
         
           
+        
+      
         
       
         
@@ -1732,6 +1745,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/generate_gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTMLギャラリー生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1790,6 +1831,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-15-phase-7-4254-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-15: Phase 7 — 42ポーズ×5アングル×4パス量産 + HTMLギャラリー構築
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1932,6 +1984,49 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-15-phase-7-4254-html">2026-05-15: Phase 7 — 42ポーズ×5アングル×4パス量産 + HTMLギャラリー構築<a class="headerlink" href="#2026-05-15-phase-7-4254-html" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: base_motoko を本格運用に乗せる。Mixamoから42モーションを追加DLし、各ポーズに <strong>5方向のカメラ</strong> からレンダーする多角度パイプラインへ拡張。さらに68種類の表情も追加レンダー。最終的に <strong>840+272枚</strong> の生成画像を階層型HTMLギャラリーで閲覧できる状態にする。</p>
+<p><strong>実行した手順</strong>:</p>
+<ol>
+<li><strong>シェイプキー復活</strong>: VRM→FBX→Mixamoの往復で消えていた58個のVRoid表情シェイプキーを、<code>join_shapes</code> 非依存で頂点座標を手動コピーする方式で個別復元（VRoidの<code>Face.003</code>から<code>base_motoko_Body</code>へ）</li>
+<li><strong>シェイプキー並べ替え</strong>: <code>bpy.ops.object.shape_key_move</code> を「現在位置を毎回再取得 → UP方向のみで挿入ソート」する <code>while True</code> パターンで安定収束させた（単純なindexベースのソートは100iter以上収束せず）</li>
+<li><strong>ボクシンググローブ装着</strong>:</li>
+<li>Hyper3D 系で生成、両手の手首ボーンに <code>parent_type='BONE'</code> で装着</li>
+<li><strong>pivotがfingertipsに来る問題</strong> → 3Dカーソルを bone head（手首）に移動 → <code>bpy.ops.object.origin_set(type='ORIGIN_CURSOR')</code> で原点を手首に移動</li>
+<li><strong>scale 100倍 + parent_inverse=Identity + location=(0,-bone_length,0)</strong> で正しい位置に配置（Mixamoアーマチュアの 0.01スケールとの相殺）</li>
+<li>Mask Modifier + 頂点グループで手のメッシュを非表示</li>
+<li><strong>モーション一覧テーブル作成</strong>: <code>blender/project/motion_memo.md</code> をユーザに記入してもらい、42ポーズの「撮影フレーム」を確定（hookは37、idleは1、upperは22 etc）</li>
+<li><strong>5アングルカメラシステム</strong>: <code>character_render_poses.py</code> に <code>STANDARD_CAMERA_ANGLES</code> を追加（front / left_45 / right_45 / left_side / right_side、距離4.5m）。キャラのspineを基準に毎フレーム動的に再配置</li>
+<li><strong>頭の向き制御</strong>: <code>CATEGORIES_HEAD_FACE_FORWARD = {"attacks"}</code> でattacksカテゴリだけ Track To constraint で頭を常に -Y 方向（仮想対戦相手）に向ける</li>
+<li><strong>大量レンダー実行</strong>: MCP タイムアウト対策のため、カテゴリ分割で順次実行（idles → downd+moves → cinematics → damaged 8+7 → attacks 5+5+4）。<strong>42ポーズ×5アングル×4パス = 840枚</strong> + <strong>68表情×4パス = 272枚</strong> = 計1112枚</li>
+<li><strong>階層型HTMLギャラリー作成</strong>: <code>snippets/generate_gallery.py</code> を新規作成</li>
+<li>トップ <code>index.html</code>: 110アイテムをカテゴリ別にサムネ一覧</li>
+<li>詳細（ポーズ）: 5アングル×4パス＝20枚を1ページに</li>
+<li>詳細（表情）: 4パスを1ページに</li>
+<li><strong>画像クリック→ライトボックスでviewportにフィット</strong>（85vmin強制縮小）</li>
+</ol>
+<p><strong>結果</strong>: <strong>成功</strong>。実用レベルのControlNet入力パックが完成。ローカルブラウザでサクサク閲覧可能。</p>
+<p><strong>学んだこと</strong>:
+- <strong>CSSセレクタの「子孫」と「要素＋クラス」の罠</strong>: <code>&lt;figure class="pass"&gt;</code> に対して <code>.pass figure a img</code> と書くと figure 自身は対象外（descendant selector は祖先を要求）。正しくは <code>figure.pass a img</code>。30分ハマった
+- <strong>vmin単位の有効性</strong>: ライトボックスで <code>max-width:95vw / max-height:95vh</code> だと 1024px画像が1920×1080画面でまったく縮小されない（95vh=1026px、すり抜ける）。<code>width:85vmin / height:85vmin</code> + <code>object-fit:contain</code> で必ず短辺基準85%に強制縮小できる
+- <strong>シェイプキーは個別コピーが必要</strong>: Blenderの <code>join_shapes</code> 演算子は「全シェイプの差分を1つに合成」してしまう。58個を個別に保ちたい場合は、ソース・ターゲット両方を <code>eval_get</code> した上でループで <code>shape_key_add</code> + 頂点座標コピーが必要
+- <strong>Bone parent + 子オブジェクトのスケール処理</strong>: 親アーマチュアがscale=0.01だと、子オブジェクトはローカルでscale=100倍にしないと実寸にならない。さらに <code>matrix_parent_inverse</code> を手動でIdentityに設定しないと座標が二重補正される
+- <strong>Cowork bashキャッシュは書き込みも壊す</strong>: bash経由でWindowsマウントに書き込もうとすると古いキャッシュ状態で「ディレクトリが存在しない」エラーが出る。Blender MCPの <code>execute_blender_code</code> で Python を直接Windows側プロセスで実行するのが確実</p>
+<p><strong>つまずいた点</strong>:
+- ライトボックスの画像が原寸表示される → 何度も試行錯誤後、原因は <strong>インラインのCSSセレクタが効いてなかった</strong> だけだった（ライトボックスは正しく動いてた）。ユーザのスクリーンショットで「インラインのサムネが大きい」と気づいて判明
+- BUILD タイムスタンプ帯をデバッグ用に表示 → file:// プロトコルでブラウザキャッシュが頑固な問題と切り分けできた</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/generate_gallery.py</code> (階層型HTMLギャラリー生成、ライトボックスJS+CSS同梱)
+- <code>snippets/character_render_poses.py</code> 拡張版（5アングルカメラ、Head Track To、表情リスト68個）
+- <code>blender/project/motion_memo.md</code> (42ポーズのフレーム表)
+- <code>blender/project/base_motoko_pose_pipeline.blend</code> (シェイプキー69個・グローブ装着・全マテリアル設定済み)
+- 出力: <code>blender/outputs/character/base_motoko/index.html</code>（ローカル閲覧用）</p>
+<p><strong>Phase 7 ステータス</strong>: <strong>完了</strong> ✅</p>
+<p>次のフェーズ候補:
+- ComfyUI実機でのControlNet通し検証
+- オーバーレイテクスチャ系（涙・怒りマーク・赤面）
+- 追加ポーズ・追加キャラ</p>
 <hr />
 <h2 id="2026-05-14-phase-6-2-vroid-base_motoko-7">2026-05-14: Phase 6 第2段 — VRoid (base_motoko) × 同7ポーズで再走、最終ゴール達成<a class="headerlink" href="#2026-05-14-phase-6-2-vroid-base_motoko-7" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: 自作VRoidキャラ (base_motoko.vrm) を Mixamo に再アップロードして自動リグ → 既存パイプラインに乗せて「自前キャラ × 複数ポーズ」を完成させる。</p>
