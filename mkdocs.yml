@@ -88,6 +88,7 @@ nav:
       - マテリアル: memory/materials.md
       - ライティング: memory/lighting.md
       - アニメーション・応用: memory/animation.md
+      - キャラクター・ポージング: memory/character.md
   - スニペット集:
       - 一覧: snippets/index.md
       - シーン全消し: snippets/clear_scene.md
@@ -113,6 +114,9 @@ nav:
       - ジオメトリノード散布: snippets/geometry_nodes_scatter.md
       - AI生成・外部アセット: snippets/ai_model_workflow.md
       - "🎉 集大成: 雪景色の椅子": snippets/final_snowy_chair.md
+      - キャラ・セットアップ: snippets/character_setup.md
+      - キャラ・複数ポーズ一括レンダー: snippets/character_render_poses.md
+      - VRoid→FBX(Mixamo向け): snippets/vrm_to_fbx_for_mixamo.md
 
 copyright: "&copy; 2026 annachloe2025"
 

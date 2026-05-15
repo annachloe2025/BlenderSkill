@@ -32,6 +32,120 @@
 
 ---
 
+## 2026-05-14: Phase 6 第2段 — VRoid (base_motoko) × 同7ポーズで再走、最終ゴール達成
+
+**目標**: 自作VRoidキャラ (base_motoko.vrm) を Mixamo に再アップロードして自動リグ → 既存パイプラインに乗せて「自前キャラ × 複数ポーズ」を完成させる。
+
+**実行した手順**:
+1. VRM Add-on for Blender (v3.26.8) で `base_motoko.vrm` をインポート → 127ボーンのHumanoid Tポーズで読み込み確認
+2. `snippets/vrm_to_fbx_for_mixamo.py` を新規作成: VRMインポート → アーマチュア込みでFBXエクスポート
+3. **1回目失敗**: Mixamoにアップしたが、ダウンロードしたFBXのボーン名が `J_Bip_C_Hips` 等のVRoid Humanoid命名のまま。auto-rigが走っていない
+4. **原因特定**: `object_types={'ARMATURE', 'MESH'}` で出していたため、Mixamoが「既にリグ済み」と判定してauto-rig画面そのものをスキップしていた
+5. `vrm_to_fbx_for_mixamo.py` を `object_types={'MESH'}` に変更して再エクスポート
+6. ユーザがMixamoに再アップロード → 今度はauto-rigger画面が出て、ジョイントマーカー配置 → auto-rig完了 → With Skin/T-Pose でDL
+7. 新FBXをBlenderにインポート → ボーン名が `mixamorig:Hips` 等の Mixamo 命名に変わったことを確認（65ボーン、Jennifer同等）
+8. `character_render_poses.py` で全7ポーズ一括レンダー → `blender/outputs/character/base_motoko/poses/` に 7×4=28枚生成
+9. .blend保存: `blender/project/base_motoko_pose_pipeline.blend` (25MB)
+
+**結果**: **成功**。Jenniferとbase_motokoで同じパイプラインを通せることを実証。最終ゴール「複数キャラ × 複数ポーズの量産」基盤が完成。
+
+**学んだこと**:
+- **Mixamo auto-rigはメッシュのみのFBXを期待する**。アーマチュア込みで投げるとauto-rigスキップされ、元のリグのまま返ってくる罠 → `object_types={'MESH'}` 必須
+- VRoidキャラのFBXは VRM Add-on でVRMを読み込めば中間ファイルを作れる。`use_mesh_modifiers=True` でT-poseバインドが焼き込まれる
+- Mixamo経由でMToonシェーダーは失われるが、**実レンダー結果は意外と綺麗**（ビューポートのSolidモードだけマゼンタに見える）。ControlNet用途なら問題なし
+- 既存のスニペット (`character_setup.py`, `character_render_poses.py`) は **キャラのFBXパスを切り替えるだけ**で別キャラに転用可能。汎用性が証明された
+
+**つまずいた点**:
+- 1回目のMixamoアップで「auto-rigが走らないバグ？」と疑ったが、実は仕様（アーマチュア入りFBXのスキップ動作）。回避策のために `motoko_v2.fbx` というy軸+1mmずらした別ファイルまで作ったが、結局アーマチュア除外で解決した（v2は不要だった）
+- ビューポートでマゼンタ顔・髪欠落に見えて慌てたが、レンダー結果は綺麗 → Solidビューポートと Eevee レンダーの評価の差を理解する必要
+
+**再利用可能な成果物**:
+- `snippets/vrm_to_fbx_for_mixamo.py` (VRM→Mixamo向けFBX変換、mesh-only版)
+- `blender/project/base_motoko_pose_pipeline.blend` (base_motokoシーン)
+- `docs/memory/character.md` に「VRoid → Mixamo の落とし穴」セクション追加
+
+**Phase 6 ステータス**: **完了** ✅
+
+次のフェーズ候補:
+- ComfyUIで実際にControlNetを通して画像生成、品質検証
+- 別キャラ追加（VRoidで複数体）
+- 別ポーズ追加（Mixamoから新規モーションDL）
+- マテリアル本格復元（MToonライクなトゥーンシェーダー再構築）
+
+---
+
+## 2026-05-14: Phase 6 着手 — Jennifer × 7ポーズ ControlNet入力量産
+
+**目標**: AI画像生成（Stable Diffusion + ControlNet）の入力画像を Blender で量産する基盤を作る。1キャラに対し、Mixamoの複数モーションFBXからポーズだけを抜き出して当て、Beauty / Depth / Normal / OpenPose の4種類PNGを一括出力するパイプラインを構築。
+
+**調べた情報**:
+- Mixamo は素体FBXに対して「Without Skin」でモーションだけのFBXがDLでき、ボーンは Mixamo命名規則で統一されている
+- ControlNet 4入力（Depth, OpenPose, Canny素材=Beauty, Normal）の規格と色付け
+- Blender 5.1.1 のコンポジタAPI（5.x で大改修されている）
+
+**実行した手順**:
+1. **計画＆フォルダ準備**: `docs/tasks.md` に Phase 6 を追加、`assets/mixamo/` と `outputs/character/poses/` を作成
+2. **素材取得**（ユーザ作業）: Jennifer (With Skin, T-Pose) と 7モーション (Without Skin) をMixamoからDL
+3. **スニペット作成**:
+   - `snippets/character_setup.py`: クリーンシーン → Jenniferインポート → カメラ・ライト・レンダー設定
+   - `snippets/character_render_poses.py`: ポーズ転写 → 4種類画像生成 のメインパイプライン
+4. **デバッグ反復**（ここが本日の山場、5.x の罠の連発）:
+   - `scene.node_tree` が無い → `scene.compositing_node_group` に変更
+   - `MixRGB`/`MapRange` 等のノードが消失 → Depth/Normal は生EXRで書き出して numpy で後段処理
+   - `OutputFile.base_path` → `directory`、`file_slots` → `file_output_items`
+   - `format.media_type = 'IMAGE'` を立てないと OPEN_EXR_MULTILAYER 固定 になる
+   - Pillow が入っていない → numpy + `bpy.data.images.new()` + `image.save_render()` で全PNG出力に切替
+   - ボーン名が `mixamorig1:` になっていた（重複回避でユニーク化） → 接尾辞マッチに変更
+   - Jennifer に `Armature|mixamo.com|Layer0` アクションが勝手にバインドされていて、`frame_set(1)` で T-pose に巻き戻る → インポート直後に `animation_data.action = None` で外す
+5. **全7ポーズの一括レンダー**: `boxing`, `hook`, `idle`, `receiving_a_big_uppercut`, `running`, `victory`, `walking` で 7×4=28枚生成
+6. **目視確認**: Idle / Victory / Boxing / Running の4ポーズが明確に別物、OpenPose 18点全て可視、Depth はクリーンなシルエット、Normal は教科書通りの色配置
+
+**結果**: **成功**。`outputs/character/poses/<pose_name>/` 配下に `beauty.png` / `depth.png` (16bit) / `normal.png` / `openpose.png` が全7ポーズ分揃った。そのまま Stable Diffusion の ControlNet に流せる品質。
+
+**学んだこと**:
+- Blender 5.x はコンポジタを「Realtime Compositor」として書き直し中で、3.x/4.x のサンプルコードはほぼ全滅する。`Scene.compositing_node_group`, `OutputFile.directory`, `format.media_type = 'IMAGE'` の3点をまず知っていれば足りる
+- Mixamo の「Without Skin」FBXからポーズだけ転写する方式は、リギング知識ゼロでも回せる優秀なテクニック。両側Mixamoボーン命名で接尾辞マッチすればVRoidや他のリグへの展開も可能
+- インポート時に勝手につくアクションは、後段でposeを上書きする処理と相性が悪い。**素体を読み込んだら即 action=None** が定石
+- OpenPose 画像は Blender からアーマチュアのボーン頭尾をカメラ平面に投影＋numpyで描画するだけで自前生成できる。OpenPose検出器を後段で使う必要なし
+
+**つまずいた点**:
+- `if __name__ == "__main__": main()` ガードが `exec(open(...).read())` でスキップされる → `importlib.util.spec_from_file_location` でモジュール化して `mod.main()` 直叩きに
+- 「コンポジタが動いてるが何も出力されない」状態にハマる。原因は `file_output_items` の追加忘れ＋`media_type` の初期値
+- Pillow が無いことに気づくのに少し時間がかかった（試行錯誤の途中でPILが在ったように見えた瞬間があったが、新規モジュール環境では消えていた）
+
+**再利用可能な成果物**:
+- `snippets/character_setup.py` (Jenniferをスケール正規化＋カメラ/ライト/レンダー設定)
+- `snippets/character_render_poses.py` (ポーズ転写＋4種類画像出力パイプライン、Pillow非依存)
+- `docs/memory/character.md` (Phase 6 のノウハウ・ハマリ全集)
+- `docs/snippets/character_setup.md`, `docs/snippets/character_render_poses.md`
+
+**次に向けて**:
+- 次回: VRoid VRMキャラを Mixamo に再アップロードして再リグ → 同じパイプラインに乗せて「VRoidキャラ × 複数ポーズ」を実現
+- VRoid のトゥーンシェーダーは Mixamo再リグで失われるので、Principled BSDF から NPR寄りシェーダーへの再構築が次の課題
+- ControlNet 実機テスト（出力画像を実際に Stable Diffusion に通して品質検証）
+
+---
+
+## 2026-05-04: フォローアップ — 集大成シーンを保存
+
+**目標**: 集大成作品を「再開できる状態」にする
+
+**実行した手順**:
+1. **`.blend` 保存**: `bpy.ops.wm.save_as_mainfile(filepath=..., compress=True)` で `outputs/final_snowy_chair.blend`（220KB、圧縮済み）に保存。`.gitignore` の `*.blend` で除外済みなので git には上がらない（ローカル専用）。
+2. **スクリプト保存忘れ修正**: 集大成のコード本体を `snippets/final_snowy_chair.py`（192行）として保存。`docs/snippets/final_snowy_chair.md` から `pymdownx.snippets` で参照できるように更新。
+3. **再現性の確認**: スクリプトだけでシーンを再構築できる。`.blend` ファイルがあれば即時再開、無くてもスクリプト実行で完全復元可能。
+
+**学んだこと**:
+- **作品スクリプトはセッションごとに必ず `snippets/.py` に保存する**（インライン実行だけだと履歴に残らない）
+- `.blend` は `compress=True` で大幅に縮む（800オブジェクト=220KB）
+- 「コード = 真実」「.blend = 編集作業の出発点」という二重管理が安全
+
+**再利用可能な成果物**:
+- `outputs/final_snowy_chair.blend` — 開けば即編集可能なシーン（git追跡外）
+- `snippets/final_snowy_chair.py` — コードから完全再現
+
+---
+
 ## 2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品
 
 **目標**: 応用編5項目を全部消化し、**Phase 1〜5 の集大成シーン** を1本のスクリプトで再現できる状態にする。

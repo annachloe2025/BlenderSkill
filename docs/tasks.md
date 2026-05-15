@@ -2,9 +2,27 @@
 
 ## 進行中
 
-（なし）
+（なし — Phase 6 完了）
 
-## 次にやること（優先度順）
+## 次にやること（候補）
+
+### Phase 7 候補（任意で着手）
+
+- [ ] **ComfyUI実機テスト**: 28+28枚を実際にStable Diffusion + ControlNetに通して品質検証。OpenPose単体・OpenPose+Depth・3枚全部の段階比較
+- [ ] **別キャラ追加**: VRoidでもう1〜2体作成、または既存VRoidの別バリエーション
+- [ ] **ポーズパック拡張**: Mixamoから新規ポーズDLしてレパートリー追加（座り・寝・武器持ち等）
+- [ ] **マテリアル本格復元**: MToonライクなトゥーンシェーダーをBlender NPRノードで再構築、より「アニメ絵に近いBeauty」を生成
+- [ ] **複数キャラ×複数ポーズの完全自動化**: キャラ別フォルダを順に処理する高レベルランナー作成
+
+### Phase 6 完了サマリ（参考）
+
+- ✅ Jennifer（実写系）+ base_motoko（アニメ系）の2キャラで同一パイプライン動作確認
+- ✅ 各キャラ × 7ポーズ × 4種類画像 = **56枚のControlNet入力**生成済み
+- ✅ スニペット3本（character_setup / character_render_poses / vrm_to_fbx_for_mixamo）
+- ✅ .blend保存（Jennifer / base_motoko 両方）
+- ✅ memory/character.md にBlender 5.x + VRoid + Mixamo 全罠の知見蓄積
+
+## 次にやること（過去案件、すべて完了済み）
 
 ### Phase 1: 基礎編
 
@@ -58,6 +76,8 @@
 
 ## 完了済み
 
+- [x] 2026-05-14: Phase 6 **完了** — VRoid (base_motoko) 第二段。Jennifer + base_motoko の2キャラ × 7ポーズ × 4種類 = **56枚のControlNet入力**を同一パイプラインで生成。最終ゴール「複数キャラ × 複数ポーズの量産」達成
+- [x] 2026-05-14: Phase 6 着手 — Jennifer × 7ポーズで ControlNet 4種類入力（Beauty/Depth/Normal/OpenPose）の量産パイプライン完成
 - [x] 2026-05-04: Phase 5 完了 + 全Phase統合作品（雪景色の椅子）— **全ロードマップ達成**
 - [x] 2026-05-04: Phase 4 完了（ライト4種・Sky Texture・Cycles vs Eevee・DoF）画像8枚
 - [x] 2026-05-04: Phase 3 完了（プロシージャル木目・ノードグラフ・UV展開）chair_v3

@@ -4,6 +4,14 @@
 
 ![雪景色の椅子](../images/final_snowy_chair.png)
 
+## コード本体
+
+```python
+--8<-- "snippets/final_snowy_chair.py"
+```
+
+完全自己完結型。`reset → 椅子 → 雪散布 → 空 → ライト → カメラ → レンダー設定` まで1本に詰まっている。
+
 ## 使用技術の対応表
 
 | Phase | 技術 | この作品での使用箇所 |

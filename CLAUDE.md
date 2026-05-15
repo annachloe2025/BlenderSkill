@@ -71,3 +71,28 @@ BlenderSkill/
 - **小さく試す**: 一度に大量のコードを実行せず、段階的に確認する。
 - **検証を怠らない**: 実行後はスクリーンショットで必ず目視確認。
 - **再利用性を意識**: 「次も使えそう」なコードは `snippets/` に切り出す。
+
+## バイナリ・ローカル専用フォルダ
+
+- `blender/` 配下に **FBX / レンダー出力PNG / .blend / EXR 等のバイナリは全部入れる**。`.gitignore` で丸ごと除外済み（GitHubに上がらない）。
+- 公開対象（git追跡）は `docs/`, `snippets/`, `overrides/`, `mkdocs.yml`, `requirements.txt` 等のテキスト・コード資産だけ。
+- 構造:
+  - `blender/assets/mixamo/*.fbx` — Mixamoから手動DLした素体・ポーズFBX
+  - `blender/outputs/character/poses/<pose_name>/*.png` — レンダー結果
+  - `blender/outputs/*.blend` — 保存した.blendシーン
+- スクリプトのハードコードパスも `blender/` 配下を参照する。例: `character_setup.py` の `CHARACTER_FBX`, `character_render_poses.py` の `POSE_FBX_GLOB` / `OUTPUT_ROOT`。
+
+## ⚠️ Cowork の bash マウントキャッシュ問題（重要）
+
+**症状**: Cowork の bash サンドボックス（`mcp__workspace__bash`）から Windows 側のマウントフォルダを `ls` / `find` / `stat` / `cat` / `wc -l` 等で見ると、**最大1時間古いキャッシュ**を返してくる。エラーは出ず、それっぽい結果を返すので **silent corruption** になる。
+
+**原因**: Cowork は Windows フォルダを rclone FUSE 経由でサンドボックスに見せており、その mount オプションが `cache_duration_s = 3600`（1時間キャッシュ）で固定されている。Windows側で（Edit/Write ツールやユーザの手動操作で）ファイルを変更しても、bash側からは1時間経過まで旧状態が見える。
+
+**今日の実例**: ユーザが Explorer で `assets/mixamo/` と `outputs/character/poses/` を `blender/` 配下に移動 → bashの `find` は移動先を空フォルダと判定（移動が見えてない）→ Claude が「ファイルが消えた！」と誤解釈、ユーザは「普通にあるよ」と反論、というすれ違いが発生。
+
+**回避策**:
+- ファイル一覧・存在確認は **Glob / Read ツールを使う**（これらはホスト側パスを直接読むのでキャッシュ無関係）
+- bash は **コマンド実行（mv, mkdir 等の書き込み系）と、サンドボックス内ファイル(`/tmp` 等)の処理にだけ使う**
+- どうしても bash で確認が要るときは「Glob で見た通りなので bash 出力は古いだけ」とユーザに伝えて Glob 結果を信頼する
+
+**関連 issue**: anthropics/claude-code #45433, #41710, #55877, #40191, #42520, #28015 等。
