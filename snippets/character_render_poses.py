@@ -79,15 +79,18 @@ POSE_FRAMES = {
     "walking": 5,
 }
 
-# 5つの標準カメラアングル（キャラの胸付近をターゲット、4.5m距離）
+# 5つの標準カメラアングル（キャラの胸付近をターゲット、2.0m距離）
+# 2026-05-15 ユーザ依頼で距離を縮め、カメラ高さを胸レベルに変更
+#   旧: distance=4.5m, height=1.5m （頭〜目線レベル、全身余白あり）
+#   新: distance=2.0m, height=1.0m （胸レベル、足首から下が切れる詰まり構図）
 STANDARD_CAMERA_ANGLES = [
-    {"name": "front",      "offset_xy": (0.0, -4.5)},
-    {"name": "left_45",    "offset_xy": (3.18, -3.18)},   # キャラの左前45度
-    {"name": "right_45",   "offset_xy": (-3.18, -3.18)},  # キャラの右前45度
-    {"name": "left_side",  "offset_xy": (4.5, 0.0)},      # キャラの左サイド
-    {"name": "right_side", "offset_xy": (-4.5, 0.0)},     # キャラの右サイド
+    {"name": "front",      "offset_xy": (0.0, -2.0)},
+    {"name": "left_45",    "offset_xy": (1.414, -1.414)},   # キャラの左前45度
+    {"name": "right_45",   "offset_xy": (-1.414, -1.414)},  # キャラの右前45度
+    {"name": "left_side",  "offset_xy": (2.0, 0.0)},        # キャラの左サイド
+    {"name": "right_side", "offset_xy": (-2.0, 0.0)},       # キャラの右サイド
 ]
-CAMERA_HEIGHT = 1.5
+CAMERA_HEIGHT = 1.0
 CAMERA_LENS = 50.0
 
 # 攻撃系カテゴリは head を「正面（-Y方向）」に向け固定

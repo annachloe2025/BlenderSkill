@@ -117,6 +117,7 @@ nav:
       - キャラ・セットアップ: snippets/character_setup.md
       - キャラ・複数ポーズ一括レンダー: snippets/character_render_poses.md
       - VRoid→FBX(Mixamo向け): snippets/vrm_to_fbx_for_mixamo.md
+      - HTMLギャラリー生成: snippets/generate_gallery.md
 
 copyright: "&copy; 2026 annachloe2025"
 
