@@ -525,6 +525,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2026-05-14-phase-6-2-vroid-base_motoko-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-14: Phase 6 第2段 — VRoid (base_motoko) × 同7ポーズで再走、最終ゴール達成
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-14-phase-6-jennifer-7-controlnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-14: Phase 6 着手 — Jennifer × 7ポーズ ControlNet入力量産
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: フォローアップ — 集大成シーンを保存
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#2026-05-04-phase-5-ai" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -609,6 +642,8 @@
       
         
           
+        
+      
         
       
         
@@ -815,6 +850,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/character/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    キャラクター・ポージング
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -833,6 +896,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1579,6 +1648,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/character_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    キャラ・セットアップ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/character_render_poses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    キャラ・複数ポーズ一括レンダー
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snippets/vrm_to_fbx_for_mixamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VRoid→FBX(Mixamo向け)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1637,6 +1790,39 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-14-phase-6-2-vroid-base_motoko-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-14: Phase 6 第2段 — VRoid (base_motoko) × 同7ポーズで再走、最終ゴール達成
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-14-phase-6-jennifer-7-controlnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-14: Phase 6 着手 — Jennifer × 7ポーズ ControlNet入力量産
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-04: フォローアップ — 集大成シーンを保存
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1746,6 +1932,94 @@
 <p><strong>再利用可能な成果物</strong>:
 - snippets/xxx.py
 - memory/xxx.md に追記</p>
+<hr />
+<h2 id="2026-05-14-phase-6-2-vroid-base_motoko-7">2026-05-14: Phase 6 第2段 — VRoid (base_motoko) × 同7ポーズで再走、最終ゴール達成<a class="headerlink" href="#2026-05-14-phase-6-2-vroid-base_motoko-7" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: 自作VRoidキャラ (base_motoko.vrm) を Mixamo に再アップロードして自動リグ → 既存パイプラインに乗せて「自前キャラ × 複数ポーズ」を完成させる。</p>
+<p><strong>実行した手順</strong>:
+1. VRM Add-on for Blender (v3.26.8) で <code>base_motoko.vrm</code> をインポート → 127ボーンのHumanoid Tポーズで読み込み確認
+2. <code>snippets/vrm_to_fbx_for_mixamo.py</code> を新規作成: VRMインポート → アーマチュア込みでFBXエクスポート
+3. <strong>1回目失敗</strong>: Mixamoにアップしたが、ダウンロードしたFBXのボーン名が <code>J_Bip_C_Hips</code> 等のVRoid Humanoid命名のまま。auto-rigが走っていない
+4. <strong>原因特定</strong>: <code>object_types={'ARMATURE', 'MESH'}</code> で出していたため、Mixamoが「既にリグ済み」と判定してauto-rig画面そのものをスキップしていた
+5. <code>vrm_to_fbx_for_mixamo.py</code> を <code>object_types={'MESH'}</code> に変更して再エクスポート
+6. ユーザがMixamoに再アップロード → 今度はauto-rigger画面が出て、ジョイントマーカー配置 → auto-rig完了 → With Skin/T-Pose でDL
+7. 新FBXをBlenderにインポート → ボーン名が <code>mixamorig:Hips</code> 等の Mixamo 命名に変わったことを確認（65ボーン、Jennifer同等）
+8. <code>character_render_poses.py</code> で全7ポーズ一括レンダー → <code>blender/outputs/character/base_motoko/poses/</code> に 7×4=28枚生成
+9. .blend保存: <code>blender/project/base_motoko_pose_pipeline.blend</code> (25MB)</p>
+<p><strong>結果</strong>: <strong>成功</strong>。Jenniferとbase_motokoで同じパイプラインを通せることを実証。最終ゴール「複数キャラ × 複数ポーズの量産」基盤が完成。</p>
+<p><strong>学んだこと</strong>:
+- <strong>Mixamo auto-rigはメッシュのみのFBXを期待する</strong>。アーマチュア込みで投げるとauto-rigスキップされ、元のリグのまま返ってくる罠 → <code>object_types={'MESH'}</code> 必須
+- VRoidキャラのFBXは VRM Add-on でVRMを読み込めば中間ファイルを作れる。<code>use_mesh_modifiers=True</code> でT-poseバインドが焼き込まれる
+- Mixamo経由でMToonシェーダーは失われるが、<strong>実レンダー結果は意外と綺麗</strong>（ビューポートのSolidモードだけマゼンタに見える）。ControlNet用途なら問題なし
+- 既存のスニペット (<code>character_setup.py</code>, <code>character_render_poses.py</code>) は <strong>キャラのFBXパスを切り替えるだけ</strong>で別キャラに転用可能。汎用性が証明された</p>
+<p><strong>つまずいた点</strong>:
+- 1回目のMixamoアップで「auto-rigが走らないバグ？」と疑ったが、実は仕様（アーマチュア入りFBXのスキップ動作）。回避策のために <code>motoko_v2.fbx</code> というy軸+1mmずらした別ファイルまで作ったが、結局アーマチュア除外で解決した（v2は不要だった）
+- ビューポートでマゼンタ顔・髪欠落に見えて慌てたが、レンダー結果は綺麗 → Solidビューポートと Eevee レンダーの評価の差を理解する必要</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/vrm_to_fbx_for_mixamo.py</code> (VRM→Mixamo向けFBX変換、mesh-only版)
+- <code>blender/project/base_motoko_pose_pipeline.blend</code> (base_motokoシーン)
+- <code>docs/memory/character.md</code> に「VRoid → Mixamo の落とし穴」セクション追加</p>
+<p><strong>Phase 6 ステータス</strong>: <strong>完了</strong> ✅</p>
+<p>次のフェーズ候補:
+- ComfyUIで実際にControlNetを通して画像生成、品質検証
+- 別キャラ追加（VRoidで複数体）
+- 別ポーズ追加（Mixamoから新規モーションDL）
+- マテリアル本格復元（MToonライクなトゥーンシェーダー再構築）</p>
+<hr />
+<h2 id="2026-05-14-phase-6-jennifer-7-controlnet">2026-05-14: Phase 6 着手 — Jennifer × 7ポーズ ControlNet入力量産<a class="headerlink" href="#2026-05-14-phase-6-jennifer-7-controlnet" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: AI画像生成（Stable Diffusion + ControlNet）の入力画像を Blender で量産する基盤を作る。1キャラに対し、Mixamoの複数モーションFBXからポーズだけを抜き出して当て、Beauty / Depth / Normal / OpenPose の4種類PNGを一括出力するパイプラインを構築。</p>
+<p><strong>調べた情報</strong>:
+- Mixamo は素体FBXに対して「Without Skin」でモーションだけのFBXがDLでき、ボーンは Mixamo命名規則で統一されている
+- ControlNet 4入力（Depth, OpenPose, Canny素材=Beauty, Normal）の規格と色付け
+- Blender 5.1.1 のコンポジタAPI（5.x で大改修されている）</p>
+<p><strong>実行した手順</strong>:
+1. <strong>計画＆フォルダ準備</strong>: <code>docs/tasks.md</code> に Phase 6 を追加、<code>assets/mixamo/</code> と <code>outputs/character/poses/</code> を作成
+2. <strong>素材取得</strong>（ユーザ作業）: Jennifer (With Skin, T-Pose) と 7モーション (Without Skin) をMixamoからDL
+3. <strong>スニペット作成</strong>:
+   - <code>snippets/character_setup.py</code>: クリーンシーン → Jenniferインポート → カメラ・ライト・レンダー設定
+   - <code>snippets/character_render_poses.py</code>: ポーズ転写 → 4種類画像生成 のメインパイプライン
+4. <strong>デバッグ反復</strong>（ここが本日の山場、5.x の罠の連発）:
+   - <code>scene.node_tree</code> が無い → <code>scene.compositing_node_group</code> に変更
+   - <code>MixRGB</code>/<code>MapRange</code> 等のノードが消失 → Depth/Normal は生EXRで書き出して numpy で後段処理
+   - <code>OutputFile.base_path</code> → <code>directory</code>、<code>file_slots</code> → <code>file_output_items</code>
+   - <code>format.media_type = 'IMAGE'</code> を立てないと OPEN_EXR_MULTILAYER 固定 になる
+   - Pillow が入っていない → numpy + <code>bpy.data.images.new()</code> + <code>image.save_render()</code> で全PNG出力に切替
+   - ボーン名が <code>mixamorig1:</code> になっていた（重複回避でユニーク化） → 接尾辞マッチに変更
+   - Jennifer に <code>Armature|mixamo.com|Layer0</code> アクションが勝手にバインドされていて、<code>frame_set(1)</code> で T-pose に巻き戻る → インポート直後に <code>animation_data.action = None</code> で外す
+5. <strong>全7ポーズの一括レンダー</strong>: <code>boxing</code>, <code>hook</code>, <code>idle</code>, <code>receiving_a_big_uppercut</code>, <code>running</code>, <code>victory</code>, <code>walking</code> で 7×4=28枚生成
+6. <strong>目視確認</strong>: Idle / Victory / Boxing / Running の4ポーズが明確に別物、OpenPose 18点全て可視、Depth はクリーンなシルエット、Normal は教科書通りの色配置</p>
+<p><strong>結果</strong>: <strong>成功</strong>。<code>outputs/character/poses/&lt;pose_name&gt;/</code> 配下に <code>beauty.png</code> / <code>depth.png</code> (16bit) / <code>normal.png</code> / <code>openpose.png</code> が全7ポーズ分揃った。そのまま Stable Diffusion の ControlNet に流せる品質。</p>
+<p><strong>学んだこと</strong>:
+- Blender 5.x はコンポジタを「Realtime Compositor」として書き直し中で、3.x/4.x のサンプルコードはほぼ全滅する。<code>Scene.compositing_node_group</code>, <code>OutputFile.directory</code>, <code>format.media_type = 'IMAGE'</code> の3点をまず知っていれば足りる
+- Mixamo の「Without Skin」FBXからポーズだけ転写する方式は、リギング知識ゼロでも回せる優秀なテクニック。両側Mixamoボーン命名で接尾辞マッチすればVRoidや他のリグへの展開も可能
+- インポート時に勝手につくアクションは、後段でposeを上書きする処理と相性が悪い。<strong>素体を読み込んだら即 action=None</strong> が定石
+- OpenPose 画像は Blender からアーマチュアのボーン頭尾をカメラ平面に投影＋numpyで描画するだけで自前生成できる。OpenPose検出器を後段で使う必要なし</p>
+<p><strong>つまずいた点</strong>:
+- <code>if __name__ == "__main__": main()</code> ガードが <code>exec(open(...).read())</code> でスキップされる → <code>importlib.util.spec_from_file_location</code> でモジュール化して <code>mod.main()</code> 直叩きに
+- 「コンポジタが動いてるが何も出力されない」状態にハマる。原因は <code>file_output_items</code> の追加忘れ＋<code>media_type</code> の初期値
+- Pillow が無いことに気づくのに少し時間がかかった（試行錯誤の途中でPILが在ったように見えた瞬間があったが、新規モジュール環境では消えていた）</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>snippets/character_setup.py</code> (Jenniferをスケール正規化＋カメラ/ライト/レンダー設定)
+- <code>snippets/character_render_poses.py</code> (ポーズ転写＋4種類画像出力パイプライン、Pillow非依存)
+- <code>docs/memory/character.md</code> (Phase 6 のノウハウ・ハマリ全集)
+- <code>docs/snippets/character_setup.md</code>, <code>docs/snippets/character_render_poses.md</code></p>
+<p><strong>次に向けて</strong>:
+- 次回: VRoid VRMキャラを Mixamo に再アップロードして再リグ → 同じパイプラインに乗せて「VRoidキャラ × 複数ポーズ」を実現
+- VRoid のトゥーンシェーダーは Mixamo再リグで失われるので、Principled BSDF から NPR寄りシェーダーへの再構築が次の課題
+- ControlNet 実機テスト（出力画像を実際に Stable Diffusion に通して品質検証）</p>
+<hr />
+<h2 id="2026-05-04">2026-05-04: フォローアップ — 集大成シーンを保存<a class="headerlink" href="#2026-05-04" title="Permanent link">&para;</a></h2>
+<p><strong>目標</strong>: 集大成作品を「再開できる状態」にする</p>
+<p><strong>実行した手順</strong>:
+1. <strong><code>.blend</code> 保存</strong>: <code>bpy.ops.wm.save_as_mainfile(filepath=..., compress=True)</code> で <code>outputs/final_snowy_chair.blend</code>（220KB、圧縮済み）に保存。<code>.gitignore</code> の <code>*.blend</code> で除外済みなので git には上がらない（ローカル専用）。
+2. <strong>スクリプト保存忘れ修正</strong>: 集大成のコード本体を <code>snippets/final_snowy_chair.py</code>（192行）として保存。<code>docs/snippets/final_snowy_chair.md</code> から <code>pymdownx.snippets</code> で参照できるように更新。
+3. <strong>再現性の確認</strong>: スクリプトだけでシーンを再構築できる。<code>.blend</code> ファイルがあれば即時再開、無くてもスクリプト実行で完全復元可能。</p>
+<p><strong>学んだこと</strong>:
+- <strong>作品スクリプトはセッションごとに必ず <code>snippets/.py</code> に保存する</strong>（インライン実行だけだと履歴に残らない）
+- <code>.blend</code> は <code>compress=True</code> で大幅に縮む（800オブジェクト=220KB）
+- 「コード = 真実」「.blend = 編集作業の出発点」という二重管理が安全</p>
+<p><strong>再利用可能な成果物</strong>:
+- <code>outputs/final_snowy_chair.blend</code> — 開けば即編集可能なシーン（git追跡外）
+- <code>snippets/final_snowy_chair.py</code> — コードから完全再現</p>
 <hr />
 <h2 id="2026-05-04-phase-5-ai">2026-05-04: Phase 5 完了 — アニメ / パーティクル / ジオメトリノード / AI生成 / 集大成作品<a class="headerlink" href="#2026-05-04-phase-5-ai" title="Permanent link">&para;</a></h2>
 <p><strong>目標</strong>: 応用編5項目を全部消化し、<strong>Phase 1〜5 の集大成シーン</strong> を1本のスクリプトで再現できる状態にする。</p>
