@@ -17,7 +17,7 @@ import bpy
 import os
 
 # テクスチャフォルダのデフォルト
-TEXTURE_DIR = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\vroid\base_motoko\textures"
+TEXTURE_DIR = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\characters\base_motoko\textures"
 
 
 def _find_images_by_label(label):

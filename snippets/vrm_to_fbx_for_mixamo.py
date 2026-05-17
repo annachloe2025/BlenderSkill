@@ -25,8 +25,8 @@ import os
 
 # ---- 設定 -----------------------------------------------------------------
 
-VRM_PATH = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\vroid\base_motoko\base_motoko.vrm"
-OUT_FBX  = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\vroid\base_motoko\base_motoko_for_mixamo.fbx"
+VRM_PATH = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\characters\base_motoko\base_motoko.vrm"
+OUT_FBX  = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\characters\base_motoko\base_motoko_for_mixamo.fbx"
 
 
 # ---- ヘルパー -------------------------------------------------------------

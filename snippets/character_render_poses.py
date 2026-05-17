@@ -26,12 +26,10 @@ import numpy as np
 
 # ---- 設定 -----------------------------------------------------------------
 
-POSE_FBX_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\mixamo"
+POSE_FBX_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\animations"
 POSE_FBX_GLOB = POSE_FBX_ROOT + r"\**\*.fbx"   # 再帰glob
-OUTPUT_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\character\base_motoko\poses"
+OUTPUT_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\single_render\base_motoko\poses"
 CHARACTER_ARMATURE_NAME = "Character"
-EXCLUDE_CHARACTER_FILE = "Jennifer.fbx"   # 旧キャラ本体FBX（pose globから除外）
-EXCLUDE_CATEGORY_DIRS = {"characters"}    # このディレクトリ配下のFBXは全部スキップ
 
 # ポーズごとの「決めフレーム」指定（slug 名 → frame番号）
 # 指定が無いポーズはアニメの中央フレームが使われる
@@ -96,6 +94,68 @@ CAMERA_LENS = 50.0
 # 攻撃系カテゴリは head を「正面（-Y方向）」に向け固定
 CATEGORIES_HEAD_FACE_FORWARD = {"attacks"}
 
+# === 拡張 framing（fullbody以外の追加構図）===
+# distance, height, look_at_z, lens を各 framing で指定。
+# 5アングル方向は make_framing_angles() で distance から自動生成（front/left_45/right_45/left_side/right_side）
+FRAMING_CONFIGS = {
+    "bustup": {
+        "distance": 1.2,
+        "height":   1.2,    # 顔レベル
+        "look_at_z": 1.10,  # 顎〜首
+        "lens":     50.0,
+    },
+    "lowangle": {
+        "distance": 1.2,    # さらに寄せ
+        "height":   0.3,    # ほぼ床、見上げ構図
+        "look_at_z": 1.0,   # 胸あたり
+        "lens":     50.0,
+    },
+    "topdown": {
+        "distance": 1.4,
+        "height":   1.8,    # 2.0 → 1.8 さらに緩く
+        "look_at_z": 1.0,   # 胸あたり
+        "lens":     50.0,
+    },
+}
+
+
+def make_framing_angles(distance):
+    """5方向の標準アングル offset を任意距離で生成。"""
+    s = distance / math.sqrt(2)
+    return [
+        {"name": "front",      "offset_xy": (0.0, -distance)},
+        {"name": "left_45",    "offset_xy": (s, -s)},
+        {"name": "right_45",   "offset_xy": (-s, -s)},
+        {"name": "left_side",  "offset_xy": (distance, 0.0)},
+        {"name": "right_side", "offset_xy": (-distance, 0.0)},
+    ]
+
+
+# 旧変数も互換のため残す（既存呼び出しが動くように）
+BUSTUP_CAMERA_ANGLES = make_framing_angles(FRAMING_CONFIGS["bustup"]["distance"])
+BUSTUP_CAMERA_HEIGHT = FRAMING_CONFIGS["bustup"]["height"]
+BUSTUP_LOOK_AT_Z = FRAMING_CONFIGS["bustup"]["look_at_z"]
+BUSTUP_LENS = FRAMING_CONFIGS["bustup"]["lens"]
+
+# ポーズ別「顔をグローブに向ける」上書き設定
+# slug → 'L' / 'R' / 'auto'（autoはスパインから遠い方のグローブを選択＝伸ばしてる拳）
+# このdictにあるポーズは CATEGORIES_HEAD_FACE_FORWARD より優先される
+# 2026-05-16 motion_memo.md の r/l 表記に基づき明示化
+POSE_HEAD_LOOK_AT_GLOVE = {
+    "body_jab_cross": "R",
+    "bodyhook":       "R",
+    "bodyupper":      "R",
+    "hook":           "L",
+    "hook_2":         "L",
+    "jab_2":          "L",
+    "jab_cross":      "R",
+    "onetwo":         "R",
+    "straight_2":     "R",
+    "upper":          "L",
+    "uppercut":       "L",
+    # 未指定（illegal_headbutt, illegal_knee, knee）は CATEGORIES_HEAD_FACE_FORWARD で正面固定
+}
+
 # ポーズごとのカメラ位置 / 回転（slug 名 → {"location": (x,y,z), "rotation_euler_deg": (rx,ry,rz)}）
 # 指定が無いポーズは character_setup.py のデフォルトが使われる
 POSE_CAMERAS = {
@@ -123,34 +183,51 @@ POSE_CAMERAS = {
 }
 
 # ポーズごとの表情（VRoid shape keys 名 → value 0..1）
+# 個別指定があれば最優先（CATEGORIES_DEFAULT_EXPRESSION より優先される）
 POSE_EXPRESSIONS = {
     "victory": {"Fcl_ALL_Joy": 1.0},
     # "idle": {"Fcl_ALL_Neutral": 1.0},
-    # "hook": {"Fcl_ALL_Angry": 1.0},
-    # "upper": {"Fcl_ALL_Angry": 1.0},
+    # body 系ダメージは Damaged_body（カテゴリデフォルト Damaged より優先）
+    "body_damaged_1":    {"Fcl_ALL_Damaged_body": 1.0},
+    "body_damaged_2":    {"Fcl_ALL_Damaged_body": 1.0},
+    "body_damaged_3":    {"Fcl_ALL_Damaged_body": 1.0},
+    "body_damaged_4":    {"Fcl_ALL_Damaged_body": 1.0},
+    "body_dameged_lib":  {"Fcl_ALL_Damaged_body": 1.0},
+}
+
+# カテゴリ単位のデフォルト表情。POSE_EXPRESSIONS に個別指定が無い場合に適用される
+CATEGORIES_DEFAULT_EXPRESSION = {
+    "attacks":  {"Fcl_ALL_Angry": 1.0},
+    "damaged":  {"Fcl_ALL_Damaged": 1.0},
 }
 
 # 表情単独レンダー用の出力先・リスト・カメラ
-EXPRESSIONS_OUTPUT_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\character\base_motoko\expressions"
+EXPRESSIONS_OUTPUT_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\single_render\base_motoko\expressions"
 
 # (slug, シェイプキー名 or dict) のリスト
 # slugに "/" 含めるとカテゴリ別サブフォルダになる: "brw/angry" -> expressions/brw/angry/
 # 値が dict なら複数シェイプキーを同時適用（組み合わせ表情用）
 EXPRESSION_LIST = [
-    # === ALL系（全6） ===
-    ("all/neutral",   "Fcl_ALL_Neutral"),
-    ("all/joy",       "Fcl_ALL_Joy"),
-    ("all/fun",       "Fcl_ALL_Fun"),
-    ("all/angry",     "Fcl_ALL_Angry"),
-    ("all/sorrow",    "Fcl_ALL_Sorrow"),
-    ("all/surprised", "Fcl_ALL_Surprised"),
+    # === ALL系（全6 + ユーザ追加5） ===
+    ("all/neutral",     "Fcl_ALL_Neutral"),
+    ("all/joy",         "Fcl_ALL_Joy"),
+    ("all/fun",         "Fcl_ALL_Fun"),
+    ("all/angry",       "Fcl_ALL_Angry"),
+    ("all/sorrow",      "Fcl_ALL_Sorrow"),
+    ("all/surprised",   "Fcl_ALL_Surprised"),
+    # --- ユーザ追加 ---
+    ("all/damaged",      "Fcl_ALL_Damaged"),
+    ("all/damaged_body", "Fcl_ALL_Damaged_body"),
+    ("all/pain",         "Fcl_ALL_Pain"),
+    ("all/straggle",     "Fcl_ALL_Straggle"),
+    ("all/confused",     "Fcl_All_Confused"),
     # === BRW (眉のみ) 5個 ===
     ("brw/angry",     "Fcl_BRW_Angry"),
     ("brw/fun",       "Fcl_BRW_Fun"),
     ("brw/joy",       "Fcl_BRW_Joy"),
     ("brw/sorrow",    "Fcl_BRW_Sorrow"),
     ("brw/surprised", "Fcl_BRW_Surprised"),
-    # === EYE (目のみ) 14個 ===
+    # === EYE (目のみ) 14個 + ユーザ追加3 ===
     ("eye/natural",        "Fcl_EYE_Natural"),
     ("eye/angry",          "Fcl_EYE_Angry"),
     ("eye/close",          "Fcl_EYE_Close"),
@@ -165,6 +242,10 @@ EXPRESSION_LIST = [
     ("eye/spread",         "Fcl_EYE_Spread"),
     ("eye/iris_hide",      "Fcl_EYE_Iris_Hide"),
     ("eye/highlight_hide", "Fcl_EYE_Highlight_Hide"),
+    # --- ユーザ追加 ---
+    ("eye/angly_2",        "Fcl_EYE_Angly_2"),
+    ("eye/joy_2",          "Fcl_EYE_Joy_2"),
+    ("eye/sanpaku",        "Fcl_EYE_Sanpaku"),
     # === MTH (口のみ) 19個 ===
     ("mth/close",       "Fcl_MTH_Close"),
     ("mth/up",          "Fcl_MTH_Up"),
@@ -185,6 +266,10 @@ EXPRESSION_LIST = [
     ("mth/u",           "Fcl_MTH_U"),
     ("mth/e",           "Fcl_MTH_E"),
     ("mth/o",           "Fcl_MTH_O"),
+    # --- ユーザ追加 ---
+    ("mth/e2",          "Fcl_MTH_e2"),
+    ("mth/he",          "Fcl_MTH_he"),
+    ("mth/ii",          "Fcl_MTH_ii"),
     # === HA (髪) 13個 ===
     ("ha/hide",       "Fcl_HA_Hide"),
     ("ha/fung1",      "Fcl_HA_Fung1"),
@@ -213,8 +298,13 @@ FACE_CAMERA_CONFIG = {
 }
 
 
-def apply_pose_expression(pose_slug):
-    """ポーズ別シェイプキー値を顔メッシュに適用。指定無しのポーズは全シェイプキー=0でリセット。"""
+def apply_pose_expression(pose_slug, category=None):
+    """ポーズ別シェイプキー値を顔メッシュに適用。
+    優先順位:
+      1. POSE_EXPRESSIONS[pose_slug] あればそれ
+      2. CATEGORIES_DEFAULT_EXPRESSION[category] あればそれ
+      3. 何も無ければ全シェイプキー=0でリセット
+    """
     face = None
     for o in bpy.context.scene.objects:
         if o.type == 'MESH' and 'face' in o.name.lower() and o.data.shape_keys:
@@ -227,8 +317,12 @@ def apply_pose_expression(pose_slug):
     for kb in sk.key_blocks:
         if kb.name != 'Basis':
             kb.value = 0.0
-    # 指定がある場合は適用
-    expr = POSE_EXPRESSIONS.get(pose_slug, {})
+    # 1. ポーズ個別 → 2. カテゴリデフォルト の順で参照
+    expr = POSE_EXPRESSIONS.get(pose_slug)
+    if expr is None and category is not None:
+        expr = CATEGORIES_DEFAULT_EXPRESSION.get(category)
+    if not expr:
+        return
     for name, value in expr.items():
         kb = sk.key_blocks.get(name)
         if kb:
@@ -292,9 +386,70 @@ def apply_head_face_forward(arm, enable):
         return
     # 既存LookAt系を全部除去
     for c in list(head.constraints):
-        if c.name in ('LookAtCam', 'LookAtForward'):
+        if c.name in ('LookAtCam', 'LookAtForward', 'LookAtGlove'):
             head.constraints.remove(c)
     if enable:
+        target = _get_or_create_forward_target()
+        track = head.constraints.new('TRACK_TO')
+        track.name = 'LookAtForward'
+        track.target = target
+        track.track_axis = 'TRACK_Z'
+        track.up_axis = 'UP_Y'
+
+
+def _resolve_glove_target(arm, spec):
+    """spec が 'L'/'R'/'auto' のときに対応する boxing_gloves オブジェクトを返す。"""
+    if spec == 'L':
+        return bpy.data.objects.get('boxing_gloves.L')
+    if spec == 'R':
+        return bpy.data.objects.get('boxing_gloves.R')
+    if spec == 'auto':
+        # spine2 中心から遠いほうのグローブを選ぶ（伸びてる方の拳が打撃方向）
+        spine_pb = None
+        for pb in arm.pose.bones:
+            if pb.name.endswith(':Spine2') or pb.name == 'Spine2':
+                spine_pb = pb
+                break
+        if spine_pb is None:
+            return None
+        spine_world = arm.matrix_world @ spine_pb.head
+        gl = bpy.data.objects.get('boxing_gloves.L')
+        gr = bpy.data.objects.get('boxing_gloves.R')
+        if not (gl and gr):
+            return None
+        dl = (gl.matrix_world.translation - spine_world).length
+        dr = (gr.matrix_world.translation - spine_world).length
+        return gl if dl > dr else gr
+    return None
+
+
+def apply_head_target(arm, pose_slug, category):
+    """Head ボーンに Track To 制約を適用。
+    優先順位:
+      1. POSE_HEAD_LOOK_AT_GLOVE にあれば そのグローブを向く
+      2. CATEGORIES_HEAD_FACE_FORWARD なら 正面 -Y を向く
+      3. それ以外は制約なし
+    """
+    head = _find_head_bone(arm)
+    if not head:
+        return
+    # 既存LookAt系を全部除去
+    for c in list(head.constraints):
+        if c.name in ('LookAtCam', 'LookAtForward', 'LookAtGlove'):
+            head.constraints.remove(c)
+    # 1. グローブ追従最優先
+    if pose_slug in POSE_HEAD_LOOK_AT_GLOVE:
+        spec = POSE_HEAD_LOOK_AT_GLOVE[pose_slug]
+        target_glove = _resolve_glove_target(arm, spec)
+        if target_glove:
+            track = head.constraints.new('TRACK_TO')
+            track.name = 'LookAtGlove'
+            track.target = target_glove
+            track.track_axis = 'TRACK_Z'
+            track.up_axis = 'UP_Y'
+            return
+    # 2. 攻撃カテゴリは正面固定
+    if category in CATEGORIES_HEAD_FACE_FORWARD:
         target = _get_or_create_forward_target()
         track = head.constraints.new('TRACK_TO')
         track.name = 'LookAtForward'
@@ -325,6 +480,35 @@ def apply_standard_camera_angle(angle_config):
     cam.location = (center.x + ox, center.y + oy, CAMERA_HEIGHT)
     cam.data.lens = CAMERA_LENS
     direction = center - Vector(cam.location)
+    cam.rotation_euler = direction.to_track_quat('-Z', 'Y').to_euler()
+
+
+def apply_bustup_camera_angle(angle_config):
+    """BUSTUP_CAMERA_ANGLES の1個を適用。胸から上のクローズアップ構図。"""
+    cam = bpy.context.scene.camera
+    if not cam:
+        return
+    center = get_character_center()  # spine2 = chest
+    ox, oy = angle_config["offset_xy"]
+    cam.location = (center.x + ox, center.y + oy, BUSTUP_CAMERA_HEIGHT)
+    cam.data.lens = BUSTUP_LENS
+    # 注視点は胸X,Y, 顎〜首あたりの高さ
+    look_at = Vector((center.x, center.y, BUSTUP_LOOK_AT_Z))
+    direction = look_at - Vector(cam.location)
+    cam.rotation_euler = direction.to_track_quat('-Z', 'Y').to_euler()
+
+
+def apply_framing_camera_angle(angle_config, framing_cfg):
+    """汎用 framing カメラ適用。framing_cfg は FRAMING_CONFIGS の1エントリ。"""
+    cam = bpy.context.scene.camera
+    if not cam:
+        return
+    center = get_character_center()
+    ox, oy = angle_config["offset_xy"]
+    cam.location = (center.x + ox, center.y + oy, framing_cfg["height"])
+    cam.data.lens = framing_cfg["lens"]
+    look_at = Vector((center.x, center.y, framing_cfg["look_at_z"]))
+    direction = look_at - Vector(cam.location)
     cam.rotation_euler = direction.to_track_quat('-Z', 'Y').to_euler()
 
 # OpenPose body 18 ボーン接尾辞マップ（Mixamoの "mixamorig:" / "mixamorig1:" 等の
@@ -754,17 +938,6 @@ def render_all_poses():
     os.makedirs(OUTPUT_ROOT, exist_ok=True)
 
     pose_files = sorted(glob.glob(POSE_FBX_GLOB, recursive=True))
-    # 除外フィルタ: Jennifer.fbx と characters/ 配下
-    filtered = []
-    for p in pose_files:
-        if os.path.basename(p) == EXCLUDE_CHARACTER_FILE:
-            continue
-        rel = os.path.relpath(p, POSE_FBX_ROOT)
-        top_dir = rel.split(os.sep)[0] if os.sep in rel else ""
-        if top_dir in EXCLUDE_CATEGORY_DIRS:
-            continue
-        filtered.append(p)
-    pose_files = filtered
 
     if not pose_files:
         print(f"[warn] ポーズFBXが見つかりません: {POSE_FBX_GLOB}")
@@ -774,6 +947,140 @@ def render_all_poses():
         render_single_pose(fbx, char_arm, scn)
 
     print("\n[done] all poses rendered.")
+
+
+def apply_saved_pose_action(arm, pose_slug):
+    """保存された `pose_<slug>` Action があれば Character に適用。
+
+    動作:
+      1. 全ボーンを identity (T-pose) にリセット
+      2. action を assign して frame 1 を set
+      3. Action が無いボーンは T-pose のまま、Action のあるボーンはその値になる
+
+    Returns:
+      True: Action が見つかって適用した
+      False: 該当 Action 無し（FBXインポートにフォールバックすべし）
+    """
+    action_name = f"pose_{pose_slug}"
+    action = bpy.data.actions.get(action_name)
+    if not action:
+        return False
+    # 全ボーンをリセット（既存のアクション影響を除去）
+    for pb in arm.pose.bones:
+        pb.rotation_quaternion = (1, 0, 0, 0)
+        pb.rotation_euler = (0, 0, 0)
+        pb.location = (0, 0, 0)
+        pb.scale = (1, 1, 1)
+    if arm.animation_data is None:
+        arm.animation_data_create()
+    arm.animation_data.action = action
+    bpy.context.scene.frame_set(1)
+    bpy.context.view_layer.update()
+    print(f"  [saved pose] using '{action_name}' instead of FBX")
+    return True
+
+
+def render_single_pose_framing(fbx, framing_name, char_arm=None, scn=None):
+    """1つのFBXを指定 framing の5アングルでレンダー。
+    framing_name は FRAMING_CONFIGS のキー（'bustup', 'lowangle', 'topdown' 等）。
+    出力先は `poses/<rel_dir>/<pose_name>/<framing_name>/<angle>/`。
+    """
+    cfg = FRAMING_CONFIGS[framing_name]
+    angles = make_framing_angles(cfg["distance"])
+
+    if char_arm is None:
+        char_arm = bpy.data.objects[CHARACTER_ARMATURE_NAME]
+    if scn is None:
+        scn = bpy.context.scene
+
+    pose_name = slugify(fbx)
+    rel_dir = os.path.relpath(os.path.dirname(fbx), POSE_FBX_ROOT)
+    if rel_dir == ".":
+        rel_dir = ""
+    category = rel_dir.split(os.sep)[0] if rel_dir else ""
+    pose_dir = os.path.join(OUTPUT_ROOT, rel_dir, pose_name, framing_name)
+    os.makedirs(pose_dir, exist_ok=True)
+    print(f"\n=== [{category}] {pose_name}  {framing_name.upper()} ===")
+
+    # ポーズ転写: 保存 Action 優先、無ければ FBX フォールバック
+    if not apply_saved_pose_action(char_arm, pose_name):
+        src_arm, extras = import_pose_fbx(fbx)
+        frame = pick_pose_frame(src_arm, pose_slug=pose_name)
+        print(f"  frame {frame}")
+        copy_pose(src_arm, char_arm, frame)
+        remove_obj_tree(src_arm, extras)
+
+    apply_head_target(char_arm, pose_name, category)
+    apply_pose_expression(pose_name, category=category)
+
+    for angle_cfg in angles:
+        angle_name = angle_cfg["name"]
+        angle_dir = os.path.join(pose_dir, angle_name)
+        os.makedirs(angle_dir, exist_ok=True)
+
+        apply_framing_camera_angle(angle_cfg, cfg)
+        bpy.context.view_layer.update()
+
+        update_compositor_paths(angle_dir)
+        scn.frame_set(1)
+        bpy.ops.render.render(write_still=False)
+        postprocess_passes(angle_dir)
+
+        kps = collect_openpose_keypoints(char_arm)
+        op_path = os.path.join(angle_dir, "openpose.png")
+        draw_openpose_image(kps, op_path, scn.render.resolution_x, scn.render.resolution_y)
+        print(f"  -> {framing_name}/{angle_name}")
+
+
+def render_single_pose_bustup(fbx, char_arm=None, scn=None):
+    """1つのFBXを bustup 5アングルでレンダー。
+    fullbody の `render_single_pose` を実行した直後に呼ぶ前提（pose 転写は1回で済む）でも
+    単体でも動くよう、ポーズ転写・表情・head制約まで自前でやる。
+    出力先は `poses/<rel_dir>/<pose_name>/bustup/<angle>/{beauty,depth,normal,openpose}.png`
+    """
+    if char_arm is None:
+        char_arm = bpy.data.objects[CHARACTER_ARMATURE_NAME]
+    if scn is None:
+        scn = bpy.context.scene
+
+    pose_name = slugify(fbx)
+    rel_dir = os.path.relpath(os.path.dirname(fbx), POSE_FBX_ROOT)
+    if rel_dir == ".":
+        rel_dir = ""
+    category = rel_dir.split(os.sep)[0] if rel_dir else ""
+    pose_dir = os.path.join(OUTPUT_ROOT, rel_dir, pose_name, "bustup")
+    os.makedirs(pose_dir, exist_ok=True)
+    print(f"\n=== [{category}] {pose_name}  BUSTUP ===")
+
+    # ポーズ転写: 保存 Action 優先、無ければ FBX フォールバック
+    if not apply_saved_pose_action(char_arm, pose_name):
+        src_arm, extras = import_pose_fbx(fbx)
+        frame = pick_pose_frame(src_arm, pose_slug=pose_name)
+        print(f"  frame {frame}")
+        copy_pose(src_arm, char_arm, frame)
+        remove_obj_tree(src_arm, extras)
+
+    apply_head_target(char_arm, pose_name, category)
+    apply_pose_expression(pose_name, category=category)
+
+    # 5アングル × bustup 構図
+    for angle_cfg in BUSTUP_CAMERA_ANGLES:
+        angle_name = angle_cfg["name"]
+        angle_dir = os.path.join(pose_dir, angle_name)
+        os.makedirs(angle_dir, exist_ok=True)
+
+        apply_bustup_camera_angle(angle_cfg)
+        bpy.context.view_layer.update()
+
+        update_compositor_paths(angle_dir)
+        scn.frame_set(1)
+        bpy.ops.render.render(write_still=False)
+        postprocess_passes(angle_dir)
+
+        kps = collect_openpose_keypoints(char_arm)
+        op_path = os.path.join(angle_dir, "openpose.png")
+        draw_openpose_image(kps, op_path, scn.render.resolution_x, scn.render.resolution_y)
+        print(f"  -> bustup/{angle_name}")
 
 
 def render_single_pose(fbx, char_arm=None, scn=None):
@@ -788,23 +1095,25 @@ def render_single_pose(fbx, char_arm=None, scn=None):
     if rel_dir == ".":
         rel_dir = ""
     category = rel_dir.split(os.sep)[0] if rel_dir else ""
-    pose_dir = os.path.join(OUTPUT_ROOT, rel_dir, pose_name)
+    # 2026-05-16: fullbody も `fullbody/` サブフォルダ配下に出力するように変更
+    # （bustup/lowangle/topdown と階層を揃える）
+    pose_dir = os.path.join(OUTPUT_ROOT, rel_dir, pose_name, "fullbody")
     os.makedirs(pose_dir, exist_ok=True)
-    print(f"\n=== [{category}] {pose_name} ===")
+    print(f"\n=== [{category}] {pose_name}  FULLBODY ===")
 
-    # ポーズ転写
-    src_arm, extras = import_pose_fbx(fbx)
-    frame = pick_pose_frame(src_arm, pose_slug=pose_name)
-    print(f"  frame {frame}")
-    copy_pose(src_arm, char_arm, frame)
-    remove_obj_tree(src_arm, extras)
+    # ポーズ転写: 保存 Action 優先、無ければ FBX フォールバック
+    if not apply_saved_pose_action(char_arm, pose_name):
+        src_arm, extras = import_pose_fbx(fbx)
+        frame = pick_pose_frame(src_arm, pose_slug=pose_name)
+        print(f"  frame {frame}")
+        copy_pose(src_arm, char_arm, frame)
+        remove_obj_tree(src_arm, extras)
 
-    # 攻撃系なら head を正面固定
-    head_forward = (category in CATEGORIES_HEAD_FACE_FORWARD)
-    apply_head_face_forward(char_arm, head_forward)
+    # head ターゲット適用（グローブ追従 > 正面固定 > 制約なし）
+    apply_head_target(char_arm, pose_name, category)
 
-    # 表情
-    apply_pose_expression(pose_name)
+    # 表情（カテゴリデフォルト含む）
+    apply_pose_expression(pose_name, category=category)
 
     # 5アングルでループ
     for angle_cfg in STANDARD_CAMERA_ANGLES:

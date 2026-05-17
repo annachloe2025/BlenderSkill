@@ -12,7 +12,7 @@ import os
 import html
 
 
-CHARACTER_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\character\base_motoko"
+CHARACTER_ROOT = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\outputs\single_render\base_motoko"
 PASS_NAMES = ["beauty", "depth", "normal", "openpose"]
 
 
@@ -27,18 +27,22 @@ def find_image(folder, basename):
 def scan_section(section_root, has_angles=False):
     """セクション配下を走査して item リストを返す。
 
-    has_angles=True (poses):  category/name/angle/<pass>.png 形式
+    has_angles=True (poses):
+        通常: category/name/angle/<pass>.png 形式
+        framing: category/name/<framing>/angle/<pass>.png 形式（例: bustup/front）
     has_angles=False (expressions): category/name/<pass>.png 形式
 
     Returns: [(category, name, rel_dir_of_item, variants), ...]
-      variants: dict {variant_name: {pass_name: rel_image_path_from_section}, ...}
-                ポーズなら variant_name = angle名、表情なら ""
+      variants: dict {variant_path: {pass_name: rel_image_path_from_section}, ...}
+                ポーズなら variant_path = angle名 or "framing/angle"、表情なら ""
     """
-    items = {}  # (category, name) -> variants
+    items = {}  # (category, name, item_rel) -> variants
     if not os.path.isdir(section_root):
         return []
+    # framing 名（angle の親に来うる任意の追加レイヤ）
+    FRAMING_NAMES = {"fullbody", "bustup", "lowangle", "topdown"}
+
     for dirpath, dirnames, filenames in os.walk(section_root):
-        # _test系をスキップ
         rel = os.path.relpath(dirpath, section_root)
         if rel == ".":
             continue
@@ -53,15 +57,24 @@ def scan_section(section_root, has_angles=False):
             continue
         parts = rel.split(os.sep)
         if has_angles:
-            # 3レベル必要: category[/...]/name/angle
             if len(parts) < 3:
                 continue
-            category = "/".join(parts[:-2])
-            name = parts[-2]
-            variant = parts[-1]
-            item_rel = "/".join(parts[:-1])
+            # 末尾が angle、その親が "framing" だったら framing 付き variant に
+            if len(parts) >= 4 and parts[-2] in FRAMING_NAMES:
+                # category/.../name/framing/angle
+                category = "/".join(parts[:-3])
+                name = parts[-3]
+                framing = parts[-2]
+                angle = parts[-1]
+                variant = f"{framing}/{angle}"
+                item_rel = "/".join(parts[:-2])  # category/name
+            else:
+                # category/.../name/angle
+                category = "/".join(parts[:-2])
+                name = parts[-2]
+                variant = parts[-1]
+                item_rel = "/".join(parts[:-1])
         else:
-            # 2レベル: category/name
             if len(parts) == 1:
                 category = ""
                 name = parts[0]
@@ -74,7 +87,6 @@ def scan_section(section_root, has_angles=False):
         key = (category, name, item_rel)
         if key not in items:
             items[key] = {}
-        # rel path from section root to image
         for p, f in passes.items():
             items[key].setdefault(variant, {})[p] = f"{rel}/{f}".replace(os.sep, "/")
     result = []
@@ -290,7 +302,10 @@ def generate():
 
 
 def write_detail_page_for_pose(item_dir, name, category, variants, back_url):
-    """poses 用: variants = {angle: {pass: rel_path}}, 詳細ページは category/name/index.html"""
+    """poses 用: variants = {angle or "framing/angle": {pass: rel_path}}, 詳細ページは category/name/index.html
+
+    framing 付き variant（例: bustup/front）は別ブロックでまとめて表示する。
+    """
     parts = []
     parts.append('<!DOCTYPE html><html><head><meta charset="utf-8">')
     parts.append(f'<title>{html.escape(name)}</title>')
@@ -300,25 +315,45 @@ def write_detail_page_for_pose(item_dir, name, category, variants, back_url):
     parts.append(f'<h1>{html.escape(name)} <small>— {html.escape(cat_label)}</small></h1>')
 
     angle_priority = {"front": 0, "left_45": 1, "right_45": 2, "left_side": 3, "right_side": 4}
-    sorted_variants = sorted(variants.items(), key=lambda kv: angle_priority.get(kv[0], 50))
+    framing_priority = {"fullbody": 0, "": 0, "bustup": 1, "lowangle": 2, "topdown": 3}
 
-    for angle, passes in sorted_variants:
-        parts.append(f'<div class="angle-block"><h3>{html.escape(angle)}</h3>')
-        cells = []
-        for p in PASS_NAMES:
-            rel_path = passes.get(p)
-            if rel_path:
-                # 詳細ページから見たパス: angle/<pass>.png
-                fname = os.path.basename(rel_path)
-                local_path = f"{angle}/{fname}"
-                cells.append(
-                    f'<figure class="pass"><a href="{html.escape(local_path)}">'
-                    f'<img src="{html.escape(local_path)}" loading="lazy"></a>'
-                    f'<figcaption>{html.escape(p)}</figcaption></figure>'
-                )
-            else:
-                cells.append('<figure class="pass"><div>—</div><figcaption>(none)</figcaption></figure>')
-        parts.append(f'<div class="pass-grid">{"".join(cells)}</div></div>')
+    # variant を framing でグループ化（"" = fullbody）
+    by_framing = {}
+    for variant, passes in variants.items():
+        if "/" in variant:
+            framing, angle = variant.split("/", 1)
+        else:
+            framing, angle = "", variant
+        by_framing.setdefault(framing, []).append((angle, passes, variant))
+
+    for framing in sorted(by_framing.keys(), key=lambda x: framing_priority.get(x, 99)):
+        # framing ヘッダ
+        if framing:
+            parts.append(f'<h2>{html.escape(framing.upper())}</h2>')
+        else:
+            parts.append('<h2>FULL BODY</h2>')
+        # angle ソート
+        angles_in_framing = sorted(by_framing[framing], key=lambda x: angle_priority.get(x[0], 50))
+        for angle, passes, variant_key in angles_in_framing:
+            parts.append(f'<div class="angle-block"><h3>{html.escape(angle)}</h3>')
+            cells = []
+            for p in PASS_NAMES:
+                rel_path = passes.get(p)
+                if rel_path:
+                    fname = os.path.basename(rel_path)
+                    # framing 付きなら framing/angle/file、無しなら angle/file
+                    if framing:
+                        local_path = f"{framing}/{angle}/{fname}"
+                    else:
+                        local_path = f"{angle}/{fname}"
+                    cells.append(
+                        f'<figure class="pass"><a href="{html.escape(local_path)}">'
+                        f'<img src="{html.escape(local_path)}" loading="lazy"></a>'
+                        f'<figcaption>{html.escape(p)}</figcaption></figure>'
+                    )
+                else:
+                    cells.append('<figure class="pass"><div>—</div><figcaption>(none)</figcaption></figure>')
+            parts.append(f'<div class="pass-grid">{"".join(cells)}</div></div>')
 
     parts.append(f'<script>{JS_LIGHTBOX}</script></body></html>')
     out_path = os.path.join(item_dir, "index.html")

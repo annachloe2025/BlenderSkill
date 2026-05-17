@@ -32,6 +32,85 @@
 
 ---
 
+## 2026-05-17: Phase 8 — base_motoko を Apply All Transforms 済みでクリーン再構築
+
+**目標**: 旧 base_motoko は Mixamo FBX import の典型的な状態 (Armature rotation_euler=(90°,0,0), scale=0.01) を抱えていて、Combat シーン等で「ポーズ前進方向と座標軸がズレる」問題があった。Apply All Transforms で armature/mesh の全 transform を単位元 (rot=0, scale=1) にした **クリーンな base_motoko** に作り直す。ただし42個のPose Asset、ユーザーカスタム編集 (pose_hook の右腕角度等)、Face shape key、boxing gloves bone parent 設定、Face Overlay マテリアル等 **全て保持** すること。
+
+**実行した手順**:
+
+1. **Phase 1: 素体クリーン構築**
+   - 空シーンに `base_motoko.fbx` を import → Armature rot=(90°,0,0), scale=0.01 を確認
+   - 全選択して `bpy.ops.object.transform_apply(rotation=True, scale=True)` で Apply All Transforms
+   - 結果: Armature dim Z=1.875m, 全mesh rot=0/scale=1, 足元 Z=0.003m で接地
+2. **Phase 2: アニメ再生検証** (ユーザーから「先にアニメで動かしてみよう」と提案)
+   - 旧blendから pose_hook action を append → assign → Hips が world(14.9, -95.7, -23.6) に飛ぶ
+   - 原因: 旧 action の Hips location キーフレームは cm 単位 (100倍値)。旧Armature scale=0.01でつじつまが合っていたが、Apply Scale 後はそのまま100倍に見える
+   - 対処: Hips location チャネルを /100 補正 → 完璧に動く
+   - Hook.fbx (89フレーム長尺アニメ) でも同様に補正 → 完璧再生
+3. **Phase 3: アニメ取り込みユーティリティ作成** (`snippets/retarget_mixamo_action.py`)
+   - `mixamorigN:` プレフィックス自動正規化 (既存armatureがある状態でimportすると `mixamorig1:` 等にリネームされる問題)
+   - Hips location キーフレーム /100 補正
+   - 一時import object 自動クリーンアップ
+   - `batch_retarget()` でフォルダ一括処理対応
+4. **Phase 4: 42 Pose Asset 移植**
+   - 旧blendから `pose_*` 全42個 append → 同じ /100 補正適用
+   - 全 Pose Asset (Asset Browser 対応) として保持
+   - ユーザーカスタムの pose_hook 右腕角度も保持確認
+5. **Phase 5: グローブ装着**
+   - 旧 boxing_gloves.L/R をbone parent ごと append
+   - 重要: 旧Character.001 も T-pose に明示リセットしてから world transform 取得
+   - `matrix_parent_inverse` を再計算して新Character の手首位置に world transform 維持で再 parent
+   - 結果: T-pose 時 world diff=0.000000m で完璧装着
+6. **Phase 6: Face shape key 移植**
+   - 旧Face mesh の 58個 shape key (Basis+57) を新Face mesh に転送
+   - Blender標準の `bpy.ops.object.join_shapes()` は **1個まとめてしか作らない** ため使用不可
+   - スクリプトで個別に `new_face.shape_key_add(name=...)` → vertex coord copy
+7. **Phase 7: 手のメッシュ非表示**
+   - グローブから指が出るので、Body に Mask Modifier 追加
+   - `mixamorig:*Hand*` 系32個の vertex group の頂点を統合 vertex group `hands_mask` に集約 (1664頂点)
+   - Mask modifier (invert=True) で非表示
+8. **Phase 8: テクスチャ差し替え** (`face_skin_matched` / `shoes_blue` / `hair_front_a_green` / `boxing_gloves_texture_magenta` / `..._padded_with_swimsuit_recolor`)
+   - **Blender の image filepath 変更後の cache バグ** に遭遇: filepath 変えて reload しても viewport の見た目が更新されない
+   - 対処: image data block を完全削除 → 新規 `bpy.data.images.load()` → 全 material node の参照を新 image に置換 → 旧名でリネーム
+9. **Phase 9: Material node graph 完全コピー** (←最大の発見)
+   - テクスチャ差し替えしても **Face の見た目がアニメ調にならない** (目・口・眉が消えた状態)
+   - 原因判明: 旧 Face material は **VRoid Add-on で組まれた FaceOverlayMix1→2→3 チェイン** で、複数オーバーレイ画像を Mix で合成して目・口・眉等を表示していた
+   - Mixamo経由 FBX import で **Mix node 構造が完全に失われた** ため、新Face material は単純な Principled BSDF + 1枚 image だけになっていた
+   - 解決: 旧blendから 12個の material を node graph ごと append → 新mesh の material_slot を旧版に差し替え → 旧material 内の image 参照 (30個) を canonical な新版 (face_skin_matched 等) に置換
+10. **Phase 10: 旧 base_motoko のアーカイブ + フォルダリネーム**
+    - 旧 `library/characters/base_motoko/` → `_archive/base_motoko_old/` に移動、`base_motoko.blend` → `base_motoko_old.blend` にリネーム
+    - 新 `base_motoko_2/` → `base_motoko/` にフォルダリネーム、`base_motoko_2.blend` → `base_motoko.blend` にファイルリネーム
+
+**結果**: 成功 (9.6 MB の極小サイズに収まる)
+
+**学んだこと**:
+
+- **Apply All Transforms は Mixamoアニメと完全互換**: 補正は Hips location チャネル /100 のみ。ボーン回転は座標系不変なのでそのまま動く
+- **Pose Asset は何度でも再利用可能**: 旧blendから append → /100 補正で、ユーザーカスタム編集ごと完全継承できる
+- **Mixamo経由FBXは VRoid material 構造を破壊する**: Face Overlay などの Mix node チェインは保持されない。これに気付かないと「テクスチャ差し替えしても見た目変わらない」の沼にハマる
+- **テクスチャ差し替えで cache バグに遭遇したら**: `image.filepath = new` + `image.reload()` ではダメ。`bpy.data.images.remove()` → `bpy.data.images.load()` → 全 material node 参照差し替え、で確実
+- **bone parent の matrix_parent_inverse 計算**: `parent_matrix = arm.matrix_world @ pose_bone.matrix @ Matrix.Translation((0, bone.length, 0))` (bone の tail を origin にぶら下がる仕様)
+- **join_shapes は Blender 5.x では複数 shape key を一気にcopy できない**: スクリプトで vertex coord 個別 copy が必要
+
+**つまずいた点**:
+
+- 「靴下のグレー」を「靴のメッシュ」と勘違いして material BSDF をいじり倒した → 実は **足ボーンの表示** だった。ユーザーに「色は変わらない、ボーンだ」と指摘されて気付いた
+- 「髪がオレンジ」と思って戸惑った → object 選択枠のオレンジ色だった
+- material 移植時、BSDF input default value (Metallic/Roughness) だけ見て合わせて「旧と同じ」と報告した → 実は **node graph 構造 (Mix チェイン)** が全然違っていた。「node graph 全体」レベルで比較するべきだった
+- **これがユーザーを長時間イライラさせた最大原因**: 表面パラメータだけでなく、material の **接続構造** を最初から確認すべき
+
+**再利用可能な成果物**:
+
+- `snippets/retarget_mixamo_action.py` — Mixamo FBX 取り込み補正ユーティリティ (ボーン名正規化 + Hips loc /100)
+- `library/characters/base_motoko/base_motoko.blend` (9.6 MB) — クリーン素体 + 42 Pose Asset + Face Overlay material + magenta gloves
+- `library/characters/_archive/base_motoko_old/base_motoko_old.blend` (92 MB) — 旧版アーカイブ (心配なときの safe net)
+
+**残タスク**:
+
+- `scenes/combat/combat_template.blend` と `scenes/single_render/base_motoko_pose_pipeline.blend` の中の base_motoko を、新版で再 append する作業 (旧構造のまま残っている)
+
+---
+
 ## 2026-05-15: Phase 7 — 42ポーズ×5アングル×4パス量産 + HTMLギャラリー構築
 
 **目標**: base_motoko を本格運用に乗せる。Mixamoから42モーションを追加DLし、各ポーズに **5方向のカメラ** からレンダーする多角度パイプラインへ拡張。さらに68種類の表情も追加レンダー。最終的に **840+272枚** の生成画像を階層型HTMLギャラリーで閲覧できる状態にする。

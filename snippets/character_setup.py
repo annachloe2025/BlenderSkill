@@ -23,7 +23,7 @@ from mathutils import Vector
 
 # ---- 設定 -----------------------------------------------------------------
 
-CHARACTER_FBX = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\vroid\base_motoko\base_motoko.fbx"
+CHARACTER_FBX = r"C:\Users\hoeho\Documents\Claude\BlenderSkill\blender\assets\characters\base_motoko\base_motoko.fbx"
 
 RENDER_WIDTH = 1024
 RENDER_HEIGHT = 1024
